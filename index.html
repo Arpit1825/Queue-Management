@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Smart Queue Management - Reduce Wait Times, Improve Customer Experience</title>
+  <meta name="title" content="Smart Queue Management - Reduce Wait Times, Improve Customer Experience">
+  <meta name="description" content="Digitize queues, reduce waiting time, and streamline customer flow with real-time monitoring and intelligent queue allocation. Investor-ready smart scheduling software.">
+  <meta name="keywords" content="queue management system, smart scheduling, digital token, wait time optimizer, customer flow management, booking portal">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://smartqueue.example.com/">
+  <meta property="og:title" content="Smart Queue Management - Reduce Wait Times, Improve Customer Experience">
+  <meta property="og:description" content="Digitize queues, reduce waiting time, and streamline customer flow with real-time monitoring and intelligent queue allocation.">
+  <meta property="og:image" content="assets/og-image.png">
+
+  <!-- Stylesheets & Fonts -->
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- FIXED GLASS NAVIGATION BAR -->
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#" class="logo" id="nav-logo" aria-label="Smart Queue Homepage">
+        <svg viewBox="0 0 24 24">
+          <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z" />
+        </svg>
+        SmartQueue
+      </a>
+      
+      <nav class="nav-menu" id="nav-menu" role="navigation">
+        <a href="#hero" class="nav-link active" id="link-hero">Home</a>
+        <a href="#features" class="nav-link" id="link-features">Features</a>
+        <a href="#how-it-works" class="nav-link" id="link-how">How It Works</a>
+        <a href="#demo" class="nav-link" id="link-demo">Live Demo</a>
+        <a href="#pricing" class="nav-link" id="link-pricing">Pricing</a>
+        <a href="#faq" class="nav-link" id="link-faq">FAQ</a>
+        <a href="#contact" class="nav-link" id="link-contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode">
+          <!-- Sun Icon for Dark Theme -->
+          <svg class="sun-icon" viewBox="0 0 24 24">
+            <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" />
+          </svg>
+          <!-- Moon Icon for Light Theme -->
+          <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
+          </svg>
+        </button>
+
+        <button class="btn btn-secondary btn-login" id="nav-btn-login" aria-haspopup="dialog">Log In</button>
+        <button class="btn btn-primary btn-signup" id="nav-btn-signup" aria-haspopup="dialog">Sign Up</button>
+      </div>
+
+      <div class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-controls="nav-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="container grid grid-2 hero-grid">
+      <div class="hero-content reveal">
+        <div class="hero-badge">
+          <span></span> Version 2.0 Live Showcase
+        </div>
+        <h1 class="hero-title">
+          Transform Customer Waiting Experience with <span>Smart Queue Management</span>
+        </h1>
+        <p class="hero-description">
+          Digitize queues, reduce waiting time, and streamline customer flow with real-time monitoring and intelligent queue allocation.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary btn-demo" id="hero-btn-demo">Request Demo</button>
+          <a href="#demo" class="btn btn-secondary" id="hero-btn-secondary">Try Live Simulator</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual reveal">
+        <!-- Dashboard Illustration with Glassmorphism -->
+        <div class="hero-card-preview" id="hero-preview-card">
+          <div class="preview-header">
+            <div class="preview-dots">
+              <span class="preview-dot"></span>
+              <span class="preview-dot"></span>
+              <span class="preview-dot"></span>
+            </div>
+            <div class="preview-title">SmartQueue Dashboard Preview</div>
+            <i class="fa-solid fa-arrows-spin" style="color: var(--primary);"></i>
+          </div>
+
+          <div class="preview-grid">
+            <div class="preview-stat">
+              <div class="preview-stat-val" id="hero-stat-waiting">14</div>
+              <div class="preview-stat-label">Waiting</div>
+            </div>
+            <div class="preview-stat">
+              <div class="preview-stat-val" id="hero-stat-wait">4.2m</div>
+              <div class="preview-stat-label">Avg Wait Time</div>
+            </div>
+            <div class="preview-stat">
+              <div class="preview-stat-val" id="hero-stat-efficiency">94%</div>
+              <div class="preview-stat-label">Staff Efficiency</div>
+            </div>
+          </div>
+
+          <div class="preview-list">
+            <div class="preview-item">
+              <span>Token A-102 (General Query)</span>
+              <span class="preview-badge badge-serving">Serving Counter 1</span>
+            </div>
+            <div class="preview-item">
+              <span>Token VIP-203 (Premium Desk)</span>
+              <span class="preview-badge badge-serving">Serving Counter 2</span>
+            </div>
+            <div class="preview-item">
+              <span>Token B-146 (Billing Office)</span>
+              <span class="preview-badge badge-waiting">In Queue - 3m</span>
+            </div>
+            <div class="preview-item">
+              <span>Token S-155 (Tech Support)</span>
+              <span class="preview-badge badge-waiting">In Queue - 1m</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Powerful Features</span>
+        <h2 class="section-title">Everything you need to optimize customer flow</h2>
+        <p class="section-subtitle">A comprehensive set of tools designed to help operations managers configure, monitor, and scale physical queue processes.</p>
+      </div>
+
+      <div class="grid grid-4 features-grid reveal">
+        <!-- Feature 1 -->
+        <div class="feature-card" id="feature-tracking">
+          <div class="feature-icon-container">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          </div>
+          <h3>Real-Time Queue Tracking</h3>
+          <p>Let customers monitor their queue numbers and queue status live on their own mobile devices.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card" id="feature-token">
+          <div class="feature-icon-container">
+            <svg viewBox="0 0 24 24"><path d="M13.13 22.19L11.5 21l-.26-.19C6 16.81 3 13.56 3 9.5 3 5.36 6.36 2 10.5 2c2.4 0 4.6 1.12 6.03 2.87C17.96 3.12 20.16 2 22.56 2c4.14 0 7.5 3.36 7.5 7.5 0 4.06-3 7.31-8.24 11.31L20.25 22.06c-.84.62-2 .62-2.84 0l-4.28-3.21-1.33.99c-.66.49-1.55.51-2.22.04v.26a1.49 1.49 0 0 1-.45.04z"/></svg>
+          </div>
+          <h3>Digital Token Generation</h3>
+          <p>Print contactless tickets using QR codes placed outside branches, preventing hallway crowding.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card" id="feature-allocation">
+          <div class="feature-icon-container">
+            <svg viewBox="0 0 24 24"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></svg>
+          </div>
+          <h3>Smart Queue Allocation</h3>
+          <p>Intelligent algorithm routes VIP customers and complex queries automatically to expert staff.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card" id="feature-notifications">
+          <div class="feature-icon-container">
+            <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+          </div>
+          <h3>Live Notifications & Alerts</h3>
+          <p>Deliver timely SMS, email, and WhatsApp notifications when customer counter window is approaching.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card" id="feature-analytics">
+          <div class="feature-icon-container">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+          </div>
+          <h3>Analytics Dashboard</h3>
+          <p>Retrieve detailed analytics report logs on peak congestion hours, service times, and staff performance.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card" id="feature-branches">
+          <div class="feature-icon-container">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <h3>Multi-Branch Management</h3>
+          <p>Monitor queue lines across multiple locations and offices remotely from a single central portal.</p>
+        </div>
+
+        <!-- Feature 7 -->
+        <div class="feature-card" id="feature-appointments">
+          <div class="feature-icon-container">
+            <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+          </div>
+          <h3>Appointment Scheduling</h3>
+          <p>Integrate online reservation calendar bookings with walk-in ticketing automatically.</p>
+        </div>
+
+        <!-- Feature 8 -->
+        <div class="feature-card" id="feature-feedback">
+          <div class="feature-icon-container">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+          </div>
+          <h3>Feedback Collection</h3>
+          <p>Gather customer feedback surveys directly after service is completed to track experience scores.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS / STATS SECTION -->
+  <section class="section benefits" id="benefits">
+    <div class="container">
+      <div class="grid grid-4 benefits-grid reveal">
+        <!-- Stat 1 -->
+        <div class="benefit-card">
+          <div class="benefit-stat" data-target="60" data-suffix="%">0%</div>
+          <div class="benefit-label">Reduced Wait Times</div>
+          <div class="benefit-desc">Drastically lowers local branch congestion and customer anxiety.</div>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="benefit-card">
+          <div class="benefit-stat" data-target="95" data-suffix="%">0%</div>
+          <div class="benefit-label">Customer Satisfaction</div>
+          <div class="benefit-desc">Reported by partners who integrated digitized SMS alerts.</div>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="benefit-card">
+          <div class="benefit-stat" data-target="99.9" data-suffix="%">0%</div>
+          <div class="benefit-label">System Availability</div>
+          <div class="benefit-desc">Highly resilient enterprise-grade cloud server hosting.</div>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="benefit-card">
+          <div class="benefit-stat" data-target="40" data-suffix="%">0%</div>
+          <div class="benefit-label">Staff Efficiency</div>
+          <div class="benefit-desc">Optimizes worker focus and reduces counter transition downtime.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Smooth Workflows</span>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">A simple, painless 4-step path to move customers smoothly from entrance to query completion.</p>
+      </div>
+
+      <div class="timeline-container reveal" id="timeline">
+        <!-- Step 1 -->
+        <div class="timeline-step" id="step-join">
+          <div class="step-number-container">
+            <span class="step-number">01</span>
+          </div>
+          <h3 class="step-title">Customer Joins Queue</h3>
+          <p class="step-desc">Scan QR codes at lobby or pre-book ticket online on smartphone.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-step" id="step-ticket">
+          <div class="step-number-container">
+            <span class="step-number">02</span>
+          </div>
+          <h3 class="step-title">Get Digital Token</h3>
+          <p class="step-desc">Receives SMS token verification containing estimated counter wait time.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-step" id="step-allocation">
+          <div class="step-number-container">
+            <span class="step-number">03</span>
+          </div>
+          <h3 class="step-title">Smart Allocation</h3>
+          <p class="step-desc">Algorithm assigns customer to appropriate open counter agent.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="timeline-step" id="step-notify">
+          <div class="step-number-container">
+            <span class="step-number">04</span>
+          </div>
+          <h3 class="step-title">Receive Notification</h3>
+          <p class="step-desc">Phone buzzes to invite customer to approach counter window immediately.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE SIMULATION DASHBOARD PREVIEW -->
+  <section class="section dashboard-showcase" id="demo">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Interactive Simulation</span>
+        <h2 class="section-title">Test Drive the Queue Management Panel</h2>
+        <p class="section-subtitle">Operate our real-time simulator to generate tickets, view counter state updates, and evaluate performance analytics charts.</p>
+      </div>
+
+      <div class="grid grid-2 dashboard-showcase-grid reveal">
+        <!-- Live Dashboard Panel -->
+        <div class="live-dashboard-panel" id="live-panel">
+          <div class="panel-header">
+            <div class="panel-title-group">
+              <span class="live-indicator"></span>
+              <span class="panel-title">Active Queue Management System</span>
+            </div>
+            <span class="panel-meta">Status: Operational</span>
+          </div>
+
+          <div class="panel-body">
+            <!-- Stats -->
+            <div class="dashboard-stats-row">
+              <div class="panel-stat-card">
+                <div class="panel-stat-label">In Queue</div>
+                <div class="panel-stat-val" id="sim-metric-active">4</div>
+                <div class="panel-stat-trend trend-down">
+                  <i class="fa-solid fa-arrow-down"></i> -12%
+                </div>
+              </div>
+              <div class="panel-stat-card">
+                <div class="panel-stat-label">Avg Wait Time</div>
+                <div class="panel-stat-val" id="sim-metric-wait">4.5m</div>
+                <div class="panel-stat-trend trend-down">
+                  <i class="fa-solid fa-arrow-down"></i> -8%
+                </div>
+              </div>
+              <div class="panel-stat-card">
+                <div class="panel-stat-label">Counters Active</div>
+                <div class="panel-stat-val" id="sim-metric-counters">3/4</div>
+                <div class="panel-stat-trend trend-up">
+                  <i class="fa-solid fa-arrow-up"></i> Stable
+                </div>
+              </div>
+              <div class="panel-stat-card">
+                <div class="panel-stat-label">Staff Efficiency</div>
+                <div class="panel-stat-val" id="sim-metric-staff">94%</div>
+                <div class="panel-stat-trend trend-up">
+                  <i class="fa-solid fa-arrow-up"></i> +2.4%
+                </div>
+              </div>
+            </div>
+
+            <!-- Dashboard Split -->
+            <div class="dashboard-content-split">
+              <!-- Waiting Queue List -->
+              <div class="panel-sub-card">
+                <div class="panel-sub-title">
+                  Waiting Queue
+                  <span id="queue-size">Real-time</span>
+                </div>
+                <div class="queue-list-items" id="sim-queue-list">
+                  <!-- Injected JS Queue list row elements -->
+                </div>
+              </div>
+
+              <!-- Counter Agents list -->
+              <div class="panel-sub-card">
+                <div class="panel-sub-title">
+                  Service Counters
+                  <span>Status Panel</span>
+                </div>
+                <div class="counters-list" id="sim-counters-list">
+                  <!-- Injected JS Counter elements -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Graph -->
+            <div class="analytics-chart-container">
+              <div class="panel-sub-title" style="border: none; margin-bottom: 0;">
+                Customer Traffic Volume
+                <span>24 Hour Flow Analytics</span>
+              </div>
+              <div class="chart-canvas-wrapper">
+                <canvas id="sim-chart-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulator Controls -->
+        <div class="simulator-controls" id="sim-controls">
+          <h3>Simulation Panel</h3>
+          <p>Use these actions to mock incoming walk-ins or trigger service updates. Toggle Auto-Simulation to run autonomously.</p>
+          
+          <div class="sim-form-group">
+            <label class="sim-label" for="sim-service">Select Queue Category</label>
+            <select class="sim-select" id="sim-service">
+              <option value="General">General Inquiries</option>
+              <option value="VIP">VIP Lounge Client</option>
+              <option value="Billing">Billing & Cashier</option>
+              <option value="Support">Technical Support</option>
+            </select>
+          </div>
+
+          <div class="sim-actions">
+            <button class="btn btn-primary" id="sim-btn-generate" style="width: 100%;">
+              <i class="fa-solid fa-ticket"></i> Generate Ticket Token
+            </button>
+            <button class="btn btn-secondary" id="sim-btn-serve" style="width: 100%;">
+              <i class="fa-solid fa-user-check"></i> Serve Next Customer
+            </button>
+            
+            <div style="margin: 1rem 0; border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; align-items: center; justify-content: space-between;">
+              <span class="sim-label" style="margin-bottom: 0;">Enable Auto-Simulation</span>
+              <label class="switch-container" style="position: relative; display: inline-block; width: 50px; height: 26px;">
+                <input type="checkbox" id="sim-auto" style="opacity: 0; width: 0; height: 0;">
+                <span class="slider-toggle-btn" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border-color); border-radius: 30px; transition: 0.3s;"></span>
+              </label>
+            </div>
+
+            <button class="btn btn-secondary" id="sim-btn-reset" style="width: 100%; color: #EF4444; border-color: rgba(239, 68, 68, 0.2);">
+              <i class="fa-solid fa-trash-can"></i> Reset Simulation Data
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOM TOGGLE CSS FOR SLIDER -->
+  <style>
+    input:checked + .slider-toggle-btn {
+      background-color: var(--primary);
+    }
+    input:checked + .slider-toggle-btn:before {
+      transform: translateX(24px);
+    }
+    .slider-toggle-btn:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+  </style>
+
+  <!-- INDUSTRIES WE SERVE -->
+  <section class="section" id="industries">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Versatile Deployments</span>
+        <h2 class="section-title">Industries We Serve</h2>
+        <p class="section-subtitle">Tailored flow-management systems deployed across major institutions globally.</p>
+      </div>
+
+      <div class="grid grid-3 industries-grid reveal">
+        <!-- Industry 1 -->
+        <div class="industry-card" id="ind-hospitals">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/></svg>
+          </div>
+          <h3>Hospitals & Clinics</h3>
+          <p>Integrate triaging algorithms with waiting lists. Direct emergency cases immediately and update patient statuses on wall-mounted screens.</p>
+          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+        </div>
+
+        <!-- Industry 2 -->
+        <div class="industry-card" id="ind-banks">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.5 1L2 6v2h19V6L11.5 1zM2 22h19v-3H2v3zm4-12v7h3v-7H6zm6 0v7h3v-7h-3zm6 0v7h3v-7h-3z"/></svg>
+          </div>
+          <h3>Banks & Credit Unions</h3>
+          <p>Secure authentication tokens for transactions. Routes premium business clientele automatically to specialized branch relationship staff.</p>
+          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+        </div>
+
+        <!-- Industry 3 -->
+        <div class="industry-card" id="ind-gov">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+          </div>
+          <h3>Government Offices</h3>
+          <p>Reduce administrative wait times. Provide clear notifications for civic documents, license renewals, and passport processing.</p>
+          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+        </div>
+
+        <!-- Industry 4 -->
+        <div class="industry-card" id="ind-uni">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.89 12.55L12 15.89l6.11-3.34c.66-.36 1.89-.36 2.55 0L22 13.2V19c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-5.8l1.34-.65c.66-.36 1.89-.36 2.55 0z"/></svg>
+          </div>
+          <h3>Universities & Colleges</h3>
+          <p>Scale registrar and enrollment desks. Allow students to join virtual counselor lines remotely during enrollment periods.</p>
+          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+        </div>
+
+        <!-- Industry 5 -->
+        <div class="industry-card" id="ind-retail">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M17.21 9l-4.38-6.56c-.18-.28-.5-.44-.83-.44-.33 0-.65.16-.83.44L6.79 9H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h1v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8h1c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-4.79zM9 9l3-4.5L15 9H9zm10 11H5v-8h14v8z"/></svg>
+          </div>
+          <h3>Retail Stores</h3>
+          <p>Replace checkout cluster lines. Alert customers when their cashier counters open, promoting in-store shopping in other aisles.</p>
+          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+        </div>
+
+        <!-- Industry 6 -->
+        <div class="industry-card" id="ind-service">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+          </div>
+          <h3>Service Centers</h3>
+          <p>Coordinate parts, diagnostic desks, and technical representatives automatically based on vehicle models or appliance queries.</p>
+          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Client Reviews</span>
+        <h2 class="section-title">What operations leaders say about us</h2>
+        <p class="section-subtitle">Read how our service coordination algorithms helped companies boost customer scores and efficiency.</p>
+      </div>
+
+      <div class="testimonials-slider-container reveal" id="testimonial-slider">
+        <div class="testimonials-track" id="testimonials-track">
+          <!-- Slide 1 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card">
+              <div class="rating-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                "Smart Queue completely reformed our patient triage. Wait times dropped by 55% in the first month, and lobby overcrowding is entirely gone."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200');"></div>
+                <div>
+                  <h4 class="author-name">Dr. Sarah Jenkins</h4>
+                  <p class="author-role">Operations Chief, Metro Health Clinic</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card">
+              <div class="rating-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                "Our banking lobbies are serene now. Customers wait remotely, checking queue position on their phones. Branch operations have never been this smooth."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200');"></div>
+                <div>
+                  <h4 class="author-name">Marcus Vance</h4>
+                  <p class="author-role">Director of Branch Operations, Apex Trust Bank</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card">
+              <div class="rating-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                "The analytics alone are worth the investment. We can predict peak congestion hours and schedule our staff accordingly, cutting down operational cost by 25%."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200');"></div>
+                <div>
+                  <h4 class="author-name">Amanda Miller</h4>
+                  <p class="author-role">Service Experience Manager, City Office</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials-controls">
+          <button class="slider-nav-btn prev" aria-label="Previous review"><svg viewBox="0 0 24 24"><path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.42z"/></svg></button>
+          <div class="slider-dots"></div>
+          <button class="slider-nav-btn next" aria-label="Next review"><svg viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING SECTION -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Flexible Subscriptions</span>
+        <h2 class="section-title">Transparent pricing for organizations of all sizes</h2>
+        <p class="section-subtitle">Select the subscription model that scales with your offices. Get started with no commitment.</p>
+      </div>
+
+      <div class="pricing-toggle-container reveal">
+        <span class="pricing-label active" id="label-monthly">Monthly Billing</span>
+        <div class="toggle-switch-wrapper" id="pricing-toggle" role="switch" aria-checked="false" aria-label="Toggle annual pricing discount">
+          <div class="toggle-switch-circle"></div>
+        </div>
+        <span class="pricing-label" id="label-yearly">Yearly Billing <span class="pricing-badge">Save 20%</span></span>
+      </div>
+
+      <div class="grid grid-3 pricing-grid reveal">
+        <!-- Starter Plan -->
+        <div class="pricing-card" id="price-starter">
+          <h3 class="plan-name">Starter Plan</h3>
+          <p class="plan-desc">Best for single branch clinics and small customer desks.</p>
+          <div class="plan-price-box">
+            <span class="plan-currency">$</span>
+            <span class="plan-price">19</span>
+            <span class="plan-period">/month</span>
+          </div>
+          <ul class="plan-features-list">
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 1 Location / Branch</li>
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Up to 3 Active Counters</li>
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Standard Web Tokens</li>
+            <li class="plan-feature-item disabled"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Predictive Live Analytics</li>
+            <li class="plan-feature-item disabled"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> SMS & WhatsApp Alerts</li>
+          </ul>
+          <button class="btn btn-secondary btn-signup" id="pricing-btn-starter">Get Started</button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="pricing-card popular" id="price-pro">
+          <h3 class="plan-name">Professional Plan</h3>
+          <p class="plan-desc">Tailored for busy branch offices and corporate centers.</p>
+          <div class="plan-price-box">
+            <span class="plan-currency">$</span>
+            <span class="plan-price">49</span>
+            <span class="plan-period">/month</span>
+          </div>
+          <ul class="plan-features-list">
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Up to 5 Branches</li>
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Up to 10 Counters per branch</li>
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> SMS & WhatsApp Token Alerts</li>
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Interactive Analytics Panel</li>
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Priority Email & Phone Help</li>
+          </ul>
+          <button class="btn btn-primary btn-signup" id="pricing-btn-pro">Get Started</button>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card" id="price-enterprise">
+          <h3 class="plan-name">Enterprise Plan</h3>
+          <p class="plan-desc">For large hospitals, banks, and government institutions.</p>
+          <div class="plan-price-box">
+            <span class="plan-currency">$</span>
+            <span class="plan-price">129</span>
+            <span class="plan-period">/month</span>
+          </div>
+          <ul class="plan-features-list">
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Unlimited Branches & Locations</li>
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Unlimited Active Counters</li>
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Custom Branding & Domain API</li>
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Dedicated 24/7 Account Manager</li>
+            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Custom SLA and On-Prem Option</li>
+          </ul>
+          <button class="btn btn-secondary btn-demo" id="pricing-btn-enterprise">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Common Inquiries</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Quick answers to help you understand our setup, security standards, and support protocols.</p>
+      </div>
+
+      <div class="faq-container reveal">
+        <!-- FAQ 1 -->
+        <div class="faq-item" id="faq-setup">
+          <div class="faq-header">
+            <span class="faq-question">How simple is the initial setup?</span>
+            <div class="faq-icon-box"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>Setting up is exceptionally straightforward. You can initialize your digital branches in our portal in under 15 minutes, download and print your custom QR codes, and have customers joining lines immediately. No technical expertise or physical terminal changes are required.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item" id="faq-scale">
+          <div class="faq-header">
+            <span class="faq-question">Can the system scale to support hundreds of counters?</span>
+            <div class="faq-icon-box"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, absolutely. Our system is built on resilient, high-capacity cloud architecture. We actively support large university complexes, hospital clinics, and banking branches with hundreds of agents and thousands of daily tokens without any performance degradation.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item" id="faq-integrations">
+          <div class="faq-header">
+            <span class="faq-question">Does this integrate with custom CRM and scheduling systems?</span>
+            <div class="faq-icon-box"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>Our Enterprise Plan offers access to comprehensive REST APIs and Webhook pipelines. This lets your engineering team sync real-time queue states and customer feedback directly with CRM software like Salesforce, HubSpot, or internal patient portals.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item" id="faq-security">
+          <div class="faq-header">
+            <span class="faq-question">What data security measures do you employ?</span>
+            <div class="faq-icon-box"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>Data security is our top priority. We use HTTPS TLS 1.3 encryption for all data transiting our network, and AES-256 databases. We are fully GDPR and HIPAA compliant, ensuring that any patient queue entries and customer data logs are completely private and masked.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">We'd love to help you build smooth queues</h2>
+        <p class="section-subtitle">Reach out to our customer experience experts for a custom consultation or pricing quote.</p>
+      </div>
+
+      <div class="grid grid-2 contact-grid reveal">
+        <!-- Contact Information Panel -->
+        <div class="contact-info-panel" id="contact-info">
+          <div>
+            <h3>Contact Information</h3>
+            <p>Have questions about plans or custom branch needs? Fill out our form or connect directly.</p>
+            
+            <div class="contact-details">
+              <!-- Detail 1 -->
+              <div class="contact-detail-row">
+                <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+                <div class="contact-detail-text">
+                  <h4>Email Us</h4>
+                  <p>support@smartqueue.com</p>
+                </div>
+              </div>
+
+              <!-- Detail 2 -->
+              <div class="contact-detail-row">
+                <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+                <div class="contact-detail-text">
+                  <h4>Call Us</h4>
+                  <p>+1 (800) 555-QHELP</p>
+                </div>
+              </div>
+
+              <!-- Detail 3 -->
+              <div class="contact-detail-row">
+                <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+                <div class="contact-detail-text">
+                  <h4>Our HQ</h4>
+                  <p>100 Tech Venture Way, Suite 400, San Francisco, CA</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-socials">
+            <a href="#" class="contact-social-btn" aria-label="Smart Queue Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="contact-social-btn" aria-label="Smart Queue LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="contact-social-btn" aria-label="Smart Queue GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="contact-social-btn" aria-label="Smart Queue Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="contact-form-card" id="contact-form-card">
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="form-name">Full Name</label>
+                <input type="text" id="form-name" class="form-input" placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="form-email">Email Address</label>
+                <input type="email" id="form-email" class="form-input" placeholder="john@company.com">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="form-subject">Subject</label>
+              <select id="form-subject" class="form-input">
+                <option value="Sales">Request Demo / Sales</option>
+                <option value="Support">Product Technical Support</option>
+                <option value="Partnership">Partnership Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-message">Message</label>
+              <textarea id="form-message" class="form-textarea" placeholder="Tell us about your branch wait times and operations..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- SIMULATED WORLD LOCATION MAP (Crisp Vector SVG) -->
+      <div class="map-container reveal" id="locations-map">
+        <div class="simulated-map">
+          <!-- Stylized map vectors for global sites -->
+          <svg viewBox="0 0 1000 400" style="width: 100%; height: 100%; fill: var(--border-color); opacity: 0.85;">
+            <!-- Simulated continents outline circles & paths -->
+            <path d="M150,120 Q190,80 240,110 T300,160 T250,220 Q200,240 180,210 Z" style="fill: var(--bg-tertiary); filter: blur(2px);"/>
+            <path d="M450,100 Q550,60 620,110 T680,180 T610,250 Q520,280 470,230 Z" style="fill: var(--bg-tertiary); filter: blur(2px);"/>
+            <path d="M700,200 Q780,150 850,210 T890,280 T800,320 Z" style="fill: var(--bg-tertiary); filter: blur(2px);"/>
+            
+            <!-- Global Grid Lines -->
+            <line x1="0" y1="100" x2="1000" y2="100" stroke="var(--border-color)" stroke-dasharray="5,5"/>
+            <line x1="0" y1="200" x2="1000" y2="200" stroke="var(--border-color)" stroke-dasharray="5,5"/>
+            <line x1="0" y1="300" x2="1000" y2="300" stroke="var(--border-color)" stroke-dasharray="5,5"/>
+            <line x1="250" y1="0" x2="250" y2="400" stroke="var(--border-color)" stroke-dasharray="5,5"/>
+            <line x1="500" y1="0" x2="500" y2="400" stroke="var(--border-color)" stroke-dasharray="5,5"/>
+            <line x1="750" y1="0" x2="750" y2="400" stroke="var(--border-color)" stroke-dasharray="5,5"/>
+            
+            <!-- Map Locations Dots (Smart Queue branches deployed) -->
+            <!-- San Francisco HQ -->
+            <circle cx="210" cy="130" r="10" fill="var(--primary)" style="animation: pulse 2.5s infinite; transform-origin: 210px 130px;"/>
+            <circle cx="210" cy="130" r="3" fill="#FFFFFF"/>
+            <text x="210" y="115" font-size="11" font-weight="600" fill="var(--text-primary)" text-anchor="middle" font-family="var(--font-sans)">San Francisco HQ</text>
+            
+            <!-- New York Branch -->
+            <circle cx="320" cy="150" r="7" fill="var(--accent)" style="animation: pulse 2s infinite; transform-origin: 320px 150px;"/>
+            <circle cx="320" cy="150" r="2" fill="#FFFFFF"/>
+            <text x="320" y="138" font-size="10" fill="var(--text-secondary)" text-anchor="middle" font-family="var(--font-sans)">New York</text>
+
+            <!-- London Node -->
+            <circle cx="530" cy="120" r="7" fill="var(--primary)" style="animation: pulse 2.2s infinite; transform-origin: 530px 120px;"/>
+            <circle cx="530" cy="120" r="2" fill="#FFFFFF"/>
+            <text x="530" y="108" font-size="10" fill="var(--text-secondary)" text-anchor="middle" font-family="var(--font-sans)">London Office</text>
+
+            <!-- Tokyo Node -->
+            <circle cx="820" cy="160" r="7" fill="var(--accent)" style="animation: pulse 1.8s infinite; transform-origin: 820px 160px;"/>
+            <circle cx="820" cy="160" r="2" fill="#FFFFFF"/>
+            <text x="820" y="148" font-size="10" fill="var(--text-secondary)" text-anchor="middle" font-family="var(--font-sans)">Tokyo Partner</text>
+
+            <!-- Sydney Node -->
+            <circle cx="890" cy="300" r="7" fill="var(--primary)" style="animation: pulse 2.8s infinite; transform-origin: 890px 300px;"/>
+            <circle cx="890" cy="300" r="2" fill="#FFFFFF"/>
+            <text x="890" y="288" font-size="10" fill="var(--text-secondary)" text-anchor="middle" font-family="var(--font-sans)">Sydney Hub</text>
+          </svg>
+          
+          <div style="position: absolute; bottom: 1.5rem; left: 1.5rem; background-color: var(--glass-bg); backdrop-filter: blur(10px); padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid var(--glass-border); font-size: 0.8rem; font-weight: 500;">
+            <span style="display:inline-block; width:8px; height:8px; background-color:var(--primary); border-radius:50%; margin-right:5px;"></span> Headquarters
+            <span style="display:inline-block; width:8px; height:8px; background-color:var(--accent); border-radius:50%; margin-left:15px; margin-right:5px;"></span> Operational Hubs
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container grid footer-grid">
+      <div class="footer-brand" id="footer-about">
+        <a href="#" class="logo" style="color: #FFFFFF;">
+          <svg viewBox="0 0 24 24">
+            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z" />
+          </svg>
+          SmartQueue
+        </a>
+        <p>Digitizing queues, optimizing lobbies, and increasing staff efficiency since 2021.</p>
+        <p style="font-size: 0.8rem; color: #64748B;">© 2026 Smart Queue Inc. All rights reserved.</p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title">Product</h4>
+        <ul class="footer-links">
+          <li><a href="#features" class="footer-link">Features</a></li>
+          <li><a href="#demo" class="footer-link">Live Demo</a></li>
+          <li><a href="#pricing" class="footer-link">Pricing Plans</a></li>
+          <li><a href="#faq" class="footer-link">FAQ Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">About Us</a></li>
+          <li><a href="#" class="footer-link">Careers</a></li>
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter" id="footer-newsletter">
+        <h4 class="footer-title">Subscribe to Newsletter</h4>
+        <p>Receive queue strategy tips, case studies, and feature updates directly in your inbox.</p>
+        <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!'); this.reset();">
+          <input type="email" class="newsletter-input" placeholder="name@company.com" required aria-label="Newsletter email address">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>Designed for academic, startup, and enterprise project presentations.</p>
+      <div class="footer-social-links">
+        <a href="#" class="footer-social-link" aria-label="Smart Queue Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="footer-social-link" aria-label="Smart Queue LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="footer-social-link" aria-label="Smart Queue GitHub"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS OVERLAY SYSTEM -->
+  
+  <!-- 1. LOGIN MODAL -->
+  <div class="modal-overlay" id="login-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Close dialog"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg></button>
+      <h3 class="modal-title" id="login-title">Welcome Back</h3>
+      <p class="modal-desc">Access your dashboard to configure service desks and metrics.</p>
+      <form onsubmit="event.preventDefault(); alert('Login simulated successfully!'); this.closest('.modal-overlay').classList.remove('open'); document.body.style.overflow = '';">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Email Address</label>
+          <input type="email" id="login-email" class="form-input" placeholder="name@company.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Log In</button>
+      </form>
+      <div class="modal-link-toggle">
+        Don't have an account? <span id="goto-signup">Sign Up Free</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SIGNUP MODAL -->
+  <div class="modal-overlay" id="signup-modal" role="dialog" aria-modal="true" aria-labelledby="signup-title">
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Close dialog"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg></button>
+      <h3 class="modal-title" id="signup-title">Create Account</h3>
+      <p class="modal-desc">Get started for free. 14-day trial, no credit card required.</p>
+      <form onsubmit="event.preventDefault(); alert('Account registration simulated successfully!'); this.closest('.modal-overlay').classList.remove('open'); document.body.style.overflow = '';">
+        <div class="form-group">
+          <label class="form-label" for="signup-name">Company Name</label>
+          <input type="text" id="signup-name" class="form-input" placeholder="Acme Corp" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="signup-email">Work Email</label>
+          <input type="email" id="signup-email" class="form-input" placeholder="name@company.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="signup-password">Password</label>
+          <input type="password" id="signup-password" class="form-input" placeholder="Min. 8 characters" minlength="8" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up Free</button>
+      </form>
+      <div class="modal-link-toggle">
+        Already have an account? <span id="goto-login">Log In</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. DEMO MODAL -->
+  <div class="modal-overlay" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-title">
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Close dialog"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg></button>
+      <h3 class="modal-title" id="demo-title">Request a Live Demo</h3>
+      <p class="modal-desc">Book a 30-minute tailored setup call with our technical coordinators.</p>
+      <form onsubmit="event.preventDefault(); alert('Demo request submitted successfully! Our representative will email scheduling details shortly.'); this.closest('.modal-overlay').classList.remove('open'); document.body.style.overflow = '';">
+        <div class="form-group">
+          <label class="form-label" for="demo-name">Full Name</label>
+          <input type="text" id="signup-name" class="form-input" placeholder="Jane Smith" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="demo-email">Work Email</label>
+          <input type="email" id="signup-email" class="form-input" placeholder="jane@clinic.org" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="demo-size">Office / Branch Size</label>
+          <select id="demo-size" class="form-input">
+            <option value="Small">1 - 2 Branches</option>
+            <option value="Medium">3 - 10 Branches</option>
+            <option value="Large">10+ Branches</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Schedule Demo Call</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript controller -->
+  <script src="index.js"></script>
+</body>
+</html>
