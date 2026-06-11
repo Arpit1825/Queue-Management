@@ -19,11 +19,29 @@
   <meta property="og:image" content="assets/og-image.png">
 
   <!-- Stylesheets & Fonts -->
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="/css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
+<style>
+    input:checked + .slider-toggle-btn {
+      background-color: var(--primary);
+    }
+    input:checked + .slider-toggle-btn:before {
+      transform: translateX(24px);
+    }
+    .slider-toggle-btn:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+  </style>
   <!-- FIXED GLASS NAVIGATION BAR -->
   <header id="header">
     <div class="container nav-container">
@@ -35,13 +53,13 @@
       </a>
       
       <nav class="nav-menu" id="nav-menu" role="navigation">
-        <a href="#hero" class="nav-link active" id="link-hero">Home</a>
-        <a href="#features" class="nav-link" id="link-features">Features</a>
-        <a href="#how-it-works" class="nav-link" id="link-how">How It Works</a>
-        <a href="#demo" class="nav-link" id="link-demo">Live Demo</a>
-        <a href="#pricing" class="nav-link" id="link-pricing">Pricing</a>
-        <a href="#faq" class="nav-link" id="link-faq">FAQ</a>
-        <a href="#contact" class="nav-link" id="link-contact">Contact</a>
+        <a href="/" class="nav-link active" id="link-hero">Home</a>
+        <a href="/#features" class="nav-link" id="link-features">Features</a>
+        <a href="/#how-it-works" class="nav-link" id="link-how">How It Works</a>
+        <a href="/demo" class="nav-link" id="link-demo">Live Demo</a>
+        <a href="/#pricing" class="nav-link" id="link-pricing">Pricing</a>
+        <a href="/#faq" class="nav-link" id="link-faq">FAQ</a>
+        <a href="/#contact" class="nav-link" id="link-contact">Contact</a>
       </nav>
 
       <div class="nav-actions">
@@ -56,8 +74,13 @@
           </svg>
         </button>
 
-        <button class="btn btn-secondary btn-login" id="nav-btn-login" aria-haspopup="dialog">Log In</button>
-        <button class="btn btn-primary btn-signup" id="nav-btn-signup" aria-haspopup="dialog">Sign Up</button>
+       <a href="/login" class="btn btn-secondary">
+    Log In
+</a>
+
+<a href="/signup" class="btn btn-primary">
+    Sign Up
+</a>
       </div>
 
       <div class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-controls="nav-menu">
@@ -81,7 +104,7 @@
         </p>
         <div class="hero-buttons">
           <button class="btn btn-primary btn-demo" id="hero-btn-demo">Request Demo</button>
-          <a href="#demo" class="btn btn-secondary" id="hero-btn-secondary">Try Live Simulator</a>
+          <a href="/" class="btn btn-secondary" id="hero-btn-secondary">Try Live Simulator</a>
         </div>
       </div>
       
@@ -306,136 +329,6 @@
   </section>
 
   <!-- INTERACTIVE SIMULATION DASHBOARD PREVIEW -->
-  <section class="section dashboard-showcase" id="demo">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Interactive Simulation</span>
-        <h2 class="section-title">Test Drive the Queue Management Panel</h2>
-        <p class="section-subtitle">Operate our real-time simulator to generate tickets, view counter state updates, and evaluate performance analytics charts.</p>
-      </div>
-
-      <div class="grid grid-2 dashboard-showcase-grid reveal">
-        <!-- Live Dashboard Panel -->
-        <div class="live-dashboard-panel" id="live-panel">
-          <div class="panel-header">
-            <div class="panel-title-group">
-              <span class="live-indicator"></span>
-              <span class="panel-title">Active Queue Management System</span>
-            </div>
-            <span class="panel-meta">Status: Operational</span>
-          </div>
-
-          <div class="panel-body">
-            <!-- Stats -->
-            <div class="dashboard-stats-row">
-              <div class="panel-stat-card">
-                <div class="panel-stat-label">In Queue</div>
-                <div class="panel-stat-val" id="sim-metric-active">4</div>
-                <div class="panel-stat-trend trend-down">
-                  <i class="fa-solid fa-arrow-down"></i> -12%
-                </div>
-              </div>
-              <div class="panel-stat-card">
-                <div class="panel-stat-label">Avg Wait Time</div>
-                <div class="panel-stat-val" id="sim-metric-wait">4.5m</div>
-                <div class="panel-stat-trend trend-down">
-                  <i class="fa-solid fa-arrow-down"></i> -8%
-                </div>
-              </div>
-              <div class="panel-stat-card">
-                <div class="panel-stat-label">Counters Active</div>
-                <div class="panel-stat-val" id="sim-metric-counters">3/4</div>
-                <div class="panel-stat-trend trend-up">
-                  <i class="fa-solid fa-arrow-up"></i> Stable
-                </div>
-              </div>
-              <div class="panel-stat-card">
-                <div class="panel-stat-label">Staff Efficiency</div>
-                <div class="panel-stat-val" id="sim-metric-staff">94%</div>
-                <div class="panel-stat-trend trend-up">
-                  <i class="fa-solid fa-arrow-up"></i> +2.4%
-                </div>
-              </div>
-            </div>
-
-            <!-- Dashboard Split -->
-            <div class="dashboard-content-split">
-              <!-- Waiting Queue List -->
-              <div class="panel-sub-card">
-                <div class="panel-sub-title">
-                  Waiting Queue
-                  <span id="queue-size">Real-time</span>
-                </div>
-                <div class="queue-list-items" id="sim-queue-list">
-                  <!-- Injected JS Queue list row elements -->
-                </div>
-              </div>
-
-              <!-- Counter Agents list -->
-              <div class="panel-sub-card">
-                <div class="panel-sub-title">
-                  Service Counters
-                  <span>Status Panel</span>
-                </div>
-                <div class="counters-list" id="sim-counters-list">
-                  <!-- Injected JS Counter elements -->
-                </div>
-              </div>
-            </div>
-
-            <!-- Dynamic Graph -->
-            <div class="analytics-chart-container">
-              <div class="panel-sub-title" style="border: none; margin-bottom: 0;">
-                Customer Traffic Volume
-                <span>24 Hour Flow Analytics</span>
-              </div>
-              <div class="chart-canvas-wrapper">
-                <canvas id="sim-chart-canvas"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Simulator Controls -->
-        <div class="simulator-controls" id="sim-controls">
-          <h3>Simulation Panel</h3>
-          <p>Use these actions to mock incoming walk-ins or trigger service updates. Toggle Auto-Simulation to run autonomously.</p>
-          
-          <div class="sim-form-group">
-            <label class="sim-label" for="sim-service">Select Queue Category</label>
-            <select class="sim-select" id="sim-service">
-              <option value="General">General Inquiries</option>
-              <option value="VIP">VIP Lounge Client</option>
-              <option value="Billing">Billing & Cashier</option>
-              <option value="Support">Technical Support</option>
-            </select>
-          </div>
-
-          <div class="sim-actions">
-            <button class="btn btn-primary" id="sim-btn-generate" style="width: 100%;">
-              <i class="fa-solid fa-ticket"></i> Generate Ticket Token
-            </button>
-            <button class="btn btn-secondary" id="sim-btn-serve" style="width: 100%;">
-              <i class="fa-solid fa-user-check"></i> Serve Next Customer
-            </button>
-            
-            <div style="margin: 1rem 0; border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; align-items: center; justify-content: space-between;">
-              <span class="sim-label" style="margin-bottom: 0;">Enable Auto-Simulation</span>
-              <label class="switch-container" style="position: relative; display: inline-block; width: 50px; height: 26px;">
-                <input type="checkbox" id="sim-auto" style="opacity: 0; width: 0; height: 0;">
-                <span class="slider-toggle-btn" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border-color); border-radius: 30px; transition: 0.3s;"></span>
-              </label>
-            </div>
-
-            <button class="btn btn-secondary" id="sim-btn-reset" style="width: 100%; color: #EF4444; border-color: rgba(239, 68, 68, 0.2);">
-              <i class="fa-solid fa-trash-can"></i> Reset Simulation Data
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CUSTOM TOGGLE CSS FOR SLIDER -->
   <style>
     input:checked + .slider-toggle-btn {
@@ -743,8 +636,9 @@
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
-  <section class="section" id="contact">
+
+
+   <section class="section" id="contact">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">Get In Touch</span>
@@ -765,7 +659,7 @@
                 <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
                 <div class="contact-detail-text">
                   <h4>Email Us</h4>
-                  <p>support@smartqueue.com</p>
+                  <p>av6821246@gmail.com</p>
                 </div>
               </div>
 
@@ -774,7 +668,7 @@
                 <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
                 <div class="contact-detail-text">
                   <h4>Call Us</h4>
-                  <p>+1 (800) 555-QHELP</p>
+                  <p>7052501218</p>
                 </div>
               </div>
 
@@ -790,39 +684,43 @@
           </div>
 
           <div class="contact-socials">
-            <a href="#" class="contact-social-btn" aria-label="Smart Queue Twitter"><i class="fab fa-twitter"></i></a>
             <a href="#" class="contact-social-btn" aria-label="Smart Queue LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="#" class="contact-social-btn" aria-label="Smart Queue GitHub"><i class="fab fa-github"></i></a>
-            <a href="#" class="contact-social-btn" aria-label="Smart Queue Facebook"><i class="fab fa-facebook-f"></i></a>
           </div>
         </div>
 
         <!-- Contact Form Card -->
         <div class="contact-form-card" id="contact-form-card">
-          <form id="contact-form" novalidate>
+          <form id="contact-form" method="POST" action="/contact">
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="form-name">Full Name</label>
-                <input type="text" id="form-name" class="form-input" placeholder="John Doe">
+                <input type="text" name="fullname" id="form-name" class="form-input" placeholder="John Doe">
               </div>
               <div class="form-group">
                 <label class="form-label" for="form-email">Email Address</label>
-                <input type="email" id="form-email" class="form-input" placeholder="john@company.com">
+                <input type="email" name="email" id="form-email" class="form-input" placeholder="john@company.com">
               </div>
             </div>
             
-            <div class="form-group">
-              <label class="form-label" for="form-subject">Subject</label>
-              <select id="form-subject" class="form-input">
-                <option value="Sales">Request Demo / Sales</option>
-                <option value="Support">Product Technical Support</option>
-                <option value="Partnership">Partnership Inquiry</option>
-              </select>
-            </div>
+           <div class="form-group">
+    <label class="form-label" for="form-subject">
+        Subject
+    </label>
+
+    <input
+        type="text"
+        id="form-subject"
+        name="subject"
+        class="form-input"
+        placeholder="Enter subject"
+        required
+    >
+</div>
 
             <div class="form-group">
               <label class="form-label" for="form-message">Message</label>
-              <textarea id="form-message" class="form-textarea" placeholder="Tell us about your branch wait times and operations..."></textarea>
+              <textarea id="form-message" name="message" class="form-textarea" placeholder="Tell us about your branch wait times and operations..."></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
@@ -933,92 +831,13 @@
       <div class="footer-social-links">
         <a href="#" class="footer-social-link" aria-label="Smart Queue Twitter"><i class="fab fa-twitter"></i></a>
         <a href="#" class="footer-social-link" aria-label="Smart Queue LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="footer-social-link" aria-label="Smart Queue GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://github.com/Rohanv29/Queue-Management" class="footer-social-link" aria-label="Smart Queue GitHub"><i class="fab fa-github"></i></a>
       </div>
     </div>
   </footer>
 
-  <!-- MODALS OVERLAY SYSTEM -->
-  
-  <!-- 1. LOGIN MODAL -->
-  <div class="modal-overlay" id="login-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
-    <div class="modal-container">
-      <button class="modal-close" aria-label="Close dialog"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg></button>
-      <h3 class="modal-title" id="login-title">Welcome Back</h3>
-      <p class="modal-desc">Access your dashboard to configure service desks and metrics.</p>
-      <form onsubmit="event.preventDefault(); alert('Login simulated successfully!'); this.closest('.modal-overlay').classList.remove('open'); document.body.style.overflow = '';">
-        <div class="form-group">
-          <label class="form-label" for="login-email">Email Address</label>
-          <input type="email" id="login-email" class="form-input" placeholder="name@company.com" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="login-password">Password</label>
-          <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Log In</button>
-      </form>
-      <div class="modal-link-toggle">
-        Don't have an account? <span id="goto-signup">Sign Up Free</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- 2. SIGNUP MODAL -->
-  <div class="modal-overlay" id="signup-modal" role="dialog" aria-modal="true" aria-labelledby="signup-title">
-    <div class="modal-container">
-      <button class="modal-close" aria-label="Close dialog"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg></button>
-      <h3 class="modal-title" id="signup-title">Create Account</h3>
-      <p class="modal-desc">Get started for free. 14-day trial, no credit card required.</p>
-      <form onsubmit="event.preventDefault(); alert('Account registration simulated successfully!'); this.closest('.modal-overlay').classList.remove('open'); document.body.style.overflow = '';">
-        <div class="form-group">
-          <label class="form-label" for="signup-name">Company Name</label>
-          <input type="text" id="signup-name" class="form-input" placeholder="Acme Corp" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="signup-email">Work Email</label>
-          <input type="email" id="signup-email" class="form-input" placeholder="name@company.com" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="signup-password">Password</label>
-          <input type="password" id="signup-password" class="form-input" placeholder="Min. 8 characters" minlength="8" required>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up Free</button>
-      </form>
-      <div class="modal-link-toggle">
-        Already have an account? <span id="goto-login">Log In</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 3. DEMO MODAL -->
-  <div class="modal-overlay" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-title">
-    <div class="modal-container">
-      <button class="modal-close" aria-label="Close dialog"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg></button>
-      <h3 class="modal-title" id="demo-title">Request a Live Demo</h3>
-      <p class="modal-desc">Book a 30-minute tailored setup call with our technical coordinators.</p>
-      <form onsubmit="event.preventDefault(); alert('Demo request submitted successfully! Our representative will email scheduling details shortly.'); this.closest('.modal-overlay').classList.remove('open'); document.body.style.overflow = '';">
-        <div class="form-group">
-          <label class="form-label" for="demo-name">Full Name</label>
-          <input type="text" id="signup-name" class="form-input" placeholder="Jane Smith" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="demo-email">Work Email</label>
-          <input type="email" id="signup-email" class="form-input" placeholder="jane@clinic.org" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="demo-size">Office / Branch Size</label>
-          <select id="demo-size" class="form-input">
-            <option value="Small">1 - 2 Branches</option>
-            <option value="Medium">3 - 10 Branches</option>
-            <option value="Large">10+ Branches</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Schedule Demo Call</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- JavaScript controller -->
-  <script src="index.js"></script>
+   <!-- JavaScript controller -->
+  <script src="/js/index.js"></script>
 </body>
 </html>

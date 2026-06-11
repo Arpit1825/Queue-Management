@@ -447,16 +447,18 @@ function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Perform simple validation
+    // Grab all 4 elements using your exact HTML IDs
     const nameInput = document.getElementById('form-name');
     const emailInput = document.getElementById('form-email');
+    const subjectInput = document.getElementById('form-subject');
     const messageInput = document.getElementById('form-message');
 
     let isValid = true;
 
+    // 1. Full Name Validation
     if (!nameInput.value.trim()) {
       showError(nameInput, 'Name is required');
       isValid = false;
@@ -464,6 +466,7 @@ function initContactForm() {
       clearError(nameInput);
     }
 
+    // 2. Email Validation
     if (!emailInput.value.trim() || !validateEmail(emailInput.value)) {
       showError(emailInput, 'Enter a valid email');
       isValid = false;
@@ -471,6 +474,15 @@ function initContactForm() {
       clearError(emailInput);
     }
 
+    // 3. Subject Validation
+    if (!subjectInput.value.trim()) {
+      showError(subjectInput, 'Subject is required');
+      isValid = false;
+    } else {
+      clearError(subjectInput);
+    }
+
+    // 4. Message Validation
     if (!messageInput.value.trim()) {
       showError(messageInput, 'Message is required');
       isValid = false;
@@ -484,13 +496,37 @@ function initContactForm() {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
-      // Simulate API submit
-      setTimeout(() => {
-        alert('Thank you! Your message has been received. Our team will contact you shortly.');
-        form.reset();
+      // Clean payload structure matching your 4 things exactly
+      const formData = {
+        fullname: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        subject: subjectInput.value.trim(),
+        message: messageInput.value.trim()
+      };
+
+      try {
+        const response = await fetch('/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+          alert('Thank you! Your message has been received. Our team will contact you shortly.');
+          form.reset();
+        } else {
+          const errorData = await response.json();
+          alert(`Failed to send message: ${errorData.error || 'Server error'}`);
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('An error occurred. Please try again later.');
+      } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
-      }, 1500);
+      }
     }
   });
 
@@ -536,6 +572,7 @@ function initQueueSimulator() {
   const btnReset = document.getElementById('sim-btn-reset');
   const checkboxAuto = document.getElementById('sim-auto');
   const selectService = document.getElementById('sim-service');
+  const completeBtn = document.getElementById("sim-btn-complete");
   
   const metricActive = document.getElementById('sim-metric-active');
   const metricWait = document.getElementById('sim-metric-wait');
@@ -548,7 +585,147 @@ function initQueueSimulator() {
   let chartCtx = null;
 
   if (!btnGenerate) return;
+async function loadQueueData() {
+console.log("LOAD QUEUE CALLED");
+    try {
 
+        const res = await fetch("/queue/dashboard");
+
+        const data = await res.json();
+
+        console.log("Waiting Count:", data.waiting.length);
+console.log("Queue Container:", queueContainer);
+
+   metricActive.textContent =
+data.waiting.length;
+
+metricWait.textContent = "4m";
+
+metricCounters.textContent =
+`${data.serving.length}/4`;
+countersContainer.innerHTML = "";
+
+console.log(metricActive);
+console.log(metricWait);
+console.log(metricCounters);
+
+
+if(data.waiting.length === 0){
+
+    queueContainer.innerHTML = `
+        <div style="
+            text-align:center;
+            padding:2rem;
+            color:var(--text-muted);
+        ">
+            No active tickets in queue
+        </div>
+    `;
+
+}else{
+console.log("RENDERING WAITING", data.waiting);
+    queueContainer.innerHTML =
+    data.waiting.map(customer => {
+
+        return `
+            <div class="queue-list-row">
+
+                <div style="
+                    display:flex;
+                    align-items:center;
+                    gap:0.75rem;
+                ">
+
+                    <span class="queue-list-token">
+                        ${customer.tokenNumber}
+                    </span>
+
+                    <span style="
+                        font-size:0.75rem;
+                        color:var(--text-muted);
+                    ">
+                        ${customer.serviceType}
+                    </span>
+
+                </div>
+
+                <span class="queue-list-time">
+                    Waiting
+                </span>
+
+            </div>
+        `;
+
+    }).join('');
+
+}console.log(queueContainer.innerHTML);
+countersContainer.innerHTML = "";
+
+for(let i = 1; i <= 4; i++){
+
+    const servingCustomer = data.serving.find(
+        customer => Number(customer.counterId) === i
+    );
+
+    countersContainer.innerHTML += `
+        <div class="counter-row">
+
+            <div class="counter-info">
+
+                <span class="counter-num">
+                    Counter ${i}
+                </span>
+
+                <span class="counter-type">
+                    ${
+                        servingCustomer
+                        ? servingCustomer.serviceType
+                        : "Available"
+                    }
+                </span>
+
+            </div>
+
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:1rem;
+            ">
+
+                ${
+                    servingCustomer
+                    ?
+                    `
+                    <span class="counter-serving-token">
+                        ${servingCustomer.tokenNumber}
+                    </span>
+
+                    <span class="counter-status-tag status-active">
+                        Serving
+                    </span>
+                    `
+                    :
+                    `
+                    <span class="counter-status-tag status-idle">
+                        Idle
+                    </span>
+                    `
+                }
+
+            </div>
+
+        </div>
+    `;
+}
+   
+
+} catch(err) {
+
+        console.error(err);
+
+    }
+
+}
   // Simulator State
   let state = {
     totalTickets: 124,
@@ -560,41 +737,119 @@ function initQueueSimulator() {
       'Support': { prefix: 'SUP', count: 48 },
       'General': { prefix: 'GEN', count: 29 }
     },
-    waitingQueue: [
-      { token: 'SUP-146', service: 'Support', time: '3 min ago', timestamp: Date.now() - 180000 },
-      { token: 'BIL-134', service: 'Billing', time: '2 min ago', timestamp: Date.now() - 120000 },
-      { token: 'GEN-128', service: 'General', time: '1 min ago', timestamp: Date.now() - 60000 },
-      { token: 'VIP-112', service: 'VIP', time: 'Just now', timestamp: Date.now() - 10000 }
-    ],
+    waitingQueue: [],
+    completedTokens:[],
     counters: [
-      { id: 1, name: 'Counter 1', type: 'General Query', status: 'Serving', token: 'GEN-126', efficiency: 92 },
-      { id: 2, name: 'Counter 2', type: 'VIP Services', status: 'Serving', token: 'VIP-111', efficiency: 98 },
-      { id: 3, name: 'Counter 3', type: 'Billing & Support', status: 'Serving', token: 'BIL-133', efficiency: 89 },
+      { id: 1, name: 'Counter 1', type: 'General Query', status: 'Idle', token: '-', efficiency: 92 },
+      { id: 2, name: 'Counter 2', type: 'VIP Services', status: 'Idle', token: '-', efficiency: 98 },
+      { id: 3, name: 'Counter 3', type: 'Billing & Support', status: 'Idle', token: '-', efficiency: 89 },
       { id: 4, name: 'Counter 4', type: 'Express Desk', status: 'Idle', token: '-', efficiency: 95 }
-    ],
+    ],servingOrder: [],
     autoInterval: null,
     chartPoints: [18, 24, 32, 28, 35, 42, 30] // historical hourly ticket volume
   };
 
   // Initialize display
-  renderQueue();
-  renderCounters();
-  updateMetrics();
+  loadQueueData();
+  // renderQueue();
+  // console.log("renderCounters called");
+  // renderCounters();
+  // updateMetrics();
   initAnalyticsChart();
 
-  // Button actions
-  btnGenerate.addEventListener('click', () => {
-    generateTicket();
-  });
+function showToast(message) {
+  const toast = document.createElement("div");
 
+  toast.textContent = message;
+
+  toast.style.position = "fixed";
+  toast.style.top = "85px";
+  toast.style.right = "20px";
+  toast.style.padding = "12px 20px";
+  toast.style.background = "#ef4444";
+  toast.style.color = "white";
+  toast.style.borderRadius = "8px";
+  toast.style.zIndex = "9999";
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+async function completeService() {
+
+    try {
+
+        const servingCustomer =
+        (await (await fetch("/queue/dashboard"))
+        .json()).serving[0];
+
+        if(!servingCustomer){
+
+            showToast("No active service");
+            return;
+
+        }
+
+        await fetch(
+            `/queue/complete/${servingCustomer.counterId}`,
+            {
+                method:"POST"
+            }
+        );
+
+        await loadQueueData();
+
+        showToast(
+            `Token ${servingCustomer.tokenNumber} completed`
+        );
+
+    } catch(err){
+
+        console.error(err);
+
+    }
+
+}
+  // Button actions
+  btnGenerate.addEventListener('click', async () => {
+
+    try {
+
+        await fetch("/queue/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                serviceType: selectService.value,
+                customerName: "Guest"
+            })
+        });
+
+        loadQueueData();
+
+        showToast("Token Generated");
+
+    } catch(err) {
+
+        console.error(err);
+
+    }
+
+});
   btnServe.addEventListener('click', () => {
     serveNext();
   });
 
-  btnReset.addEventListener('click', () => {
-    resetSimulator();
-  });
+  btnReset.addEventListener('click', () => {resetQueue();});
 
+if (completeBtn) {
+    completeBtn.addEventListener("click", completeService);
+}
+ if (checkboxAuto) {
   checkboxAuto.addEventListener('change', (e) => {
     if (e.target.checked) {
       startAutoSimulation();
@@ -602,143 +857,105 @@ function initQueueSimulator() {
       stopAutoSimulation();
     }
   });
+}
 
-  // Ticket Generator
-  function generateTicket(serviceType = null) {
-    const service = serviceType || selectService.value;
-    const cat = state.categories[service];
-    cat.count++;
-    
-    const token = `${cat.prefix}-${100 + cat.count}`;
-    
-    const newTicket = {
-      token: token,
-      service: service,
-      time: 'Just now',
-      timestamp: Date.now()
-    };
-
-    state.waitingQueue.push(newTicket);
-    state.totalTickets++;
-
-    // Render & animate
-    renderQueue();
-    updateMetrics();
-    
-    // Add visual effect of new item in queue
-    const firstRow = queueContainer.firstElementChild;
-    if (firstRow) {
-      firstRow.style.backgroundColor = 'var(--primary-glow)';
-      setTimeout(() => {
-        firstRow.style.backgroundColor = '';
-      }, 1000);
-    }
-    
-    // Add small point to chart
-    state.chartPoints[state.chartPoints.length - 1]++;
-    drawChart();
-  }
 
   // Serve Next Customer
-  function serveNext() {
-    if (state.waitingQueue.length === 0) {
-      // If queue is empty, auto-create a ticket occasionally
-      generateTicket();
-      return;
+
+async function serveNext() {
+
+    try {
+
+        const res = await fetch("/queue/serve",{
+            method:"POST"
+        });
+
+        const data = await res.json();
+
+        if(!res.ok){
+
+            showToast(data.message);
+            return;
+
+        }
+
+        await loadQueueData();
+
+        showToast(
+            `Token ${data.tokenNumber} assigned to Counter ${data.counterId}`
+        );
+
+    } catch(err){
+
+        console.error(err);
+
     }
 
-    // Find first idle counter, or default to random counter if all serving
-    let counter = state.counters.find(c => c.status === 'Idle');
-    if (!counter) {
-      // Pick a random counter to complete their task and serve next
-      const randomIndex = Math.floor(Math.random() * state.counters.length);
-      counter = state.counters[randomIndex];
-    }
-
-    // Dequeue ticket
-    const ticket = state.waitingQueue.shift();
-    
-    // Calculate simulated wait time
-    const waitTimeSec = (Date.now() - ticket.timestamp) / 1000;
-    const waitTimeMin = Math.round((waitTimeSec / 60) * 10) / 10;
-    
-    // Update state statistics
-    state.processedTickets++;
-    // Running average wait time weighting
-    state.avgWaitTime = Math.round(((state.avgWaitTime * 0.9) + (waitTimeMin * 0.1 || 1.5)) * 10) / 10;
-    if (state.avgWaitTime < 1) state.avgWaitTime = 1.2;
-    if (state.avgWaitTime > 15) state.avgWaitTime = 8.5;
-
-    // Allocate to counter
-    counter.status = 'Serving';
-    counter.token = ticket.token;
-
-    // Render update
-    renderQueue();
-    renderCounters();
-    updateMetrics();
-
-    // Visual highlight on target counter
-    const counterRows = countersContainer.querySelectorAll('.counter-row');
-    const targetRow = counterRows[counter.id - 1];
-    if (targetRow) {
-      targetRow.style.borderColor = 'var(--accent)';
-      targetRow.style.boxShadow = '0 0 10px var(--accent-glow)';
-      setTimeout(() => {
-        targetRow.style.borderColor = '';
-        targetRow.style.boxShadow = '';
-      }, 1000);
-    }
-  }
+}
 
   // Reset simulator
-  function resetSimulator() {
-    state.totalTickets = 0;
-    state.processedTickets = 0;
-    state.avgWaitTime = 0;
-    state.waitingQueue = [];
-    state.counters.forEach(c => {
-      c.status = 'Idle';
-      c.token = '-';
-    });
-    
-    renderQueue();
-    renderCounters();
-    updateMetrics();
-    
-    // Clear graph points
-    state.chartPoints = [0, 0, 0, 0, 0, 0, 0];
-    drawChart();
-  }
+  async function resetQueue(){
+
+    const confirmReset = confirm(
+        "Are you sure you want to reset the queue?"
+    );
+
+    if(!confirmReset){
+        return;
+    }
+
+    try{
+
+        const res = await fetch("/queue/reset",{
+            method:"POST"
+        });
+
+        const data = await res.json();
+
+        showToast(data.message);
+
+        await loadQueueData();
+
+    }catch(err){
+
+        console.error(err);
+
+    }
+
+}
+
+
+
+
 
   // Automatic Queue Sim intervals
-  function startAutoSimulation() {
-    if (state.autoInterval) clearInterval(state.autoInterval);
+  // function startAutoSimulation() {
+  //   if (state.autoInterval) clearInterval(state.autoInterval);
     
-    state.autoInterval = setInterval(() => {
-      // 40% chance of ticket generation, 60% chance of serving next
-      const roll = Math.random();
-      if (roll < 0.45) {
-        const services = ['General', 'VIP', 'Billing', 'Support'];
-        const randomService = services[Math.floor(Math.random() * services.length)];
-        generateTicket(randomService);
-      } else {
-        serveNext();
-      }
+  //   state.autoInterval = setInterval(() => {
+  //     // 40% chance of ticket generation, 60% chance of serving next
+  //     const roll = Math.random();
+  //     if (roll < 0.45) {
+  //       const services = ['General', 'VIP', 'Billing', 'Support'];
+  //       const randomService = services[Math.floor(Math.random() * services.length)];
+  //       generateTicket(randomService);
+  //     } else {
+  //       serveNext();
+  //     }
 
-      // Randomly make a serving counter idle to simulate breaks
-      if (Math.random() < 0.15) {
-        const busyCounters = state.counters.filter(c => c.status === 'Serving');
-        if (busyCounters.length > 1) {
-          const target = busyCounters[Math.floor(Math.random() * busyCounters.length)];
-          target.status = 'Idle';
-          target.token = '-';
-          renderCounters();
-          updateMetrics();
-        }
-      }
-    }, 4500);
-  }
+  //     // Randomly make a serving counter idle to simulate breaks
+  //     if (Math.random() < 0.15) {
+  //       const busyCounters = state.counters.filter(c => c.status === 'Serving');
+  //       if (busyCounters.length > 1) {
+  //         const target = busyCounters[Math.floor(Math.random() * busyCounters.length)];
+  //         target.status = 'Idle';
+  //         target.token = '-';
+  //         renderCounters();
+  //         updateMetrics();
+  //       }
+  //     }
+  //   }, 4500);
+  // }
 
   function stopAutoSimulation() {
     if (state.autoInterval) {
@@ -781,23 +998,23 @@ function initQueueSimulator() {
   }
 
   // Render Counters
-  function renderCounters() {
-    countersContainer.innerHTML = state.counters.map(c => {
-      const statusClass = c.status === 'Serving' ? 'status-active' : 'status-idle';
-      return `
-        <div class="counter-row">
-          <div class="counter-info">
-            <span class="counter-num">${c.name}</span>
-            <span class="counter-type">${c.type}</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            ${c.status === 'Serving' ? `<span class="counter-serving-token">${c.token}</span>` : ''}
-            <span class="counter-status-tag ${statusClass}">${c.status}</span>
-          </div>
-        </div>
-      `;
-    }).join('');
-  }
+  // function renderCounters() {
+  //   countersContainer.innerHTML = state.counters.map(c => {
+  //     const statusClass = c.status === 'Serving' ? 'status-active' : 'status-idle';
+  //     return `
+  //       <div class="counter-row">
+  //         <div class="counter-info">
+  //           <span class="counter-num">${c.name}</span>
+  //           <span class="counter-type">${c.type}</span>
+  //         </div>
+  //         <div style="display: flex; align-items: center; gap: 1rem;">
+  //           ${c.status === 'Serving' ? `<span class="counter-serving-token">${c.token}</span>` : ''}
+  //           <span class="counter-status-tag ${statusClass}">${c.status}</span>
+  //         </div>
+  //       </div>
+  //     `;
+  //   }).join('');
+  // }
 
   // Update Metrics
   function updateMetrics() {
@@ -931,9 +1148,8 @@ function initQueueSimulator() {
       chartCtx.fillText(val, x, y - 10);
     });
   }
-
   // Periodic time elapsed update
-  setInterval(() => {
-    renderQueue();
-  }, 10000);
+//   setInterval(() => {
+//     renderQueue();
+//   }, 10000);
 }
