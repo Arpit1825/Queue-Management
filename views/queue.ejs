@@ -307,7 +307,19 @@ if(!data){
 loadQueuePage();
 
 </script>
+<script src="/socket.io/socket.io.js"></script>
 
+<script>
+const socket = io();
+
+socket.on("queueUpdated",()=>{
+
+    console.log("Queue Updated");
+
+    loadQueuePage();
+
+});
+</script>
 
 
     <script src="/js/index.js"></script>

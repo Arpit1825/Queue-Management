@@ -814,11 +814,11 @@ async function completeService() {
 
 }
   // Button actions
-  btnGenerate.addEventListener('click', async () => {
+ btnGenerate.addEventListener('click', async () => {
 
     try {
 
-        await fetch("/queue/create", {
+        const res = await fetch("/queue/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -829,9 +829,25 @@ async function completeService() {
             })
         });
 
+        const data = await res.json();
+const qrContainer =
+document.getElementById(
+    "qrContainer"
+);
+
+if(qrContainer){
+
+    qrContainer.innerHTML =
+    `<img src="${data.qrCode}" width="200">`;
+
+}
+        console.log(data);
+
         loadQueueData();
 
-        showToast("Token Generated");
+        showToast(
+            `Token ${data.token.tokenNumber} Generated`
+        );
 
     } catch(err) {
 

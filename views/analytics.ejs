@@ -272,6 +272,17 @@ data.recentCompleted.map(token => {
 loadAnalytics();
 
 </script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+const socket = io();
+
+socket.on("queueUpdated",()=>{
+
+    loadAnalytics();
+
+});
+</script>
 
     <script src="/js/index.js"></script>
 

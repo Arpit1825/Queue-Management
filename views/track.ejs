@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Track Token</title>
+
+    <link rel="stylesheet" href="/css/index.css">
+<link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-8">
+
+<div class="min-h-screen flex items-center justify-center bg-slate-100 p-6">
+
+    <div class="w-full max-w-xl bg-white rounded-3xl shadow-xl p-8">
+
+        <div class="text-center mb-8">
+
+            <div class="text-5xl mb-4">
+                🎟️
+            </div>
+
+            <h1 class="text-3xl font-bold">
+                Token Tracking
+            </h1>
+
+            <p class="text-gray-500 mt-2">
+                Real-time Queue Status
+            </p>
+
+        </div>
+
+        <div class="bg-blue-50 rounded-2xl p-6 text-center mb-6">
+
+            <div class="text-sm text-gray-500">
+                Token Number
+            </div>
+
+            <div
+                id="tokenNumber"
+                class="text-5xl font-bold text-blue-600 mt-2"
+            >
+                <%= token.tokenNumber %>
+            </div>
+
+        </div>
+
+        <div class="space-y-4">
+
+            <div class="flex justify-between border-b pb-3">
+
+                <span class="font-medium">
+                    Status
+                </span>
+
+                <span
+                    id="tokenStatus"
+                    class="px-3 py-1 rounded-full bg-yellow-100 text-yellow-700"
+                >
+                    <%= token.status %>
+                </span>
+
+            </div>
+
+            <div class="flex justify-between border-b pb-3">
+
+                <span class="font-medium">
+                    Service
+                </span>
+
+                <span>
+                    <%= token.serviceType %>
+                </span>
+
+            </div>
+
+            <div class="flex justify-between">
+
+                <span class="font-medium">
+                    Counter
+                </span>
+
+                <span id="tokenCounter">
+                    <%= token.counterId || "-" %>
+                </span>
+
+            </div>
+<div class="flex justify-between border-t pt-3">
+
+    <span class="font-medium">
+        Position
+    </span>
+
+    <span id="tokenPosition">
+        Loading...
+    </span>
+
+</div>
+        </div>
+
+        <div class="mt-8 text-center">
+<div
+    id="statusMessage"
+    class="mt-6 text-center text-gray-600"
+>
+    Please wait for your turn.
+</div>
+            <div class="inline-flex items-center gap-2 text-green-600">
+
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+
+                Live Updates Enabled
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<script>
+
+const tokenNumber =
+Number("<%= token.tokenNumber %>");
+
+</script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+const socket = io();
+
+socket.on(
+    "queueUpdated",
+    async ()=>{
+
+        const res =
+        await fetch(
+            `/queue/token/${tokenNumber}`
+        );
+
+        const data =
+        await res.json();
+
+        const statusElement =
+        document.getElementById(
+            "tokenStatus"
+        );
+
+        document.getElementById(
+            "tokenCounter"
+        ).textContent =
+        data.counterId || "-";
+
+        document.getElementById(
+            "tokenPosition"
+        ).textContent =
+        data.position || "-";
+
+        const msg =
+        document.getElementById(
+            "statusMessage"
+        );
+
+        if(data.status === "waiting"){
+
+            msg.textContent =
+            "Please wait for your turn.";
+
+        }
+        else if(data.status === "serving"){
+
+            msg.textContent =
+            "Please proceed to your assigned counter.";
+
+        }
+        else{
+
+            msg.textContent =
+            "Your service has been completed.";
+
+        }
+
+        statusElement.textContent =
+        data.status;
+
+        if(data.status === "waiting"){
+
+            statusElement.className =
+            "px-3 py-1 rounded-full bg-yellow-100 text-yellow-700";
+
+        }
+        else if(data.status === "serving"){
+
+            statusElement.className =
+            "px-3 py-1 rounded-full bg-blue-100 text-blue-700";
+
+        }
+        else{
+
+            statusElement.className =
+            "px-3 py-1 rounded-full bg-green-100 text-green-700";
+
+        }
+
+    }
+);
+</script>
+</body>
+</html>

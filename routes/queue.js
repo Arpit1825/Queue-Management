@@ -3,7 +3,7 @@ const router=express.Router();
 const Queue=require('../models/Queue');
 const mongoose=require('mongoose');
 const config=require('../config/mongoose-connection')
-
+const QrCode = require("qrcode");
 
 router.post("/create", async(req,res)=>{
 
@@ -20,23 +20,30 @@ router.post("/create", async(req,res)=>{
         lastToken.tokenNumber + 1 :
         100;
 
-    const token = await Queue.create({
+   const token = await Queue.create({
+    tokenNumber: nextToken,
+    serviceType,
+    customerName,
+    status:"waiting"
+});
 
-        tokenNumber: nextToken,
+const qrCode =
+await QrCode.toDataURL(
+    `http://localhost:3000/queue/track/${nextToken}`
+);
 
-        serviceType,
+const io = req.app.get("io");
+io.emit("queueUpdated");
 
-        customerName,
+console.log("SAVED TOKEN:", token);
 
-        status:"waiting"
-
-    });
-
-    console.log("SAVED TOKEN:", token);
-
-    res.json(token);
+res.json({
+    token,
+    qrCode
+});
 
 });
+
 
 router.get("/", async(req,res)=>{
 
@@ -91,7 +98,10 @@ nextCustomer.startedAt = new Date();
 
 await nextCustomer.save();
 
-    res.json(nextCustomer);
+const io = req.app.get("io");
+io.emit("queueUpdated");
+
+res.json(nextCustomer);
 
 });
 
@@ -114,9 +124,13 @@ router.post("/complete/:counterId", async(req,res)=>{
 
     customer.status = "completed";
 customer.servedAt = new Date();
-    await customer.save();
 
-    res.json(customer);
+await customer.save();
+
+const io = req.app.get("io");
+io.emit("queueUpdated");
+
+res.json(customer);
 
     const nextCustomer = await Queue.findOne({
     status:"waiting"
@@ -129,6 +143,30 @@ if(nextCustomer){
 
     await nextCustomer.save();
 }
+});
+
+router.get("/track/:number",async(req,res)=>{
+
+    const token =
+    await Queue.findOne({
+        tokenNumber:req.params.number
+    });
+
+    if(!token){
+
+        return res.send(
+            "Token not found"
+        );
+
+    }
+
+    res.render(
+        "track",
+        {
+            token
+        }
+    );
+
 });
 
 router.get("/dashboard", async(req,res)=>{
@@ -155,15 +193,18 @@ router.get("/dashboard", async(req,res)=>{
 
 router.post("/reset", async(req,res)=>{
 
-    await Queue.deleteMany({
-        status:{
-            $in:["waiting","serving"]
-        }
-    });
+   await Queue.deleteMany({
+    status:{
+        $in:["waiting","serving"]
+    }
+});
 
-    res.json({
-        message:"Queue reset successfully"
-    });
+const io = req.app.get("io");
+io.emit("queueUpdated");
+
+res.json({
+    message:"Queue reset successfully"
+});
 
 });
 

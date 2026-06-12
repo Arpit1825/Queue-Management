@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Smart Queue</title>
+
+    <link rel="stylesheet" href="/css/index.css">
+ <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-8">
+
+<header id="header">
+    <div class="container nav-container">
+
+        <a href="/dashboard" class="logo" id="nav-logo">
+            <svg viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"/>
+            </svg>
+
+            SmartQueue
+        </a>
+
+        <nav class="nav-menu" id="nav-menu">
+
+            <a href="/dashboard" class="nav-link active">
+                Dashboard
+            </a>
+
+            <a href="/queue-management" class="nav-link">
+                Queue
+            </a>
+
+            <a href="/analytics" class="nav-link">
+                Analytics
+            </a>
+
+            <a href="/profile" class="nav-link">
+                Profile
+            </a>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <button
+                class="theme-toggle-btn"
+                id="theme-toggle"
+            >
+                <svg class="sun-icon" viewBox="0 0 24 24">
+                    <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18Z"/>
+                </svg>
+
+                <svg class="moon-icon" viewBox="0 0 24 24">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                </svg>
+            </button>
+
+            <span
+                style="
+                margin-right:12px;
+                font-weight:600;
+                "
+            >
+                Welcome,
+                <%= user.fullname %>
+            </span>
+
+            <a
+                href="/logout"
+                class="btn btn-secondary"
+            >
+                Logout
+            </a>
+
+        </div>
+
+        <div
+            class="mobile-toggle"
+            id="mobile-menu-toggle"
+        >
+            <i class="fas fa-bars"></i>
+        </div>
+
+    </div>
+</header>
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="analytics-header">
+
+            <span class="analytics-tag">
+                Profile
+            </span>
+
+            <h2 class="analytics-title">
+                User Profile
+            </h2>
+
+            <p class="analytics-subtitle">
+                Manage your account information.
+            </p>
+
+        </div>
+
+        <div class="panel-sub-card">
+
+            <div class="queue-list-row">
+
+                <span>
+                    Full Name
+                </span>
+
+                <span>
+                    <%= user.fullname %>
+                </span>
+
+            </div>
+
+            <div class="queue-list-row">
+
+                <span>
+                    Email
+                </span>
+
+                <span>
+                    <%= user.email %>
+                </span>
+
+            </div>
+
+            <div class="queue-list-row">
+
+                <span>
+                    User ID
+                </span>
+
+                <span>
+                    <%= user._id %>
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<div class="dashboard-stats-row">
+
+    <div class="panel-stat-card">
+
+        <div class="panel-stat-label">
+            Completed
+        </div>
+
+        <div class="panel-stat-val">
+            <%= totalCompleted %>
+        </div>
+
+    </div>
+
+    <div class="panel-stat-card">
+
+        <div class="panel-stat-label">
+            Waiting
+        </div>
+
+        <div class="panel-stat-val">
+            <%= totalWaiting %>
+        </div>
+
+    </div>
+
+    <div class="panel-stat-card">
+
+        <div class="panel-stat-label">
+            Serving
+        </div>
+
+        <div class="panel-stat-val">
+            <%= totalServing %>
+        </div>
+
+    </div>
+
+    <div class="panel-stat-card">
+
+        <div class="panel-stat-label">
+            Total Tokens
+        </div>
+
+        <div class="panel-stat-val">
+            <%= totalTokens %>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/js/index.js"></script>
+
+</body>
+</html>
