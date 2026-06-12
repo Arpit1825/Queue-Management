@@ -86,9 +86,10 @@ router.post("/serve", async(req,res)=>{
     }
 
     nextCustomer.status = "serving";
-    nextCustomer.counterId = freeCounter;
+nextCustomer.counterId = freeCounter;
+nextCustomer.startedAt = new Date();
 
-    await nextCustomer.save();
+await nextCustomer.save();
 
     res.json(nextCustomer);
 
@@ -112,7 +113,7 @@ router.post("/complete/:counterId", async(req,res)=>{
     }
 
     customer.status = "completed";
-
+customer.servedAt = new Date();
     await customer.save();
 
     res.json(customer);
@@ -175,11 +176,58 @@ router.get("/analytics", async(req,res)=>{
     const totalWaiting = await Queue.countDocuments({
         status:"waiting"
     });
+// const completedTickets =
+// await Queue.find({
+//     status:"completed",
+//     servedAt:{ $ne:null }
+// })
+// .sort({servedAt:-1})
+// .limit(20);
+const completedTickets =
+await Queue.find({
+    status:"completed",
+    servedAt:{ $ne:null },
+    startedAt:{ $ne:null }
+})
+.sort({servedAt:-1})
+.limit(20);
 
     const totalServing = await Queue.countDocuments({
         status:"serving"
     });
+const recentCompleted =
+await Queue.find({
+    status:"completed"
+})
+.sort({servedAt:-1})
+.limit(10);
+    
 
+    let avgServiceTime = 0;
+
+    if(completedTickets.length){
+
+        const totalTime =
+        completedTickets.reduce(
+            (sum,ticket)=>{
+
+                return sum +
+                (
+                    ticket.servedAt -
+                    ticket.startedAt
+                );
+
+            },
+            0
+        );
+
+        avgServiceTime =
+        Math.round(
+            totalTime /
+            completedTickets.length /
+            60000
+        );
+    }
     const serviceStats = await Queue.aggregate([
         {
             $group:{
@@ -193,9 +241,39 @@ router.get("/analytics", async(req,res)=>{
         totalCompleted,
         totalWaiting,
         totalServing,
-        serviceStats
+        recentCompleted,
+        serviceStats,
+        avgServiceTime
     });
 
 });
 
+
+router.get("/token/:number", async(req,res)=>{
+
+    const token =
+await Queue.findOne({
+    tokenNumber:req.params.number
+});
+
+let position = null;
+
+if(token && token.status === "waiting"){
+
+    position =
+    await Queue.countDocuments({
+
+        status:"waiting",
+
+        tokenNumber:{
+            $lt: token.tokenNumber
+        }
+
+    });
+
+    position += 1;
+}
+    res.json({...token.toObject(),position});
+
+});
 module.exports=router;

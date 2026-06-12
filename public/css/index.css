@@ -214,6 +214,7 @@ ul {
 }
 
 .section-tag {
+  margin-top: 1.5rem;
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 600;
@@ -234,6 +235,39 @@ ul {
 .section-subtitle {
   color: var(--text-secondary);
   font-size: 1.125rem;
+}
+
+analytics-header {
+   margin-top: 1rem;
+   margin-bottom: 2rem;
+}
+
+.analytics-tag{
+  margin-top:4rem;
+    display:inline-block;
+    padding:0.5rem 1rem;
+    border-radius:999px;
+    background:rgba(59,130,246,0.15);
+    color:#3b82f6;
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+.queue-dat{
+  margin-top: 10px;
+}
+.analytics-title{
+    font-size:3rem;
+    color:white;
+    margin-top:1rem;
+    font-weight:700;
+}
+
+.analytics-subtitle{
+    color:var(--text-muted);
+    margin-top:1rem;
+    margin-bottom:1rem;
+    font-size:1.1rem;
 }
 
 /* Grid helper utilities */

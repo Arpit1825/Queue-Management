@@ -38,9 +38,15 @@ app.get('/signup',(req,res)=>{
     res.render('signup');
 })
 
+app.get("/analytics",(req,res)=>{
+    res.render("analytics");
+})
 
+app.get("/queue-management",isLoggedIn,(req,res)=>{
 
+    res.render("queue");
 
+});
 app.post("/signup",async(req,res)=>{
 
     let {fullname,email,password}=req.body;

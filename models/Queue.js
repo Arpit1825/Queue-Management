@@ -11,7 +11,13 @@ tokenNumber:{
         type:String,
         required:true
     },
-
+servedAt:{
+    type:Date,
+    default:null
+},startedAt:{
+    type:Date,
+    default:null
+},
     customerName:{
         type:String,
         default:"Guest"
