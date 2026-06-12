@@ -2057,7 +2057,30 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
+.mobile-auth{
+    display:none;
+}
+
+@media (max-width:768px){
+
+    .nav-actions{
+        display:none;
+    }
+
+    .mobile-auth{
+        display:flex;
+        flex-direction:column;
+        gap:1rem;
+        width:100%;
+        margin-top:1rem;
+    }
+
+    .mobile-auth .btn{
+        width:100%;
+        text-align:center;
+    }
+
+
   .nav-menu {
     position: fixed;
     top: var(--header-height);
