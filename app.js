@@ -39,7 +39,7 @@ const bcrypt = require('bcrypt');
 const User = require("./models/user");
 const Message = require("./models/Message");
 const DemoRequest = require('./models/Demo');
-
+const PORT=process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET;
 const Queue = require("./models/Queue");
 const queueRoutes = require("./routes/queue");
@@ -198,20 +198,13 @@ app.post("/login",async(req,res)=>{
         );
 
     }
-if(!user){
 
-    return res.render("login",{
-        error:"User not found"
-    });
-
-}
     let result =
     await bcrypt.compare(
         password,
         user.password
     );
 
-    if(!result){
 
        if(!result){
 
@@ -221,7 +214,7 @@ if(!user){
 
 }
 
-    }
+    
 
     let token =
     jwt.sign(
@@ -348,7 +341,7 @@ app.get("/logout",(req,res)=>{
 
 });
 
-server.listen(3000,()=>{
+server.listen(PORT,()=>{
 
     console.log(
         "Running on Port 3000"

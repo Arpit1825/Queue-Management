@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const config = require('./development.json');
 
-mongoose.connect(config.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI)
 .then(() => {
 
     console.log("Connected");
@@ -17,7 +16,7 @@ mongoose.connect(config.MONGODB_URI)
 
 })
 .catch((err) => {
-    console.log("❌ MongoDB error detected:", err);
+    console.log("MongoDB error detected:", err);
 });
 
 module.exports = mongoose.connection;

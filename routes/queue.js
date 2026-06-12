@@ -29,7 +29,7 @@ router.post("/create", async(req,res)=>{
 
 const qrCode =
 await QrCode.toDataURL(
-    `http://localhost:3000/queue/track/${nextToken}`
+    `${req.protocol}://${req.get("host")}/queue/track/${nextToken}`
 );
 
 const io = req.app.get("io");

@@ -12,5 +12,8 @@
     "qrcode": "^1.5.4",
     "resend": "^6.12.4",
     "socket.io": "^4.8.3"
-  }
+  },
+  "scripts": {
+  "start": "node app.js"
+}
 }
