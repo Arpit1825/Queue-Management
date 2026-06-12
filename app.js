@@ -5,7 +5,11 @@ const app = express();
 
 const http = require("http");
 const { Server } = require("socket.io");
+const { Resend } = require("resend");
 
+const resend = new Resend(
+    process.env.RESEND_API_KEY
+);
 const server = http.createServer(app);
 
 const io = new Server(server,{
@@ -67,6 +71,57 @@ app.use(express.static(
 
 app.get('/',(req,res)=>{
     res.render('index');
+});
+
+app.post("/demo",async(req,res)=>{
+
+    await DemoRequest.create(req.body);
+
+    await resend.emails.send({
+
+        from:"onboarding@resend.dev",
+
+        to:process.env.ADMIN_EMAIL,
+
+        subject:"New Demo Request",
+
+        html:`
+            <h2>New Demo Request</h2>
+
+            <p><b>Name:</b> ${req.body.fullname}</p>
+
+            <p><b>Email:</b> ${req.body.email}</p>
+
+            <p><b>Branch Size:</b> ${req.body.size}</p>
+        `
+    });
+
+    await resend.emails.send({
+
+        from:"onboarding@resend.dev",
+
+        to:req.body.email,
+
+        subject:"Demo Request Received",
+
+        html:`
+            <h2>Thank you for your interest in SmartQueue</h2>
+
+            <p>
+                We have received your demo request.
+            </p>
+
+            <p>
+                Our team will contact you shortly.
+            </p>
+        `
+    });
+
+    res.json({
+        success:true,
+        message:"Demo request submitted successfully"
+    });
+
 });
 
 app.get('/login',(req,res)=>{
