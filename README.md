@@ -114,7 +114,13 @@ Counter 3 → Serving Token 173
 Counter 4 → Available
 
 ---
+## Real-Time Features
 
+* Socket.io Integration
+* Live Queue Updates
+* Real-Time Dashboard Refresh
+* Real-Time Counter Updates
+  
 ## ⏳ Queue Lifecycle Management
 
 Tracks customer journey through:
@@ -418,13 +424,6 @@ This ensures user credentials remain protected even if database data is exposed.
 ---
 
 # 🚀 Future Enhancements
-
-## Real-Time Features
-
-* Socket.io Integration
-* Live Queue Updates
-* Real-Time Dashboard Refresh
-* Real-Time Counter Updates
 
 ## Advanced Analytics
 
