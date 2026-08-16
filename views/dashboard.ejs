@@ -8,178 +8,177 @@
 
     <link rel="stylesheet" href="/css/index.css">
 
-     <link
+    <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     >
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-bg-primary text-text-primary min-h-screen transition-colors duration-300">
 
-    <header id="header">
-    <div class="container nav-container">
+    <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-glass-bg backdrop-blur-[12px] border-b border-glass-border shadow-glass-shadow z-[1000] flex items-center transition-all duration-300 [&.scrolled]:h-[70px]">
+        <div class="container mx-auto px-3 pb-3.75 max-w-[1280px] flex items-center justify-between w-full">
 
-        <a href="/dashboard" class="logo" id="nav-logo">
-            <svg viewBox="0 0 24 24">
-                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"/>
-            </svg>
-
-            SmartQueue
-        </a>
-
-        <nav class="nav-menu" id="nav-menu">
-
-            <a href="/dashboard" class="nav-link active">
-                Dashboard
-            </a>
-
-            <a href="/queue-management" class="nav-link">
-                Queue
-            </a>
-
-            <a href="/analytics" class="nav-link">
-                Analytics
-            </a>
-
-            <a href="/profile" class="nav-link">
-                Profile
-            </a>
-
-        </nav>
-
-        <div class="nav-actions">
-
-            <button
-                class="theme-toggle-btn"
-                id="theme-toggle"
-            >
-                <svg class="sun-icon" viewBox="0 0 24 24">
-                    <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18Z"/>
+            <a href="/dashboard" class="flex items-center gap-2 font-heading text-[1.35rem] font-[800] text-text-primary" id="nav-logo">
+                <svg viewBox="0 0 24 24" class="fill-primary w-8 h-8">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"/>
                 </svg>
 
-                <svg class="moon-icon" viewBox="0 0 24 24">
-                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
-                </svg>
-            </button>
-
-            <span
-                style="
-                margin-right:12px;
-                font-weight:600;
-                "
-            >
-                Welcome,
-                <%= user.fullname %>
-            </span>
-
-            <a
-                href="/logout"
-                class="btn btn-secondary"
-            >
-                Logout
+                SmartQueue
             </a>
 
+            <nav class="nav-menu flex items-center gap-8 max-[768px]:fixed max-[768px]:top-[var(--header-height)] max-[768px]:left-[-100%] max-[768px]:w-full max-[768px]:h-[calc(100vh-var(--header-height))] max-[768px]:bg-bg-primary max-[768px]:flex-col max-[768px]:p-12 max-[768px]:gap-8 max-[768px]:items-start max-[768px]:transition-[left] max-[768px]:duration-300 max-[768px]:border-t max-[768px]:border-border-color [&.open]:left-0" id="nav-menu">
+
+                <a href="/dashboard" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full active">
+                    Dashboard
+                </a>
+
+                <a href="/queue-management" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+                    Queue
+                </a>
+
+                <a href="/analytics" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+                    Analytics
+                </a>
+
+                <a href="/profile" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+                    Profile
+                </a>
+
+            </nav>
+
+            <div class="nav-actions flex items-center gap-4 max-[768px]:hidden">
+
+                <button
+                    class="theme-toggle-btn bg-bg-tertiary border border-border-color w-[42px] h-[42px] rounded-full cursor-pointer flex items-center justify-center text-text-secondary transition-all duration-200 hover:bg-border-color hover:text-text-primary"
+                    id="theme-toggle"
+                >
+                    <svg class="sun-icon w-5 h-5 fill-current block [[data-theme='dark']_&]:hidden" viewBox="0 0 24 24">
+                        <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18Z"/>
+                    </svg>
+
+                    <svg class="moon-icon w-5 h-5 fill-current hidden [[data-theme='dark']_&]:block" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                    </svg>
+                </button>
+
+                <span
+                    style="
+                    margin-right:12px;
+                    font-weight:600;
+                    "
+                >
+                    Welcome,
+                    <%= user.fullname %>
+                </span>
+
+                <a
+                    href="/logout"
+                    class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px]"
+                >
+                    Logout
+                </a>
+
+            </div>
+
+            <div
+                class="mobile-toggle hidden max-[768px]:block max-[768px]:ml-auto max-[768px]:mr-6 cursor-pointer text-[1.5rem] text-text-primary"
+                id="mobile-menu-toggle"
+            >
+                <i class="fas fa-bars"></i>
+            </div>
+
         </div>
+    </header>
 
-        <div
-            class="mobile-toggle"
-            id="mobile-menu-toggle"
-        >
-            <i class="fas fa-bars"></i>
-        </div>
+    <section class="py-[100px] px-0 relative">
+        <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
 
-    </div>
-</header>
-
-    <section class="section dashboard-showcase">
-        <div class="container">
-
-            <div class="section-header">
-                <span class="section-tag">
+            <div class="text-center max-w-[700px] mx-auto mb-[60px]">
+                <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase mb-3">
                     Dashboard
                 </span>
 
-                <h2 class="section-title">
+                <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25] mb-4">
                     Queue Management Dashboard
                 </h2>
 
-                <p class="section-subtitle">
+                <p class="text-text-muted mt-4 mb-4 text-[1.1rem]">
                     Monitor queues, counters and customer flow in real time.
                 </p>
             </div>
 
-            <div class="grid grid-2 dashboard-showcase-grid">
+            <div class="grid grid-cols-[2fr_1fr] gap-8 items-start mb-8 max-[1024px]:grid-cols-1">
 
                 <!-- LEFT PANEL -->
 
-                <div class="live-dashboard-panel" id="live-panel">
+                <div class="bg-glass-bg backdrop-blur-[20px] border border-glass-border rounded-[20px] shadow-glass-shadow overflow-hidden" id="live-panel">
 
-                    <div class="panel-header">
-                        <div class="panel-title-group">
-                            <span class="live-indicator"></span>
-                            <span class="panel-title">
+                    <div class="py-5 px-8 bg-bg-tertiary border-b border-border-color flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="inline-block w-2.5 h-2.5 bg-accent rounded-full animate-[pulse_2s_infinite]"></span>
+                            <span class="text-[1.1rem] font-bold">
                                 Active Queue Management System
                             </span>
                         </div>
 
-                        <span class="panel-meta">
+                        <span class="text-[0.85rem] text-text-muted">
                             Status: Operational
                         </span>
                     </div>
 
-                    <div class="panel-body">
+                    <div class="p-8">
 
                         <!-- Stats -->
 
-                        <div class="dashboard-stats-row">
+                        <div class="grid grid-cols-4 gap-6 mb-8 max-[1280px]:grid-cols-2 max-[580px]:grid-cols-1">
 
-                            <div class="panel-stat-card">
-                                <div class="panel-stat-label">
+                            <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+                                <div class="text-xs font-[500] text-text-muted mb-1">
                                     In Queue
                                 </div>
 
                                 <div
-                                    class="panel-stat-val"
+                                    class="text-[1.75rem] font-bold text-text-primary"
                                     id="sim-metric-active"
                                 >
                                     0
                                 </div>
                             </div>
 
-                            <div class="panel-stat-card">
-                                <div class="panel-stat-label">
+                            <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+                                <div class="text-xs font-[500] text-text-muted mb-1">
                                     Avg Wait Time
                                 </div>
 
                                 <div
-                                    class="panel-stat-val"
+                                    class="text-[1.75rem] font-bold text-text-primary"
                                     id="sim-metric-wait"
                                 >
                                     0m
                                 </div>
                             </div>
 
-                            <div class="panel-stat-card">
-                                <div class="panel-stat-label">
+                            <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+                                <div class="text-xs font-[500] text-text-muted mb-1">
                                     Counters Active
                                 </div>
 
                                 <div
-                                    class="panel-stat-val"
+                                    class="text-[1.75rem] font-bold text-text-primary"
                                     id="sim-metric-counters"
                                 >
                                     0/4
                                 </div>
                             </div>
 
-                            <div class="panel-stat-card">
-                                <div class="panel-stat-label">
+                            <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+                                <div class="text-xs font-[500] text-text-muted mb-1">
                                     Staff Efficiency
                                 </div>
 
                                 <div
-                                    class="panel-stat-val"
+                                    class="text-[1.75rem] font-bold text-text-primary"
                                     id="sim-metric-staff"
                                 >
                                     0%
@@ -190,38 +189,40 @@
 
                         <!-- Queue -->
 
-                        <div class="dashboard-content-split">
+                        <div class="grid grid-cols-[1.2fr_1.8fr] gap-6 max-[768px]:grid-cols-1">
 
-                            <div class="panel-sub-card">
+                            <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col">
 
-                                <div class="panel-sub-title">
+                                <div class="text-[0.95rem] font-bold mb-4 border-b border-border-color pb-2 flex justify-between items-center">
                                     Waiting Queue
-                                    <span id="queue-size">
+                                    <span id="queue-size" class="text-xs text-text-muted font-normal">
                                         Real-time
                                     </span>
                                 </div>
 
                                 <div
-                                    class="queue-list-items"
+                                    class="flex flex-col gap-2 max-h-[250px] overflow-y-auto pr-[2px]"
                                     id="sim-queue-list"
                                 >
+                                    <!-- Injected dynamically by JS -->
                                 </div>
 
                             </div>
 
-                            <div class="panel-sub-card">
+                            <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col">
 
-                                <div class="panel-sub-title">
+                                <div class="text-[0.95rem] font-bold mb-4 border-b border-border-color pb-2 flex justify-between items-center">
                                     Service Counters
-                                    <span>
+                                    <span class="text-xs text-text-muted font-normal">
                                         Status Panel
                                     </span>
                                 </div>
 
                                 <div
-                                    class="counters-list"
+                                    class="flex flex-col gap-3 flex-1"
                                     id="sim-counters-list"
                                 >
+                                    <!-- Injected dynamically by JS -->
                                 </div>
 
                             </div>
@@ -230,19 +231,19 @@
 
                         <!-- Chart -->
 
-                        <div class="analytics-chart-container">
+                        <div class="mt-6 bg-bg-secondary border border-border-color rounded-xl p-4 flex flex-col">
 
                             <div
-                                class="panel-sub-title"
+                                class="text-[0.95rem] font-bold mb-4 flex justify-between items-center"
                                 style="border:none;margin-bottom:0;"
                             >
                                 Customer Traffic Volume
-                                <span>
+                                <span class="text-xs text-text-muted font-normal">
                                     24 Hour Flow Analytics
                                 </span>
                             </div>
 
-                            <div class="chart-canvas-wrapper">
+                            <div class="relative w-full h-[120px]">
 
                                 <canvas
                                     id="sim-chart-canvas"
@@ -259,27 +260,27 @@
 
                 <!-- RIGHT PANEL -->
 
-                <div class="simulator-controls">
+                <div class="bg-glass-bg backdrop-blur-[20px] border border-glass-border rounded-[20px] shadow-glass-shadow p-8">
 
-                    <h3>
+                    <h3 class="text-xl font-bold mb-4">
                         Queue Controls
                     </h3>
 
-                    <p>
+                    <p class="text-text-secondary text-sm mb-6">
                         Generate and serve queue tokens.
                     </p>
 
-                    <div class="sim-form-group">
+                    <div class="mb-5">
 
                         <label
-                            class="sim-label"
+                            class="block text-[0.85rem] font-[600] text-text-secondary mb-2"
                             for="sim-service"
                         >
                             Queue Category
                         </label>
 
                         <select
-                            class="sim-select"
+                            class="w-full p-3 rounded-lg border border-border-color bg-bg-secondary text-text-primary text-sm focus:border-primary outline-none transition-colors duration-200 appearance-none cursor-pointer"
                             id="sim-service"
                         >
                             <option value="General">
@@ -302,12 +303,11 @@
 
                     </div>
 
-                    <div class="sim-actions">
+                    <div class="flex flex-col gap-3 mt-6">
 
                         <button
-                            class="btn btn-primary"
+                            class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px] w-full"
                             id="sim-btn-generate"
-                            style="width:100%;"
                         >
                             <i class="fa-solid fa-ticket"></i>
 
@@ -315,9 +315,8 @@
                         </button>
 
                         <button
-                            class="btn btn-secondary"
+                            class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px] w-full"
                             id="sim-btn-serve"
-                            style="width:100%;"
                         >
                             <i class="fa-solid fa-user-check"></i>
 
@@ -325,16 +324,16 @@
                         </button>
 
                         <button
-    class="btn btn-secondary"
-    id="sim-btn-complete"
-> <i class="fa-solid fa-check"></i>
-    Complete Service
-</button>
+                            class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px] w-full"
+                            id="sim-btn-complete"
+                        > 
+                            <i class="fa-solid fa-check"></i>
+                            Complete Service
+                        </button>
     
-              <button
-                            class="btn btn-secondary"
+                        <button
+                            class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px] w-full"
                             id="sim-btn-reset"
-                            style="width:100%;"
                         >
                             <i class="fa-solid fa-trash"></i>
 
@@ -342,31 +341,26 @@
                         </button>
 
                     </div>
-<div
-    id="qrContainer"
-    style="
-        margin-top:20px;
-        text-align:center;
-    "
-></div>
+
+                    <div
+                        id="qrContainer"
+                        class="mt-5 flex justify-center text-center"
+                    ></div>
                 </div>
 
             </div>
 
         </div>
     </section>
-<script src="/socket.io/socket.io.js"></script>
 
-<script>
-  
-const socket = io();
+    <script src="/socket.io/socket.io.js"></script>
 
-socket.on("connect",()=>{
-
-    console.log("Socket Connected");
-
-});
-</script>
+    <script>
+    const socket = io();
+    socket.on("connect",()=>{
+        console.log("Socket Connected");
+    });
+    </script>
     <script src="/js/index.js"></script>
 
 </body>

@@ -12,277 +12,229 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     >
-     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="p-8">
+<body class="p-8 bg-bg-primary text-text-primary min-h-screen transition-colors duration-300">
 
-    <header id="header">
-    <div class="container nav-container">
+    <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-glass-bg backdrop-blur-[12px] border-b border-glass-border shadow-glass-shadow z-[1000] flex items-center transition-all duration-300 [&.scrolled]:h-[70px]">
+        <div class="container mx-auto px-3 pb-3.75 max-w-[1280px] flex items-center justify-between w-full">
 
-        <a href="/dashboard" class="logo" id="nav-logo">
-            <svg viewBox="0 0 24 24">
-                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"/>
-            </svg>
-
-            SmartQueue
-        </a>
-
-        <nav class="nav-menu" id="nav-menu">
-
-            <a href="/dashboard" class="nav-link active">
-                Dashboard
-            </a>
-
-            <a href="/queue-management" class="nav-link">
-                Queue
-            </a>
-
-            <a href="/analytics" class="nav-link">
-                Analytics
-            </a>
-
-            <a href="/profile" class="nav-link">
-                Profile
-            </a>
-
-        </nav>
-
-        <div class="nav-actions">
-
-            <button
-                class="theme-toggle-btn"
-                id="theme-toggle"
-            >
-                <svg class="sun-icon" viewBox="0 0 24 24">
-                    <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18Z"/>
+            <a href="/dashboard" class="flex items-center gap-2 font-heading text-[1.35rem] font-[800] text-text-primary" id="nav-logo">
+                <svg viewBox="0 0 24 24" class="fill-primary w-8 h-8">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"/>
                 </svg>
-
-                <svg class="moon-icon" viewBox="0 0 24 24">
-                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
-                </svg>
-            </button>
-            <a
-                href="/logout"
-                class="btn btn-secondary"
-            >
-                Logout
+                SmartQueue
             </a>
 
-        </div>
+            <nav class="nav-menu flex items-center gap-8 max-[768px]:fixed max-[768px]:top-[var(--header-height)] max-[768px]:left-[-100%] max-[768px]:w-full max-[768px]:h-[calc(100vh-var(--header-height))] max-[768px]:bg-bg-primary max-[768px]:flex-col max-[768px]:p-12 max-[768px]:gap-8 max-[768px]:items-start max-[768px]:transition-[left] max-[768px]:duration-300 max-[768px]:border-t max-[768px]:border-border-color [&.open]:left-0" id="nav-menu">
 
-        <div
-            class="mobile-toggle"
-            id="mobile-menu-toggle"
-        >
-            <i class="fas fa-bars"></i>
-        </div>
+                <a href="/dashboard" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+                    Dashboard
+                </a>
 
-    </div>
-</header>
+                <a href="/queue-management" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+                    Queue
+                </a>
 
-<div class="analytics-header">
+                <a href="/analytics" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full active">
+                    Analytics
+                </a>
 
-    <span class="analytics-tag">
-        Analytics
-    </span>
+                <a href="/profile" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+                    Profile
+                </a>
 
-    <h2 class="analytics-title">
-        Queue Analytics Dashboard
-    </h2>
+            </nav>
 
-    <p class="analytics-subtitle">
-        Monitor queue performance and service metrics.
-    </p>
+            <div class="nav-actions flex items-center gap-4 max-[768px]:hidden">
 
-</div>
-    <div class="dashboard-stats-row">
+                <button class="theme-toggle-btn bg-bg-tertiary border border-border-color w-[42px] h-[42px] rounded-full cursor-pointer flex items-center justify-center text-text-secondary transition-all duration-200 hover:bg-border-color hover:text-text-primary" id="theme-toggle">
+                    <svg class="sun-icon w-5 h-5 fill-current block [[data-theme='dark']_&]:hidden" viewBox="0 0 24 24">
+                        <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18Z"/>
+                    </svg>
 
-    <div class="panel-stat-card">
-        <div class="panel-stat-label">
-            Completed
-        </div>
+                    <svg class="moon-icon w-5 h-5 fill-current hidden [[data-theme='dark']_&]:block" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                    </svg>
+                </button>
 
-        <div
-            class="panel-stat-val"
-            id="completedCount"
-        >
-            0
-        </div>
-    </div>
+                <a href="/logout" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px]">
+                    Logout
+                </a>
 
-    <div class="panel-stat-card">
-        <div class="panel-stat-label">
-            Waiting
-        </div>
-
-        <div
-            class="panel-stat-val"
-            id="waitingCount"
-        >
-            0
-        </div>
-    </div>
-
-    <div class="panel-stat-card">
-        <div class="panel-stat-label">
-            Serving
-        </div>
-
-        <div
-            class="panel-stat-val"
-            id="servingCount"
-        >
-            0
-        </div>
-    </div>
-
-    <div class="panel-stat-card">
-        <div class="panel-stat-label">
-            Total Tokens
-        </div>
-
-        <div
-            class="panel-stat-val"
-            id="totalCount"
-        >
-            0
-        </div>
-    </div>
-
-</div>
-
-  <div class="grid grid-2 dashboard-showcase-grid">
-
-    <div class="panel-sub-card">
-
-        <div class="panel-sub-title">
-            Recent Completed Tokens
-            <span>
-                Last 10 Services
-            </span>
-        </div>
-
-        <div id="recentCompleted">
-
-        </div>
-
-    </div>
-
-    <div class="panel-sub-card">
-
-        <div class="panel-sub-title">
-            Service Distribution
-            <span>
-                Category Breakdown
-            </span>
-        </div>
-
-        <div id="serviceStats">
-
-        </div>
-
-    </div>
-
-</div>
-<div class="panel-stat-card">
-    <div class="panel-stat-label">
-        Avg Service Time
-    </div>
-
-    <div
-        class="panel-stat-val"
-        id="avgServiceTime"
-    >
-        0m
-    </div>
-</div>
-<script>
-
-async function loadAnalytics(){
-
-    const res =
-    await fetch("/queue/analytics");
-
-    const data =
-    await res.json();
-
-    document.getElementById(
-        "completedCount"
-    ).textContent =
-    data.totalCompleted;
-
-    document.getElementById(
-        "waitingCount"
-    ).textContent =
-    data.totalWaiting;
-
-    document.getElementById(
-        "servingCount"
-    ).textContent =
-    data.totalServing;
-
-    document.getElementById(
-        "totalCount"
-    ).textContent =
-    data.totalCompleted +
-    data.totalWaiting +
-    data.totalServing;
-
-    document.getElementById(
-        "serviceStats"
-    ).innerHTML =
-    data.serviceStats.map(service=>{
-
-        return `
-            <div class="flex justify-between border-b py-2">
-                <span>${service._id}</span>
-                <span>${service.count}</span>
             </div>
-        `;
 
-    }).join('');
-
-    document.getElementById(
-    "avgServiceTime"
-).textContent =
-`${data.avgServiceTime}m`;
-document.getElementById(
-    "recentCompleted"
-).innerHTML =
-data.recentCompleted.map(token => {
-
-    return `
-        <div class="queue-list-row">
-
-            <span>
-                Token ${token.tokenNumber}
-            </span>
-
-            <span>
-                Counter ${token.counterId}
-            </span>
+            <div class="mobile-toggle hidden max-[768px]:block max-[768px]:ml-auto max-[768px]:mr-6 cursor-pointer text-[1.5rem] text-text-primary" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
 
         </div>
-    `;
+    </header>
 
-}).join('');
-}
+    <div class="mt-20 mb-8 max-w-[1280px] mx-auto">
 
-loadAnalytics();
+        <span class="inline-block mt-16 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase">
+            Analytics
+        </span>
 
-</script>
-<script src="/socket.io/socket.io.js"></script>
+        <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25]">
+            Queue Analytics Dashboard
+        </h2>
 
-<script>
-const socket = io();
+        <p class="text-text-muted mt-4 mb-4 text-[1.1rem]">
+            Monitor queue performance and service metrics.
+        </p>
 
-socket.on("queueUpdated",()=>{
+    </div>
+
+    <div class="grid grid-cols-4 gap-6 mb-8 max-w-[1280px] mx-auto max-[1024px]:grid-cols-2 max-[580px]:grid-cols-1">
+
+        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+            <div class="text-xs font-[500] text-text-muted mb-1">
+                Completed
+            </div>
+
+            <div
+                class="text-[1.75rem] font-bold text-text-primary"
+                id="completedCount"
+            >
+                0
+            </div>
+        </div>
+
+        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+            <div class="text-xs font-[500] text-text-muted mb-1">
+                Waiting
+            </div>
+
+            <div
+                class="text-[1.75rem] font-bold text-text-primary"
+                id="waitingCount"
+            >
+                0
+            </div>
+        </div>
+
+        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+            <div class="text-xs font-[500] text-text-muted mb-1">
+                Serving
+            </div>
+
+            <div
+                class="text-[1.75rem] font-bold text-text-primary"
+                id="servingCount"
+            >
+                0
+            </div>
+        </div>
+
+        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+            <div class="text-xs font-[500] text-text-muted mb-1">
+                Total Tokens
+            </div>
+
+            <div
+                class="text-[1.75rem] font-bold text-text-primary"
+                id="totalCount"
+            >
+                0
+            </div>
+        </div>
+
+    </div>
+
+    <div class="grid grid-cols-[2fr_1fr] max-w-[1280px] mx-auto gap-8 items-start mb-8 max-[1024px]:grid-cols-1">
+
+        <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col">
+
+            <div class="text-[0.95rem] font-bold mb-4 border-b border-border-color pb-2 flex justify-between items-center">
+                Recent Completed Tokens
+                <span class="text-xs text-text-muted font-normal">
+                    Last 10 Services
+                </span>
+            </div>
+
+            <div id="recentCompleted" class="flex flex-col gap-2">
+                <!-- Injected dynamically by JS -->
+            </div>
+
+        </div>
+
+        <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col">
+
+            <div class="text-[0.95rem] font-bold mb-4 border-b border-border-color pb-2 flex justify-between items-center">
+                Service Distribution
+                <span class="text-xs text-text-muted font-normal">
+                    Category Breakdown
+                </span>
+            </div>
+
+            <div id="serviceStats" class="flex flex-col gap-2">
+                <!-- Injected dynamically by JS -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px] max-w-[1280px] mx-auto">
+        <div class="text-xs font-[500] text-text-muted mb-1">
+            Avg Service Time
+        </div>
+
+        <div
+            class="text-[1.75rem] font-bold text-text-primary"
+            id="avgServiceTime"
+        >
+            0m
+        </div>
+    </div>
+
+    <script>
+    async function loadAnalytics(){
+        const res = await fetch("/queue/analytics");
+        const data = await res.json();
+
+        document.getElementById("completedCount").textContent = data.totalCompleted;
+        document.getElementById("waitingCount").textContent = data.totalWaiting;
+        document.getElementById("servingCount").textContent = data.totalServing;
+        document.getElementById("totalCount").textContent = data.totalCompleted + data.totalWaiting + data.totalServing;
+
+        document.getElementById("serviceStats").innerHTML = data.serviceStats.map(service=>{
+            return `
+                <div class="flex justify-between border-b border-border-color py-2">
+                    <span>${service._id}</span>
+                    <span>${service.count}</span>
+                </div>
+            `;
+        }).join('');
+
+        document.getElementById("avgServiceTime").textContent = `${data.avgServiceTime}m`;
+        
+        document.getElementById("recentCompleted").innerHTML = data.recentCompleted.map(token => {
+            return `
+                <div class="queue-list-row">
+                    <span>
+                        Token ${token.tokenNumber}
+                    </span>
+                    <span>
+                        Counter ${token.counterId}
+                    </span>
+                </div>
+            `;
+        }).join('');
+    }
 
     loadAnalytics();
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
 
-});
-</script>
+    <script>
+    const socket = io();
+    socket.on("queueUpdated",()=>{
+        loadAnalytics();
+    });
+    </script>
 
     <script src="/js/index.js"></script>
 

@@ -6,206 +6,190 @@
     <title>Profile | Smart Queue</title>
 
     <link rel="stylesheet" href="/css/index.css">
- <link
+    <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     >
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="p-8">
+<body class="p-8 bg-bg-primary text-text-primary min-h-screen transition-colors duration-300">
 
-<header id="header">
-    <div class="container nav-container">
+    <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-glass-bg backdrop-blur-[12px] border-b border-glass-border shadow-glass-shadow z-[1000] flex items-center transition-all duration-300 [&.scrolled]:h-[70px]">
+        <div class="container mx-auto px-3 pb-3.75 max-w-[1280px] flex items-center justify-between w-full">
 
-        <a href="/dashboard" class="logo" id="nav-logo">
-            <svg viewBox="0 0 24 24">
-                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"/>
-            </svg>
-
-            SmartQueue
-        </a>
-
-        <nav class="nav-menu" id="nav-menu">
-
-            <a href="/dashboard" class="nav-link active">
-                Dashboard
-            </a>
-
-            <a href="/queue-management" class="nav-link">
-                Queue
-            </a>
-
-            <a href="/analytics" class="nav-link">
-                Analytics
-            </a>
-
-            <a href="/profile" class="nav-link">
-                Profile
-            </a>
-
-        </nav>
-
-        <div class="nav-actions">
-
-            <button
-                class="theme-toggle-btn"
-                id="theme-toggle"
-            >
-                <svg class="sun-icon" viewBox="0 0 24 24">
-                    <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18Z"/>
+            <a href="/dashboard" class="flex items-center gap-2 font-heading text-[1.35rem] font-[800] text-text-primary" id="nav-logo">
+                <svg viewBox="0 0 24 24" class="fill-primary w-8 h-8">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"/>
                 </svg>
-
-                <svg class="moon-icon" viewBox="0 0 24 24">
-                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
-                </svg>
-            </button>
-
-            <span
-                style="
-                margin-right:12px;
-                font-weight:600;
-                "
-            >
-                Welcome,
-                <%= user.fullname %>
-            </span>
-
-            <a
-                href="/logout"
-                class="btn btn-secondary"
-            >
-                Logout
+                SmartQueue
             </a>
 
-        </div>
+            <nav class="nav-menu flex items-center gap-8 max-[768px]:fixed max-[768px]:top-[var(--header-height)] max-[768px]:left-[-100%] max-[768px]:w-full max-[768px]:h-[calc(100vh-var(--header-height))] max-[768px]:bg-bg-primary max-[768px]:flex-col max-[768px]:p-12 max-[768px]:gap-8 max-[768px]:items-start max-[768px]:transition-[left] max-[768px]:duration-300 max-[768px]:border-t max-[768px]:border-border-color [&.open]:left-0" id="nav-menu">
 
-        <div
-            class="mobile-toggle"
-            id="mobile-menu-toggle"
-        >
-            <i class="fas fa-bars"></i>
-        </div>
+                <a href="/dashboard" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full active">
+                    Dashboard
+                </a>
 
-    </div>
-</header>
+                <a href="/queue-management" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+                    Queue
+                </a>
 
-<section class="section">
+                <a href="/analytics" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+                    Analytics
+                </a>
 
-    <div class="container">
+                <a href="/profile" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+                    Profile
+                </a>
 
-        <div class="analytics-header">
+            </nav>
 
-            <span class="analytics-tag">
-                Profile
-            </span>
+            <div class="nav-actions flex items-center gap-4 max-[768px]:hidden">
 
-            <h2 class="analytics-title">
-                User Profile
-            </h2>
+                <button class="theme-toggle-btn bg-bg-tertiary border border-border-color w-[42px] h-[42px] rounded-full cursor-pointer flex items-center justify-center text-text-secondary transition-all duration-200 hover:bg-border-color hover:text-text-primary" id="theme-toggle">
+                    <svg class="sun-icon w-5 h-5 fill-current block [[data-theme='dark']_&]:hidden" viewBox="0 0 24 24">
+                        <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18Z"/>
+                    </svg>
 
-            <p class="analytics-subtitle">
-                Manage your account information.
-            </p>
+                    <svg class="moon-icon w-5 h-5 fill-current hidden [[data-theme='dark']_&]:block" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                    </svg>
+                </button>
 
-        </div>
-
-        <div class="panel-sub-card">
-
-            <div class="queue-list-row">
-
-                <span>
-                    Full Name
+                <span class="mr-3 font-[600]">
+                    Welcome, <%= user.fullname %>
                 </span>
 
-                <span>
-                    <%= user.fullname %>
-                </span>
+                <a href="/logout" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px]">
+                    Logout
+                </a>
 
             </div>
 
-            <div class="queue-list-row">
-
-                <span>
-                    Email
-                </span>
-
-                <span>
-                    <%= user.email %>
-                </span>
-
-            </div>
-
-            <div class="queue-list-row">
-
-                <span>
-                    User ID
-                </span>
-
-                <span>
-                    <%= user._id %>
-                </span>
-
+            <div class="mobile-toggle hidden max-[768px]:block max-[768px]:ml-auto max-[768px]:mr-6 cursor-pointer text-[1.5rem] text-text-primary" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
 
         </div>
+    </header>
+
+    <section class="py-[100px] px-0 relative">
+
+        <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
+
+            <div class="mt-4 mb-8">
+
+                <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase">
+                    Profile
+                </span>
+
+                <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25]">
+                    User Profile
+                </h2>
+
+                <p class="text-text-muted mt-4 mb-4 text-[1.1rem]">
+                    Manage your account information.
+                </p>
+
+            </div>
+
+            <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col gap-2">
+
+                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-[slideInLeft_0.3s_ease-out]">
+
+                    <span>
+                        Full Name
+                    </span>
+
+                    <span>
+                        <%= user.fullname %>
+                    </span>
+
+                </div>
+
+                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-[slideInLeft_0.3s_ease-out]">
+
+                    <span>
+                        Email
+                    </span>
+
+                    <span>
+                        <%= user.email %>
+                    </span>
+
+                </div>
+
+                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-[slideInLeft_0.3s_ease-out]">
+
+                    <span>
+                        User ID
+                    </span>
+
+                    <span>
+                        <%= user._id %>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="grid grid-cols-4 gap-6 mb-8 max-w-[1280px] mx-auto px-3">
+
+        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+
+            <div class="text-xs font-[500] text-text-muted mb-1">
+                Completed
+            </div>
+
+            <div class="text-[1.75rem] font-bold text-text-primary">
+                <%= totalCompleted %>
+            </div>
+
+        </div>
+
+        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+
+            <div class="text-xs font-[500] text-text-muted mb-1">
+                Waiting
+            </div>
+
+            <div class="text-[1.75rem] font-bold text-text-primary">
+                <%= totalWaiting %>
+            </div>
+
+        </div>
+
+        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+
+            <div class="text-xs font-[500] text-text-muted mb-1">
+                Serving
+            </div>
+
+            <div class="text-[1.75rem] font-bold text-text-primary">
+                <%= totalServing %>
+            </div>
+
+        </div>
+
+        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
+
+            <div class="text-xs font-[500] text-text-muted mb-1">
+                Total Tokens
+            </div>
+
+            <div class="text-[1.75rem] font-bold text-text-primary">
+                <%= totalTokens %>
+            </div>
+
+        </div>
 
     </div>
 
-</section>
-<div class="dashboard-stats-row">
-
-    <div class="panel-stat-card">
-
-        <div class="panel-stat-label">
-            Completed
-        </div>
-
-        <div class="panel-stat-val">
-            <%= totalCompleted %>
-        </div>
-
-    </div>
-
-    <div class="panel-stat-card">
-
-        <div class="panel-stat-label">
-            Waiting
-        </div>
-
-        <div class="panel-stat-val">
-            <%= totalWaiting %>
-        </div>
-
-    </div>
-
-    <div class="panel-stat-card">
-
-        <div class="panel-stat-label">
-            Serving
-        </div>
-
-        <div class="panel-stat-val">
-            <%= totalServing %>
-        </div>
-
-    </div>
-
-    <div class="panel-stat-card">
-
-        <div class="panel-stat-label">
-            Total Tokens
-        </div>
-
-        <div class="panel-stat-val">
-            <%= totalTokens %>
-        </div>
-
-    </div>
-
-</div>
-
-<script src="/js/index.js"></script>
+    <script src="/js/index.js"></script>
 
 </body>
 </html>

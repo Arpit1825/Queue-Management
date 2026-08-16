@@ -12,196 +12,176 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body>
- <header id="header">
-    <div class="container nav-container">
-      <a href="/" class="logo" id="nav-logo" aria-label="Smart Queue Homepage">
-        <svg viewBox="0 0 24 24">
-          <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z" />
-        </svg>
-        SmartQueue
-      </a>
-      
-      <nav class="nav-menu" id="nav-menu" role="navigation">
-        <a href="/" class="nav-link active" id="link-hero">Home</a>
-        <a href="/#features" class="nav-link" id="link-features">Features</a>
-        <a href="/#how-it-works" class="nav-link" id="link-how">How It Works</a>
-        <a href="/demo" class="nav-link" id="link-demo">Live Demo</a>
-        <a href="/#pricing" class="nav-link" id="link-pricing">Pricing</a>
-        <a href="/#faq" class="nav-link" id="link-faq">FAQ</a>
-        <a href="/#contact" class="nav-link" id="link-contact">Contact</a>
-      </nav>
+<body class="bg-bg-primary text-text-primary min-h-screen transition-colors duration-300">
+    <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-glass-bg backdrop-blur-[12px] border-b border-glass-border shadow-glass-shadow z-[1000] flex items-center transition-all duration-300 [&.scrolled]:h-[70px]">
+        <div class="container mx-auto px-3 pb-3.75 max-w-[1280px] flex items-center justify-between w-full">
+            <a href="/" class="flex items-center gap-2 font-heading text-[1.35rem] font-[800] text-text-primary" id="nav-logo" aria-label="Smart Queue Homepage">
+                <svg viewBox="0 0 24 24" class="fill-primary w-8 h-8">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z" />
+                </svg>
+                SmartQueue
+            </a>
+            
+            <nav class="nav-menu flex items-center gap-8 max-[768px]:fixed max-[768px]:top-[var(--header-height)] max-[768px]:left-[-100%] max-[768px]:w-full max-[768px]:h-[calc(100vh-var(--header-height))] max-[768px]:bg-bg-primary max-[768px]:flex-col max-[768px]:p-12 max-[768px]:gap-8 max-[768px]:items-start max-[768px]:transition-[left] max-[768px]:duration-300 max-[768px]:border-t max-[768px]:border-border-color [&.open]:left-0" id="nav-menu" role="navigation">
+                <a href="/" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full" id="link-hero">Home</a>
+                <a href="/#features" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full" id="link-features">Features</a>
+                <a href="/#how-it-works" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full" id="link-how">How It Works</a>
+                <a href="/demo" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full" id="link-demo">Live Demo</a>
+                <a href="/#pricing" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full" id="link-pricing">Pricing</a>
+                <a href="/#faq" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full" id="link-faq">FAQ</a>
+                <a href="/#contact" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full" id="link-contact">Contact</a>
+            </nav>
 
-      <div class="nav-actions">
-        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode">
-          <!-- Sun Icon for Dark Theme -->
-          <svg class="sun-icon" viewBox="0 0 24 24">
-            <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" />
-          </svg>
-          <!-- Moon Icon for Light Theme -->
-          <svg class="moon-icon" viewBox="0 0 24 24">
-            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
-          </svg>
-        </button>
+            <div class="nav-actions flex items-center gap-4 max-[768px]:hidden">
+                <button class="theme-toggle-btn bg-bg-tertiary border border-border-color w-[42px] h-[42px] rounded-full cursor-pointer flex items-center justify-center text-text-secondary transition-all duration-200 hover:bg-border-color hover:text-text-primary" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon w-5 h-5 fill-current block [[data-theme='dark']_&]:hidden" viewBox="0 0 24 24">
+                        <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" />
+                    </svg>
+                    <svg class="moon-icon w-5 h-5 fill-current hidden [[data-theme='dark']_&]:block" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
+                    </svg>
+                </button>
 
-       <a href="/login" class="btn btn-secondary">
-    Log In
-</a>
-
-<a href="/signup" class="btn btn-primary">
-    Sign Up
-</a>
-      </div>
-
-      <div class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-controls="nav-menu">
-        <i class="fas fa-bars"></i>
-      </div>
-    </div>
-  </header>
-<main class="auth-page">
-
-    <div class="modal-container">
-
-        <h3 class="modal-title">
-            Request a Live Demo
-        </h3>
-
-        <p class="modal-desc">
-            Book a 30-minute tailored setup call with our technical coordinators.
-        </p>
-
-        <form id="demo-form">
-
-            <div class="form-group">
-                <label class="form-label">
-                    Full Name
-                </label>
-
-                <input
-                type="text"
-                name="fullname"
-                class="form-input"
-                placeholder="Jane Smith"
-                required>
+                <a href="/login" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px]">
+                    Log In
+                </a>
+                <a href="/signup" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px]">
+                    Sign Up
+                </a>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">
-                    Work Email
-                </label>
-
-                <input
-                type="email"
-                name="email"
-                class="form-input"
-                placeholder="jane@clinic.org"
-                required>
+            <div class="mobile-toggle hidden max-[768px]:block max-[768px]:ml-auto max-[768px]:mr-6 cursor-pointer text-[1.5rem] text-text-primary" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-controls="nav-menu">
+                <i class="fas fa-bars"></i>
             </div>
+        </div>
+    </header>
 
-            <div class="form-group">
-                <label class="form-label">
-                    Office / Branch Size
-                </label>
+    <main class="relative min-h-[calc(100vh-80px)] flex justify-center items-center overflow-hidden pt-20">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(99,102,241,0.18),transparent_40%)]"></div>
 
-                <select
-                name="size"
-                class="form-input">
+        <div class="relative z-10 w-full max-w-[480px] p-10 bg-[rgba(15,23,42,0.8)] backdrop-blur-[20px] border border-[rgba(255,255,255,0.08)] shadow-[0_20px_50px_rgba(0,0,0,0.4)] rounded-[24px]">
 
-                    <option value="Small">
-                        1 - 2 Branches
-                    </option>
+            <h3 class="font-heading text-[1.75rem] font-bold text-white text-center mb-2">
+                Request a Live Demo
+            </h3>
 
-                    <option value="Medium">
-                        3 - 10 Branches
-                    </option>
+            <p class="text-text-secondary text-sm text-center mb-8">
+                Book a 30-minute tailored setup call with our technical coordinators.
+            </p>
 
-                    <option value="Large">
-                        10+ Branches
-                    </option>
+            <form id="demo-form">
 
-                </select>
-            </div>
+                <div class="mb-6">
+                    <label class="block text-[0.85rem] font-[600] text-text-secondary mb-2">
+                        Full Name
+                    </label>
 
-            <button
-            type="submit"
-            class="btn btn-primary"
-            style="width:100%">
-                Schedule Demo Call
-            </button>
+                    <input
+                    type="text"
+                    name="fullname"
+                    class="w-full px-[18px] py-[14px] bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-[12px] text-white transition-all duration-300 outline-none focus:border-[#3B82F6] focus:shadow-[0_0_0_4px_rgba(59,130,246,0.15)]"
+                    placeholder="Jane Smith"
+                    required>
+                </div>
 
-        </form>
+                <div class="mb-6">
+                    <label class="block text-[0.85rem] font-[600] text-text-secondary mb-2">
+                        Work Email
+                    </label>
 
-    </div>
+                    <input
+                    type="email"
+                    name="email"
+                    class="w-full px-[18px] py-[14px] bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-[12px] text-white transition-all duration-300 outline-none focus:border-[#3B82F6] focus:shadow-[0_0_0_4px_rgba(59,130,246,0.15)]"
+                    placeholder="jane@clinic.org"
+                    required>
+                </div>
 
-</main>
-<script>
+                <div class="mb-6">
+                    <label class="block text-[0.85rem] font-[600] text-text-secondary mb-2">
+                        Office / Branch Size
+                    </label>
+
+                    <select
+                    name="size"
+                    class="w-full px-[18px] py-[14px] bg-[rgba(15,23,42,0.9)] border border-[rgba(255,255,255,0.08)] rounded-[12px] text-white transition-all duration-300 outline-none focus:border-[#3B82F6] focus:shadow-[0_0_0_4px_rgba(59,130,246,0.15)] appearance-none cursor-pointer">
+
+                        <option value="Small" class="bg-[#0B0F19]">
+                            1 - 2 Branches
+                        </option>
+
+                        <option value="Medium" class="bg-[#0B0F19]">
+                            3 - 10 Branches
+                        </option>
+
+                        <option value="Large" class="bg-[#0B0F19]">
+                            10+ Branches
+                        </option>
+
+                    </select>
+                </div>
+
+                <button
+                type="submit"
+                class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px] w-full"
+                >
+                    Schedule Demo Call
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <script>
     document.getElementById(
-    "demo-form"
-).addEventListener(
-    "submit",
-    async(e)=>{
+        "demo-form"
+    ).addEventListener(
+        "submit",
+        async(e)=>{
+            e.preventDefault();
 
-        e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
 
-        const formData =
-        new FormData(e.target);
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = "Submitting...";
 
-        const data =
-        Object.fromEntries(
-            formData.entries()
-        );
+            try{
+                const res = await fetch(
+                    "/demo",
+                    {
+                        method:"POST",
+                        headers:{
+                            "Content-Type": "application/json"
+                        },
+                        body:JSON.stringify(data)
+                    }
+                );
 
-        try{
+                const result = await res.json();
 
-    const res =
-    await fetch(
-        "/demo",
-        {
-            method:"POST",
-            headers:{
-                "Content-Type":
-                "application/json"
-            },
-            body:JSON.stringify(data)
+                if(result.success){
+                    showToast(
+                        "Demo request submitted successfully"
+                    );
+                    e.target.reset();
+                }
+            }catch(err){
+                console.error(err);
+                showToast(
+                    "Server Error"
+                );
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
         }
     );
-
-    const result =
-    await res.json();
-
-    if(result.success){
-
-        showToast(
-            "Demo request submitted successfully"
-        );
-
-        e.target.reset();
-
-    }
-
-}catch(err){
-
-    console.error(err);
-
-    showToast(
-        "Server Error"
-    );
-
-}
-const btn =
-e.target.querySelector(
-    'button[type="submit"]'
-);
-
-btn.disabled = true;
-btn.textContent =
-"Submitting...";
-
-
-    }
-);
-</script>
-<script src="/js/index.js"></script>
-
+    </script>
+    <script src="/js/index.js"></script>
 </body>
 </html>

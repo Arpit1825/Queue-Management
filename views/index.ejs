@@ -22,148 +22,122 @@
   <link rel="stylesheet" href="/css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-<style>
-    input:checked + .slider-toggle-btn {
-      background-color: var(--primary);
-    }
-    input:checked + .slider-toggle-btn:before {
-      transform: translateX(24px);
-    }
-    .slider-toggle-btn:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      border-radius: 50%;
-      transition: 0.3s;
-    }
-  </style>
+<body class="bg-bg-primary text-text-primary min-h-screen transition-colors duration-300">
+
   <!-- FIXED GLASS NAVIGATION BAR -->
-  <header id="header">
-    <div class="container nav-container">
-      <a href="#" class="logo" id="nav-logo" aria-label="Smart Queue Homepage">
-        <svg viewBox="0 0 24 24">
+  <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-glass-bg backdrop-blur-[12px] border-b border-glass-border shadow-glass-shadow z-[1000] flex items-center transition-all duration-300 [&.scrolled]:h-[70px]">
+    <div class="container mx-auto px-3 pb-3.75 max-w-[1280px] flex items-center justify-between w-full">
+      <a href="#" class="flex items-center gap-2 font-heading text-[1.35rem] font-[800] text-text-primary logo" id="nav-logo" aria-label="Smart Queue Homepage">
+        <svg viewBox="0 0 24 24" class="fill-primary w-8 h-8">
           <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z" />
         </svg>
         SmartQueue
       </a>
       
-     <nav class="nav-menu" id="nav-menu">
+      <nav class="nav-menu flex items-center gap-8 max-[768px]:fixed max-[768px]:top-[var(--header-height)] max-[768px]:left-[-100%] max-[768px]:w-full max-[768px]:h-[calc(100vh-var(--header-height))] max-[768px]:bg-bg-primary max-[768px]:flex-col max-[768px]:p-12 max-[768px]:gap-8 max-[768px]:items-start max-[768px]:transition-[left] max-[768px]:duration-300 max-[768px]:border-t max-[768px]:border-border-color [&.open]:left-0" id="nav-menu">
+        <a href="/" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full active">Home</a>
+        <a href="/#features" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">Features</a>
+        <a href="/#how-it-works" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">How It Works</a>
+        <a href="/demo" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">Live Demo</a>
+        <a href="/#pricing" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">Pricing</a>
+        <a href="/#faq" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">FAQ</a>
+        <a href="/#contact" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">Contact</a>
 
-    <a href="/" class="nav-link">Home</a>
-    <a href="/#features" class="nav-link">Features</a>
-    <a href="/#how-it-works" class="nav-link">How It Works</a>
-    <a href="/demo" class="nav-link">Live Demo</a>
-    <a href="/#pricing" class="nav-link">Pricing</a>
-    <a href="/#faq" class="nav-link">FAQ</a>
-    <a href="/#contact" class="nav-link">Contact</a>
+        <div class="mobile-auth hidden max-[768px]:flex max-[768px]:flex-col max-[768px]:gap-4 max-[768px]:w-full max-[768px]:mt-4">
+            <a href="/login" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px] w-full text-center">
+                Log In
+            </a>
 
-    <div class="mobile-auth">
-        <a href="/login" class="btn btn-secondary">
-            Log In
-        </a>
+            <a href="/signup" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px] w-full text-center">
+                Sign Up
+            </a>
+        </div>
+      </nav>
 
-        <a href="/signup" class="btn btn-primary">
-            Sign Up
-        </a>
-    </div>
-
-</nav>
-
-      <div class="nav-actions">
-        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode">
+      <div class="nav-actions flex items-center gap-4 max-[768px]:hidden">
+        <button class="theme-toggle-btn bg-bg-tertiary border border-border-color w-[42px] h-[42px] rounded-full cursor-pointer flex items-center justify-center text-text-secondary transition-all duration-200 hover:bg-border-color hover:text-text-primary" id="theme-toggle" aria-label="Toggle dark mode">
           <!-- Sun Icon for Dark Theme -->
-          <svg class="sun-icon" viewBox="0 0 24 24">
+          <svg class="sun-icon w-5 h-5 fill-current block [[data-theme='dark']_&]:hidden" viewBox="0 0 24 24">
             <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" />
           </svg>
           <!-- Moon Icon for Light Theme -->
-          <svg class="moon-icon" viewBox="0 0 24 24">
+          <svg class="moon-icon w-5 h-5 fill-current hidden [[data-theme='dark']_&]:block" viewBox="0 0 24 24">
             <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
           </svg>
         </button>
 
-       <a href="/login" class="btn btn-secondary">
-    Log In
-</a>
-
-<a href="/signup" class="btn btn-primary">
-    Sign Up
-</a>
+        <a href="/login" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px]">
+          Log In
+        </a>
+        <a href="/signup" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px]">
+          Sign Up
+        </a>
       </div>
 
-      <div class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-controls="nav-menu">
+      <div class="mobile-toggle hidden max-[768px]:block max-[768px]:ml-auto max-[768px]:mr-6 cursor-pointer text-[1.5rem] text-text-primary" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-controls="nav-menu">
         <i class="fas fa-bars"></i>
       </div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="hero" id="hero">
-    <div class="container grid grid-2 hero-grid">
-      <div class="hero-content reveal">
-        <div class="hero-badge">
-          <span></span> Version 2.0 Live Showcase
+  <section class="pt-[calc(var(--header-height)+60px)] pb-20 overflow-hidden relative after:content-[''] after:absolute after:bottom-[10%] after:left-[-5%] after:w-[400px] after:h-[400px] after:bg-[radial-gradient(circle,var(--accent-glow)_0%,transparent_70%)] after:-z-10 after:pointer-events-none before:content-[''] before:absolute before:top-[-10%] before:right-[-5%] before:w-[500px] before:h-[500px] before:bg-[radial-gradient(circle,var(--primary-glow)_0%,transparent_70%)] before:-z-10 before:pointer-events-none" id="hero">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px] grid grid-cols-2 gap-8 items-center max-[768px]:grid-cols-1 max-[768px]:text-center">
+      <div class="max-w-[600px] reveal max-[768px]:mx-auto">
+        <div class="inline-flex items-center gap-2 bg-bg-secondary border border-border-color px-[13px] py-[5.6px] rounded-[30px] text-[0.85rem] font-[500] mb-6 text-text-secondary">
+          <span class="inline-block w-2.5 h-2.5 bg-accent rounded-full animate-[pulse_2s_infinite]"></span> Version 2.0 Live Showcase
         </div>
-        <h1 class="hero-title">
-          Transform Customer Waiting Experience with <span>Smart Queue Management</span>
+        <h1 class="text-6xl max-[580px]:text-[2.5rem] font-[700] leading-[1.15] mb-6 tracking-[-0.02em]">
+          Transform Customer Waiting Experience with <span class="bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">Smart Queue Management</span>
         </h1>
-        <p class="hero-description">
+        <p class="text-[1.25rem] text-text-secondary mb-10">
           Track queues in real time, reduce waiting time, and deliver a better customer experience.
         </p>
-        <div class="hero-buttons">
-          <button class="btn btn-primary btn-demo" id="hero-btn-demo" href="/demo">Request Demo</button>
-          <a href="/dashboard" class="btn btn-secondary" id="hero-btn-secondary">Try Live Simulator</a>
+        <div class="flex gap-4 max-[768px]:justify-center">
+          <button class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px] btn-demo" id="hero-btn-demo" href="/demo">Request Demo</button>
+          <a href="/dashboard" class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px]" id="hero-btn-secondary">Try Live Simulator</a>
         </div>
       </div>
       
-      <div class="hero-visual reveal">
-        <!-- Dashboard Illustration with Glassmorphism -->
+      <div class="relative w-full reveal">
+        <!-- Dashboard with Glassmorphism bg-->
         <div class="hero-card-preview" id="hero-preview-card">
-          <div class="preview-header">
-            <div class="preview-dots">
-              <span class="preview-dot"></span>
-              <span class="preview-dot"></span>
-              <span class="preview-dot"></span>
-            </div>
-            <div class="preview-title">SmartQueue Dashboard Preview</div>
-            <i class="fa-solid fa-arrows-spin" style="color: var(--primary);"></i>
+          <div class="flex items-center justify-between mb-6 border-b border-border-color pb-3">
+            <div class="text-[0.9rem] font-semibold text-text-muted">SmartQueue Dashboard Preview</div>
+            <i class="fa-solid fa-arrows-spin text-primary"></i>
           </div>
 
-          <div class="preview-grid">
-            <div class="preview-stat">
-              <div class="preview-stat-val" id="hero-stat-waiting">14</div>
-              <div class="preview-stat-label">Waiting</div>
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-bg-secondary border border-border-color p-4 rounded-xl">
+              <div class="text-2xl font-bold text-text-primary" id="hero-stat-waiting">14</div>
+              <div class="text-[0.75rem] text-text-muted font-[500]">Waiting</div>
             </div>
-            <div class="preview-stat">
-              <div class="preview-stat-val" id="hero-stat-wait">4.2m</div>
-              <div class="preview-stat-label">Avg Wait Time</div>
+            <div class="bg-bg-secondary border border-border-color p-4 rounded-xl">
+              <div class="text-2xl font-bold text-text-primary" id="hero-stat-wait">4.2m</div>
+              <div class="text-[0.75rem] text-text-muted font-[500]">Avg Wait Time</div>
             </div>
-            <div class="preview-stat">
-              <div class="preview-stat-val" id="hero-stat-efficiency">94%</div>
-              <div class="preview-stat-label">Staff Efficiency</div>
+            <div class="bg-bg-secondary border border-border-color p-4 rounded-xl">
+              <div class="text-2xl font-bold text-text-primary" id="hero-stat-efficiency">94%</div>
+              <div class="text-[0.75rem] text-text-muted font-[500]">Staff Efficiency</div>
             </div>
           </div>
 
-          <div class="preview-list">
-            <div class="preview-item">
+          <div class="bg-bg-secondary border border-border-color rounded-xl p-3">
+            <div class="flex items-center justify-between py-2 px-1 text-[0.8rem] border-b border-border-color">
               <span>Token A-102 (General Query)</span>
-              <span class="preview-badge badge-serving">Serving Counter 1</span>
+              <span class="px-2 py-0.5 rounded-[10px] font-semibold text-[0.7rem] bg-accent-glow text-accent">Serving Counter 1</span>
             </div>
-            <div class="preview-item">
+            <div class="flex items-center justify-between py-2 px-1 text-[0.8rem] border-b border-border-color">
               <span>Token VIP-203 (VIP Desk)</span>
-              <span class="preview-badge badge-serving">Serving Counter 2</span>
+              <span class="px-2 py-0.5 rounded-[10px] font-semibold text-[0.7rem] bg-accent-glow text-accent">Serving Counter 2</span>
             </div>
-            <div class="preview-item">
+            <div class="flex items-center justify-between py-2 px-1 text-[0.8rem] border-b border-border-color">
               <span>Token B-146 (Billing Office)</span>
-              <span class="preview-badge badge-waiting">In Queue - 3m</span>
+              <span class="px-2 py-0.5 rounded-[10px] font-semibold text-[0.7rem] bg-primary-glow text-primary">In Queue - 3m</span>
             </div>
-            <div class="preview-item">
+            <div class="flex items-center justify-between py-2 px-1 text-[0.8rem]">
               <span>Token S-155 (Tech Support)</span>
-              <span class="preview-badge badge-waiting">In Queue - 1m</span>
+              <span class="px-2 py-0.5 rounded-[10px] font-semibold text-[0.7rem] bg-primary-glow text-primary">Completed - 1m</span>
             </div>
           </div>
         </div>
@@ -172,22 +146,22 @@
   </section>
 
   <!-- FEATURES SECTION -->
-  <section class="section" id="features">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Powerful Features</span>
-        <h2 class="section-title">Everything you need to optimize customer flow</h2>
-        <p class="section-subtitle">A comprehensive set of tools designed to help operations managers configure, monitor, and scale physical queue processes.</p>
+  <section class="py-[100px] px-0 relative" id="features">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
+      <div class="text-center max-w-[700px] mx-auto mb-[60px] reveal">
+        <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase mb-3">Powerful Features</span>
+        <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25] mb-4">Everything you need to optimize customer flow</h2>
+        <p class="text-text-secondary text-[1.125rem]">A comprehensive set of tools designed to help operations managers configure, monitor, and scale physical queue processes.</p>
       </div>
 
-      <div class="grid grid-4 features-grid reveal">
+      <div class="grid grid-cols-4 gap-8 max-[1024px]:grid-cols-2 max-[580px]:grid-cols-1 reveal">
         <!-- Feature 1 -->
         <div class="feature-card" id="feature-tracking">
           <div class="feature-icon-container">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <svg viewBox="0 0 24 24" class="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
           </div>
-          <h3>Real-Time Queue Tracking</h3>
-          <p>Let customers monitor their queue numbers and queue status live on their own mobile devices.</p>
+          <h3 class="text-[1.25rem] mb-3 relative z-10 font-bold">Real-Time Queue Tracking</h3>
+          <p class="text-text-secondary text-[0.95rem] relative z-10">Let customers monitor their queue numbers and queue status live on their own mobile devices.</p>
         </div>
 
         <!-- Feature 2 -->
@@ -195,8 +169,8 @@
           <div class="feature-icon-container">
             <svg viewBox="0 0 24 24"><path d="M13.13 22.19L11.5 21l-.26-.19C6 16.81 3 13.56 3 9.5 3 5.36 6.36 2 10.5 2c2.4 0 4.6 1.12 6.03 2.87C17.96 3.12 20.16 2 22.56 2c4.14 0 7.5 3.36 7.5 7.5 0 4.06-3 7.31-8.24 11.31L20.25 22.06c-.84.62-2 .62-2.84 0l-4.28-3.21-1.33.99c-.66.49-1.55.51-2.22.04v.26a1.49 1.49 0 0 1-.45.04z"/></svg>
           </div>
-          <h3>Digital Token Generation</h3>
-          <p>Print contactless tickets using QR codes placed outside branches, preventing hallway crowding.</p>
+          <h3 class="text-[1.25rem] mb-3 relative z-10 font-bold">Digital Token Generation</h3>
+          <p class="text-text-secondary text-[0.95rem] relative z-10">Print contactless tickets using QR codes placed outside branches, preventing hallway crowding.</p>
         </div>
 
         <!-- Feature 3 -->
@@ -204,8 +178,8 @@
           <div class="feature-icon-container">
             <svg viewBox="0 0 24 24"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></svg>
           </div>
-          <h3>Smart Queue Allocation</h3>
-          <p>Intelligent algorithm routes VIP customers and complex queries automatically to expert staff.</p>
+          <h3 class="text-[1.25rem] mb-3 relative z-10 font-bold">Smart Queue Allocation</h3>
+          <p class="text-text-secondary text-[0.95rem] relative z-10">Intelligent algorithm routes VIP customers and complex queries automatically to expert staff.</p>
         </div>
 
         <!-- Feature 4 -->
@@ -213,8 +187,8 @@
           <div class="feature-icon-container">
             <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
           </div>
-          <h3>Live Notifications & Alerts</h3>
-          <p>Deliver timely SMS, email, and WhatsApp notifications when customer counter window is approaching.</p>
+          <h3 class="text-[1.25rem] mb-3 relative z-10 font-bold">Live Notifications & Alerts</h3>
+          <p class="text-text-secondary text-[0.95rem] relative z-10">Deliver timely SMS, email, and WhatsApp notifications when customer counter window is approaching.</p>
         </div>
 
         <!-- Feature 5 -->
@@ -222,8 +196,8 @@
           <div class="feature-icon-container">
             <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
           </div>
-          <h3>Analytics Dashboard</h3>
-          <p>Retrieve detailed analytics report logs on peak congestion hours, service times, and staff performance.</p>
+          <h3 class="text-[1.25rem] mb-3 relative z-10 font-bold">Analytics Dashboard</h3>
+          <p class="text-text-secondary text-[0.95rem] relative z-10">Retrieve detailed analytics report logs on peak congestion hours, service times, and staff performance.</p>
         </div>
 
         <!-- Feature 6 -->
@@ -231,8 +205,8 @@
           <div class="feature-icon-container">
             <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           </div>
-          <h3>Multi-Branch Management</h3>
-          <p>Monitor queue lines across multiple locations and offices remotely from a single central portal.</p>
+          <h3 class="text-[1.25rem] mb-3 relative z-10 font-bold">Multi-Branch Management</h3>
+          <p class="text-text-secondary text-[0.95rem] relative z-10">Monitor queue lines across multiple locations and offices remotely from a single central portal.</p>
         </div>
 
         <!-- Feature 7 -->
@@ -240,8 +214,8 @@
           <div class="feature-icon-container">
             <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
           </div>
-          <h3>Appointment Scheduling</h3>
-          <p>Integrate online reservation calendar bookings with walk-in ticketing automatically.</p>
+          <h3 class="text-[1.25rem] mb-3 relative z-10 font-bold">Appointment Scheduling</h3>
+          <p class="text-text-secondary text-[0.95rem] relative z-10">Integrate online reservation calendar bookings with walk-in ticketing automatically.</p>
         </div>
 
         <!-- Feature 8 -->
@@ -249,398 +223,384 @@
           <div class="feature-icon-container">
             <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
           </div>
-          <h3>Feedback Collection</h3>
-          <p>Gather customer feedback surveys directly after service is completed to track experience scores.</p>
+          <h3 class="text-[1.25rem] mb-3 relative z-10 font-bold">Feedback Collection</h3>
+          <p class="text-text-secondary text-[0.95rem] relative z-10">Gather customer feedback surveys directly after service is completed to track experience scores.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- BENEFITS / STATS SECTION -->
-  <section class="section benefits" id="benefits">
-    <div class="container">
-      <div class="grid grid-4 benefits-grid reveal">
+  <section class="py-[100px] px-0 relative bg-bg-secondary border-t border-b border-border-color" id="benefits">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
+      <div class="grid grid-cols-4 gap-8 text-center max-[1024px]:grid-cols-2 max-[580px]:grid-cols-1 reveal">
         <!-- Stat 1 -->
-        <div class="benefit-card">
-          <div class="benefit-stat" data-target="60" data-suffix="%">0%</div>
-          <div class="benefit-label">Reduced Wait Times</div>
-          <div class="benefit-desc">Drastically lowers local branch congestion and customer anxiety.</div>
+        <div class="p-8">
+          <div class="text-[3.5rem] font-[800] text-primary font-heading mb-2 leading-none benefit-stat" data-target="60" data-suffix="%">0%</div>
+          <div class="text-[1.1rem] font-[600] mb-2 text-text-primary">Reduced Wait Times</div>
+          <div class="text-[0.9rem] text-text-muted">Drastically lowers local branch congestion and customer anxiety.</div>
         </div>
 
         <!-- Stat 2 -->
-        <div class="benefit-card">
-          <div class="benefit-stat" data-target="95" data-suffix="%">0%</div>
-          <div class="benefit-label">Customer Satisfaction</div>
-          <div class="benefit-desc">Reported by partners who integrated digitized SMS alerts.</div>
+        <div class="p-8">
+          <div class="text-[3.5rem] font-[800] text-primary font-heading mb-2 leading-none benefit-stat" data-target="95" data-suffix="%">0%</div>
+          <div class="text-[1.1rem] font-[600] mb-2 text-text-primary">Customer Satisfaction</div>
+          <div class="text-[0.9rem] text-text-muted">Reported by partners who integrated digitized SMS alerts.</div>
         </div>
 
         <!-- Stat 3 -->
-        <div class="benefit-card">
-          <div class="benefit-stat" data-target="99.9" data-suffix="%">0%</div>
-          <div class="benefit-label">System Availability</div>
-          <div class="benefit-desc">Highly resilient enterprise-grade cloud server hosting.</div>
+        <div class="p-8">
+          <div class="text-[3.5rem] font-[800] text-primary font-heading mb-2 leading-none benefit-stat" data-target="99.9" data-suffix="%">0%</div>
+          <div class="text-[1.1rem] font-[600] mb-2 text-text-primary">System Availability</div>
+          <div class="text-[0.9rem] text-text-muted">Highly resilient enterprise-grade cloud server hosting.</div>
         </div>
 
         <!-- Stat 4 -->
-        <div class="benefit-card">
-          <div class="benefit-stat" data-target="40" data-suffix="%">0%</div>
-          <div class="benefit-label">Staff Efficiency</div>
-          <div class="benefit-desc">Optimizes worker focus and reduces counter transition downtime.</div>
+        <div class="p-8">
+          <div class="text-[3.5rem] font-[800] text-primary font-heading mb-2 leading-none benefit-stat" data-target="40" data-suffix="%">0%</div>
+          <div class="text-[1.1rem] font-[600] mb-2 text-text-primary">Staff Efficiency</div>
+          <div class="text-[0.9rem] text-text-muted">Optimizes worker focus and reduces counter transition downtime.</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS SECTION -->
-  <section class="section" id="how-it-works">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Smooth Workflows</span>
-        <h2 class="section-title">How It Works</h2>
-        <p class="section-subtitle">A simple, painless 4-step path to move customers smoothly from entrance to query completion.</p>
+  <section class="py-[100px] px-0 relative" id="how-it-works">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
+      <div class="text-center max-w-[700px] mx-auto mb-[60px] reveal">
+        <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase mb-3">Smooth Workflows</span>
+        <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25] mb-4">How It Works</h2>
+        <p class="text-text-secondary text-[1.125rem]">A simple, painless 4-step path to move customers smoothly from entrance to query completion.</p>
       </div>
 
-      <div class="timeline-container reveal" id="timeline">
+      <div class="flex justify-between relative mt-[60px] max-[768px]:flex-col max-[768px]:gap-12 reveal timeline-container" id="timeline">
         <!-- Step 1 -->
-        <div class="timeline-step" id="step-join">
-          <div class="step-number-container">
-            <span class="step-number">01</span>
+        <div class="w-[22%] text-center relative z-20 hover:scale-[1.1] transition-all max-[768px]:w-full max-[768px]:flex max-[768px]:text-left max-[768px]:items-center max-[768px]:gap-6 timeline-step" id="step-join">
+          <div class="w-[90px] h-[90px] rounded-full bg-bg-primary border-[3px] border-border-color flex items-center justify-center mx-auto mb-6 transition-all duration-300 text-text-muted shadow-glass-shadow max-[768px]:m-0 max-[768px]:shrink-0 step-number-container">
+            <span class="text-[1.8rem] font-[700] font-heading step-number">01</span>
           </div>
-          <h3 class="step-title">Customer Joins Queue</h3>
-          <p class="step-desc">Scan QR codes at lobby or pre-book ticket online on smartphone.</p>
+          <div>
+            <h3 class="text-[1.15rem] mb-2 font-bold step-title">Customer Joins Queue</h3>
+            <p class="text-[0.9rem] text-text-secondary px-2 max-[768px]:p-0 step-desc">Scan QR codes at lobby or pre-book ticket online on smartphone.</p>
+          </div>
         </div>
 
         <!-- Step 2 -->
-        <div class="timeline-step" id="step-ticket">
-          <div class="step-number-container">
-            <span class="step-number">02</span>
+        <div class="w-[22%] text-center relative z-20 hover:scale-[1.1] transition-all max-[768px]:w-full max-[768px]:flex max-[768px]:text-left max-[768px]:items-center max-[768px]:gap-6 timeline-step" id="step-ticket">
+          <div class="w-[90px] h-[90px] rounded-full bg-bg-primary border-[3px] border-border-color flex items-center justify-center mx-auto mb-6 transition-all duration-300 text-text-muted shadow-glass-shadow max-[768px]:m-0 max-[768px]:shrink-0 step-number-container">
+            <span class="text-[1.8rem] font-[700] font-heading step-number">02</span>
           </div>
-          <h3 class="step-title">Get Digital Token</h3>
-          <p class="step-desc">Receives SMS token verification containing estimated counter wait time.</p>
+          <div>
+            <h3 class="text-[1.15rem] mb-2 font-bold step-title">Get Digital Token</h3>
+            <p class="text-[0.9rem] text-text-secondary px-2 max-[768px]:p-0 step-desc">Receives SMS token verification containing estimated counter wait time.</p>
+          </div>
         </div>
 
         <!-- Step 3 -->
-        <div class="timeline-step" id="step-allocation">
-          <div class="step-number-container">
-            <span class="step-number">03</span>
+        <div class="w-[22%] text-center relative z-20 hover:scale-[1.1] transition-all max-[768px]:w-full max-[768px]:flex max-[768px]:text-left max-[768px]:items-center max-[768px]:gap-6 timeline-step" id="step-allocation">
+          <div class="w-[90px] h-[90px] rounded-full bg-bg-primary border-[3px] border-border-color flex items-center justify-center mx-auto mb-6 transition-all duration-300 text-text-muted shadow-glass-shadow max-[768px]:m-0 max-[768px]:shrink-0 step-number-container">
+            <span class="text-[1.8rem] font-[700] font-heading step-number">03</span>
           </div>
-          <h3 class="step-title">Smart Allocation</h3>
-          <p class="step-desc">Algorithm assigns customer to appropriate open counter agent.</p>
+          <div>
+            <h3 class="text-[1.15rem] mb-2 font-bold step-title">Smart Allocation</h3>
+            <p class="text-[0.9rem] text-text-secondary px-2 max-[768px]:p-0 step-desc">Algorithm assigns customer to appropriate open counter agent.</p>
+          </div>
         </div>
 
         <!-- Step 4 -->
-        <div class="timeline-step" id="step-notify">
-          <div class="step-number-container">
-            <span class="step-number">04</span>
+        <div class="w-[22%] text-center relative z-20 hover:scale-[1.1] transition-all max-[768px]:w-full max-[768px]:flex max-[768px]:text-left max-[768px]:items-center max-[768px]:gap-6 timeline-step" id="step-notify">
+          <div class="w-[90px] h-[90px] rounded-full bg-bg-primary border-[3px] border-border-color flex items-center justify-center mx-auto mb-6 transition-all duration-300 text-text-muted shadow-glass-shadow max-[768px]:m-0 max-[768px]:shrink-0 step-number-container">
+            <span class="text-[1.8rem] font-[700] font-heading step-number">04</span>
           </div>
-          <h3 class="step-title">Receive Notification</h3>
-          <p class="step-desc">Phone buzzes to invite customer to approach counter window immediately.</p>
+          <div>
+            <h3 class="text-[1.15rem] mb-2 font-bold step-title">Receive Notification</h3>
+            <p class="text-[0.9rem] text-text-secondary px-2 max-[768px]:p-0 step-desc">Phone buzzes to invite customer to approach counter window immediately.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- INTERACTIVE SIMULATION DASHBOARD PREVIEW -->
-  <!-- CUSTOM TOGGLE CSS FOR SLIDER -->
-  <style>
-    input:checked + .slider-toggle-btn {
-      background-color: var(--primary);
-    }
-    input:checked + .slider-toggle-btn:before {
-      transform: translateX(24px);
-    }
-    .slider-toggle-btn:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      border-radius: 50%;
-      transition: 0.3s;
-    }
-  </style>
-
   <!-- INDUSTRIES WE SERVE -->
-  <section class="section" id="industries">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Versatile Deployments</span>
-        <h2 class="section-title">Industries We Serve</h2>
-        <p class="section-subtitle">Tailored flow-management systems deployed across major institutions globally.</p>
+  <section class="py-[100px] px-0 relative" id="industries">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
+      <div class="text-center max-w-[700px] mx-auto mb-[60px] reveal">
+        <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase mb-3">Versatile Deployments</span>
+        <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25] mb-4">Industries We Serve</h2>
+        <p class="text-text-secondary text-[1.125rem]">Tailored flow-management systems deployed across major institutions globally.</p>
       </div>
 
-      <div class="grid grid-3 industries-grid reveal">
+      <div class="grid grid-cols-3 gap-8 max-[1024px]:grid-cols-2 max-[580px]:grid-cols-1 reveal">
         <!-- Industry 1 -->
-        <div class="industry-card" id="ind-hospitals">
-          <div class="industry-icon">
+        <div class="bg-bg-primary border border-border-color rounded-2xl p-10 py-[40px] px-[32px] transition-all duration-300 cursor-pointer hover:border-primary hover:shadow-card-shadow hover:-translate-y-1 industry-card" id="ind-hospitals">
+          <div class="w-[54px] h-[54px] rounded-xl bg-primary-glow flex items-center justify-center text-primary mb-6 industry-icon">
             <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/></svg>
           </div>
-          <h3>Hospitals & Clinics</h3>
-          <p>Integrate triaging algorithms with waiting lists. Direct emergency cases immediately and update patient statuses on wall-mounted screens.</p>
-          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+          <h3 class="text-[1.35rem] mb-3 font-bold">Hospitals & Clinics</h3>
+          <p class="text-text-secondary text-[0.95rem] mb-5">Integrate triaging algorithms with waiting lists. Direct emergency cases immediately and update patient statuses on wall-mounted screens.</p>
+          <a href="#" class="font-[600] text-[0.9rem] text-primary inline-flex items-center gap-1 hover:text-primary-hover industry-link">Learn More <svg viewBox="0 0 24 24" class="w-4 h-4 transition-transform duration-200"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
         </div>
 
         <!-- Industry 2 -->
-        <div class="industry-card" id="ind-banks">
-          <div class="industry-icon">
+        <div class="bg-bg-primary border border-border-color rounded-2xl p-10 py-[40px] px-[32px] transition-all duration-300 cursor-pointer hover:border-primary hover:shadow-card-shadow hover:-translate-y-1 industry-card" id="ind-banks">
+          <div class="w-[54px] h-[54px] rounded-xl bg-primary-glow flex items-center justify-center text-primary mb-6 industry-icon">
             <svg viewBox="0 0 24 24"><path d="M11.5 1L2 6v2h19V6L11.5 1zM2 22h19v-3H2v3zm4-12v7h3v-7H6zm6 0v7h3v-7h-3zm6 0v7h3v-7h-3z"/></svg>
           </div>
-          <h3>Banks & Credit Unions</h3>
-          <p>Secure authentication tokens for transactions. Routes premium business clientele automatically to specialized branch relationship staff.</p>
-          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+          <h3 class="text-[1.35rem] mb-3 font-bold">Banks & Credit Unions</h3>
+          <p class="text-text-secondary text-[0.95rem] mb-5">Secure authentication tokens for transactions. Routes premium business clientele automatically to specialized branch relationship staff.</p>
+          <a href="#" class="font-[600] text-[0.9rem] text-primary inline-flex items-center gap-1 hover:text-primary-hover industry-link">Learn More <svg viewBox="0 0 24 24" class="w-4 h-4 transition-transform duration-200"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
         </div>
 
         <!-- Industry 3 -->
-        <div class="industry-card" id="ind-gov">
-          <div class="industry-icon">
+        <div class="bg-bg-primary border border-border-color rounded-2xl p-10 py-[40px] px-[32px] transition-all duration-300 cursor-pointer hover:border-primary hover:shadow-card-shadow hover:-translate-y-1 industry-card" id="ind-gov">
+          <div class="w-[54px] h-[54px] rounded-xl bg-primary-glow flex items-center justify-center text-primary mb-6 industry-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
           </div>
-          <h3>Government Offices</h3>
-          <p>Reduce administrative wait times. Provide clear notifications for civic documents, license renewals, and passport processing.</p>
-          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+          <h3 class="text-[1.35rem] mb-3 font-bold">Government Offices</h3>
+          <p class="text-text-secondary text-[0.95rem] mb-5">Reduce administrative wait times. Provide clear notifications for civic documents, license renewals, and passport processing.</p>
+          <a href="#" class="font-[600] text-[0.9rem] text-primary inline-flex items-center gap-1 hover:text-primary-hover industry-link">Learn More <svg viewBox="0 0 24 24" class="w-4 h-4 transition-transform duration-200"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
         </div>
 
         <!-- Industry 4 -->
-        <div class="industry-card" id="ind-uni">
-          <div class="industry-icon">
+        <div class="bg-bg-primary border border-border-color rounded-2xl p-10 py-[40px] px-[32px] transition-all duration-300 cursor-pointer hover:border-primary hover:shadow-card-shadow hover:-translate-y-1 industry-card" id="ind-uni">
+          <div class="w-[54px] h-[54px] rounded-xl bg-primary-glow flex items-center justify-center text-primary mb-6 industry-icon">
             <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.89 12.55L12 15.89l6.11-3.34c.66-.36 1.89-.36 2.55 0L22 13.2V19c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-5.8l1.34-.65c.66-.36 1.89-.36 2.55 0z"/></svg>
           </div>
-          <h3>Universities & Colleges</h3>
-          <p>Scale registrar and enrollment desks. Allow students to join virtual counselor lines remotely during enrollment periods.</p>
-          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+          <h3 class="text-[1.35rem] mb-3 font-bold">Universities & Colleges</h3>
+          <p class="text-text-secondary text-[0.95rem] mb-5">Scale registrar and enrollment desks. Allow students to join virtual counselor lines remotely during enrollment periods.</p>
+          <a href="#" class="font-[600] text-[0.9rem] text-primary inline-flex items-center gap-1 hover:text-primary-hover industry-link">Learn More <svg viewBox="0 0 24 24" class="w-4 h-4 transition-transform duration-200"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
         </div>
 
         <!-- Industry 5 -->
-        <div class="industry-card" id="ind-retail">
-          <div class="industry-icon">
+        <div class="bg-bg-primary border border-border-color rounded-2xl p-10 py-[40px] px-[32px] transition-all duration-300 cursor-pointer hover:border-primary hover:shadow-card-shadow hover:-translate-y-1 industry-card" id="ind-retail">
+          <div class="w-[54px] h-[54px] rounded-xl bg-primary-glow flex items-center justify-center text-primary mb-6 industry-icon">
             <svg viewBox="0 0 24 24"><path d="M17.21 9l-4.38-6.56c-.18-.28-.5-.44-.83-.44-.33 0-.65.16-.83.44L6.79 9H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h1v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8h1c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-4.79zM9 9l3-4.5L15 9H9zm10 11H5v-8h14v8z"/></svg>
           </div>
-          <h3>Retail Stores</h3>
-          <p>Replace checkout cluster lines. Alert customers when their cashier counters open, promoting in-store shopping in other aisles.</p>
-          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+          <h3 class="text-[1.35rem] mb-3 font-bold">Retail Stores</h3>
+          <p class="text-text-secondary text-[0.95rem] mb-5">Replace checkout cluster lines. Alert customers when their cashier counters open, promoting in-store shopping in other aisles.</p>
+          <a href="#" class="font-[600] text-[0.9rem] text-primary inline-flex items-center gap-1 hover:text-primary-hover industry-link">Learn More <svg viewBox="0 0 24 24" class="w-4 h-4 transition-transform duration-200"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
         </div>
 
         <!-- Industry 6 -->
-        <div class="industry-card" id="ind-service">
-          <div class="industry-icon">
+        <div class="bg-bg-primary border border-border-color rounded-2xl p-10 py-[40px] px-[32px] transition-all duration-300 cursor-pointer hover:border-primary hover:shadow-card-shadow hover:-translate-y-1 industry-card" id="ind-service">
+          <div class="w-[54px] h-[54px] rounded-xl bg-primary-glow flex items-center justify-center text-primary mb-6 industry-icon">
             <svg viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
           </div>
-          <h3>Service Centers</h3>
-          <p>Coordinate parts, diagnostic desks, and technical representatives automatically based on vehicle models or appliance queries.</p>
-          <a href="#" class="industry-link">Learn More <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
+          <h3 class="text-[1.35rem] mb-3 font-bold">Service Centers</h3>
+          <p class="text-text-secondary text-[0.95rem] mb-5">Coordinate parts, diagnostic desks, and technical representatives automatically based on vehicle models or appliance queries.</p>
+          <a href="#" class="font-[600] text-[0.9rem] text-primary inline-flex items-center gap-1 hover:text-primary-hover industry-link">Learn More <svg viewBox="0 0 24 24" class="w-4 h-4 transition-transform duration-200"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- TESTIMONIALS SECTION -->
-  <section class="section testimonials" id="testimonials">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Client Reviews</span>
-        <h2 class="section-title">What operations leaders say about us</h2>
-        <p class="section-subtitle">Read how our service coordination algorithms helped companies boost customer scores and efficiency.</p>
+  <section class="py-[100px] px-0 relative bg-bg-secondary border-t border-b border-border-color" id="testimonials">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
+      <div class="text-center max-w-[700px] mx-auto mb-[60px] reveal">
+        <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase mb-3">Client Reviews</span>
+        <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25] mb-4">What operations leaders say about us</h2>
+        <p class="text-text-secondary text-[1.125rem]">Read how our service coordination algorithms helped companies boost customer scores and efficiency.</p>
       </div>
 
-      <div class="testimonials-slider-container reveal" id="testimonial-slider">
-        <div class="testimonials-track" id="testimonials-track">
+      <div class="overflow-hidden relative max-w-[900px] mx-auto reveal testimonials-slider-container" id="testimonial-slider">
+        <div class="flex transition-transform duration-500 testimonials-track" id="testimonials-track">
           <!-- Slide 1 -->
-          <div class="testimonial-slide">
-            <div class="testimonial-card">
-              <div class="rating-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <div class="min-w-full px-4 testimonial-slide">
+            <div class="bg-bg-primary border border-border-color rounded-[20px] p-12 relative shadow-card-shadow after:content-['\"'] after:absolute after:top-4 after:right-8 after:text-[8rem] after:text-border-color after:font-serif after:leading-none after:opacity-30 testimonial-card">
+              <div class="text-[#F59E0B] flex gap-1 mb-6 rating-stars">
+                <i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i>
               </div>
-              <p class="testimonial-quote">
+              <p class="text-[1.25rem] text-text-primary mb-8 leading-[1.6] italic testimonial-quote">
                 "Smart Queue completely reformed our patient triage. Wait times dropped by 55% in the first month, and lobby overcrowding is entirely gone."
               </p>
-              <div class="testimonial-author">
-                <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200');"></div>
+              <div class="flex items-center gap-4 testimonial-author">
+                <div class="w-14 h-14 rounded-full bg-cover bg-center border-2 border-primary bg-bg-tertiary author-img" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200');"></div>
                 <div>
-                  <h4 class="author-name">Dr. Sarah Bhan</h4>
-                  <p class="author-role">Operations Chief, Metro Health Clinic</p>
+                  <h4 class="font-[700] text-[1.1rem] author-name">Dr. Sarah Bhan</h4>
+                  <p class="text-[0.85rem] text-text-muted author-role">Operations Chief, Metro Health Clinic</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Slide 2 -->
-          <div class="testimonial-slide">
-            <div class="testimonial-card">
-              <div class="rating-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <div class="min-w-full px-4 testimonial-slide">
+            <div class="bg-bg-primary border border-border-color rounded-[20px] p-12 relative shadow-card-shadow after:content-['\"'] after:absolute after:top-4 after:right-8 after:text-[8rem] after:text-border-color after:font-serif after:leading-none after:opacity-30 testimonial-card">
+              <div class="text-[#F59E0B] flex gap-1 mb-6 rating-stars">
+                <i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i>
               </div>
-              <p class="testimonial-quote">
+              <p class="text-[1.25rem] text-text-primary mb-8 leading-[1.6] italic testimonial-quote">
                 "Our banking lobbies are serene now. Customers wait remotely, checking queue position on their phones. Branch operations have never been this smooth."
               </p>
-              <div class="testimonial-author">
-                <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200');"></div>
+              <div class="flex items-center gap-4 testimonial-author">
+                <div class="w-14 h-14 rounded-full bg-cover bg-center border-2 border-primary bg-bg-tertiary author-img" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200');"></div>
                 <div>
-                  <h4 class="author-name">Marcus Vance</h4>
-                  <p class="author-role">Director of Branch Operations, Apex Trust Bank</p>
+                  <h4 class="font-[700] text-[1.1rem] author-name">Marcus Vance</h4>
+                  <p class="text-[0.85rem] text-text-muted author-role">Director of Branch Operations, Apex Trust Bank</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Slide 3 -->
-          <div class="testimonial-slide">
-            <div class="testimonial-card">
-              <div class="rating-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <div class="min-w-full px-4 testimonial-slide">
+            <div class="bg-bg-primary border border-border-color rounded-[20px] p-12 relative shadow-card-shadow after:content-['\"'] after:absolute after:top-4 after:right-8 after:text-[8rem] after:text-border-color after:font-serif after:leading-none after:opacity-30 testimonial-card">
+              <div class="text-[#F59E0B] flex gap-1 mb-6 rating-stars">
+                <i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i><i class="fas fa-star w-5 h-5 fill-current"></i>
               </div>
-              <p class="testimonial-quote">
+              <p class="text-[1.25rem] text-text-primary mb-8 leading-[1.6] italic testimonial-quote">
                 "The analytics alone are worth the investment. We can predict peak congestion hours and schedule our staff accordingly, cutting down operational cost by 25%."
               </p>
-              <div class="testimonial-author">
-                <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200');"></div>
+              <div class="flex items-center gap-4 testimonial-author">
+                <div class="w-14 h-14 rounded-full bg-cover bg-center border-2 border-primary bg-bg-tertiary author-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200');"></div>
                 <div>
-                  <h4 class="author-name">Amanda Miller</h4>
-                  <p class="author-role">Service Experience Manager, City Office</p>
+                  <h4 class="font-[700] text-[1.1rem] author-name">Amanda Miller</h4>
+                  <p class="text-[0.85rem] text-text-muted author-role">Service Experience Manager, City Office</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="testimonials-controls">
-          <button class="slider-nav-btn prev" aria-label="Previous review"><svg viewBox="0 0 24 24"><path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.42z"/></svg></button>
-          <div class="slider-dots"></div>
-          <button class="slider-nav-btn next" aria-label="Next review"><svg viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg></button>
+        <div class="flex justify-center items-center gap-6 mt-10 testimonials-controls">
+          <button class="w-12 h-12 rounded-full border border-border-color bg-bg-primary cursor-pointer flex items-center justify-center transition-all duration-200 hover:bg-primary hover:text-white hover:border-primary slider-nav-btn prev" aria-label="Previous review"><svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current stroke-2"><path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.42z"/></svg></button>
+          <div class="flex gap-2 slider-dots"></div>
+          <button class="w-12 h-12 rounded-full border border-border-color bg-bg-primary cursor-pointer flex items-center justify-center transition-all duration-200 hover:bg-primary hover:text-white hover:border-primary slider-nav-btn next" aria-label="Next review"><svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current stroke-2"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg></button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PRICING SECTION -->
-  <section class="section" id="pricing">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Flexible Subscriptions</span>
-        <h2 class="section-title">Transparent pricing for organizations of all sizes</h2>
-        <p class="section-subtitle">Select the subscription model that scales with your offices. Get started with no commitment.</p>
+  <section class="py-[100px] px-0 relative" id="pricing">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
+      <div class="text-center max-w-[700px] mx-auto mb-[60px] reveal">
+        <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase mb-3">Flexible Subscriptions</span>
+        <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25] mb-4">Transparent pricing for organizations of all sizes</h2>
+        <p class="text-text-secondary text-[1.125rem]">Select the subscription model that scales with your offices. Get started with no commitment.</p>
       </div>
 
-      <div class="pricing-toggle-container reveal">
-        <span class="pricing-label active" id="label-monthly">Monthly Billing</span>
-        <div class="toggle-switch-wrapper" id="pricing-toggle" role="switch" aria-checked="false" aria-label="Toggle annual pricing discount">
-          <div class="toggle-switch-circle"></div>
+      <div class="flex items-center justify-center gap-4 mb-12 reveal pricing-toggle-container">
+        <span class="font-[600] text-[1rem] text-text-secondary [&.active]:text-text-primary active" id="label-monthly">Monthly Billing</span>
+        <div class="relative w-[60px] h-8 bg-bg-tertiary border border-border-color rounded-[30px] cursor-pointer p-[3px] transition-colors duration-200 toggle-switch-wrapper" id="pricing-toggle" role="switch" aria-checked="false" aria-label="Toggle annual pricing discount">
+          <div class="w-6 h-6 rounded-full bg-primary transition-transform duration-200 [[role='switch'].yearly_&]:translate-x-7 toggle-switch-circle"></div>
         </div>
-        <span class="pricing-label" id="label-yearly">Yearly Billing <span class="pricing-badge">Save 20%</span></span>
+        <span class="font-[600] text-[1rem] text-text-secondary [&.active]:text-text-primary" id="label-yearly">Yearly Billing <span class="bg-accent-glow text-accent text-[0.75rem] font-[700] py-[2px] px-2 rounded-[10px] ml-2 pricing-badge">Save 20%</span></span>
       </div>
 
-      <div class="grid grid-3 pricing-grid reveal">
+      <div class="grid grid-cols-3 gap-8 items-stretch max-[1024px]:grid-cols-1 max-[1024px]:max-w-[500px] max-[1024px]:mx-auto reveal pricing-grid">
         <!-- Starter Plan -->
-        <div class="pricing-card" id="price-starter">
-          <h3 class="plan-name">Starter Plan</h3>
-          <p class="plan-desc">Best for single branch clinics and small customer desks.</p>
-          <div class="plan-price-box">
-            <span class="plan-currency">$</span>
-            <span class="plan-price">19</span>
-            <span class="plan-period">/month</span>
+        <div class="bg-bg-primary border border-border-color rounded-[20px] p-[48px_36px] flex flex-col relative transition-all duration-300 hover:-translate-y-2 hover:shadow-card-shadow pricing-card" id="price-starter">
+          <h3 class="text-[1.25rem] font-bold mb-3 plan-name">Starter Plan</h3>
+          <p class="text-[0.9rem] text-text-muted mb-8 plan-desc">Best for single branch clinics and small customer desks.</p>
+          <div class="mb-8 flex items-baseline gap-1 plan-price-box">
+            <span class="text-[1.5rem] font-bold plan-currency">$</span>
+            <span class="text-[3.5rem] font-[800] font-heading leading-none plan-price">19</span>
+            <span class="text-[0.9rem] text-text-muted plan-period">/month</span>
           </div>
-          <ul class="plan-features-list">
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 1 Location / Branch</li>
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Up to 3 Active Counters</li>
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Standard Web Tokens</li>
-            <li class="plan-feature-item disabled"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Predictive Live Analytics</li>
-            <li class="plan-feature-item disabled"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> SMS & WhatsApp Alerts</li>
+          <ul class="flex flex-col gap-4 mb-10 flex-1 plan-features-list">
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 1 Location / Branch</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Up to 3 Active Counters</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Standard Web Tokens</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item disabled text-text-muted line-through"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-text-muted shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Predictive Live Analytics</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item disabled text-text-muted line-through"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-text-muted shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> SMS & WhatsApp Alerts</li>
           </ul>
-          <button class="btn btn-secondary btn-signup" id="pricing-btn-starter">Get Started</button>
+          <button class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px] btn-signup" id="pricing-btn-starter">Get Started</button>
         </div>
 
         <!-- Pro Plan -->
-        <div class="pricing-card popular" id="price-pro">
-          <h3 class="plan-name">Professional Plan</h3>
-          <p class="plan-desc">Tailored for busy branch offices and corporate centers.</p>
-          <div class="plan-price-box">
-            <span class="plan-currency">$</span>
-            <span class="plan-price">49</span>
-            <span class="plan-period">/month</span>
+        <div class="bg-bg-primary border border-border-color rounded-[20px] p-[48px_36px] flex flex-col relative transition-all duration-300 hover:-translate-y-2 hover:shadow-card-shadow popular pricing-card [&.popular]:border-primary [&.popular]:shadow-[0_20px_40px_-10px_var(--primary-glow)] after:content-['Most_Popular'] after:absolute after:top-5 after:right-5 after:bg-primary after:text-white after:text-[0.75rem] after:font-[700] after:py-[4px] after:px-3 after:rounded-[20px] after:tracking-[0.05em] after:uppercase" id="price-pro">
+          <h3 class="text-[1.25rem] font-bold mb-3 plan-name">Professional Plan</h3>
+          <p class="text-[0.9rem] text-text-muted mb-8 plan-desc">Tailored for busy branch offices and corporate centers.</p>
+          <div class="mb-8 flex items-baseline gap-1 plan-price-box">
+            <span class="text-[1.5rem] font-bold plan-currency">$</span>
+            <span class="text-[3.5rem] font-[800] font-heading leading-none plan-price">49</span>
+            <span class="text-[0.9rem] text-text-muted plan-period">/month</span>
           </div>
-          <ul class="plan-features-list">
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Up to 5 Branches</li>
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Up to 10 Counters per branch</li>
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> SMS & WhatsApp Token Alerts</li>
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Interactive Analytics Panel</li>
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Priority Email & Phone Help</li>
+          <ul class="flex flex-col gap-4 mb-10 flex-1 plan-features-list">
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Up to 5 Branches</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Up to 10 Counters per branch</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> SMS & WhatsApp Token Alerts</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Interactive Analytics Panel</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Priority Email & Phone Help</li>
           </ul>
-          <button class="btn btn-primary btn-signup" id="pricing-btn-pro">Get Started</button>
+          <button class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px] w-full btn-signup" id="pricing-btn-pro">Get Started</button>
         </div>
 
         <!-- Enterprise Plan -->
-        <div class="pricing-card" id="price-enterprise">
-          <h3 class="plan-name">Enterprise Plan</h3>
-          <p class="plan-desc">For large hospitals, banks, and government institutions.</p>
-          <div class="plan-price-box">
-            <span class="plan-currency">$</span>
-            <span class="plan-price">129</span>
-            <span class="plan-period">/month</span>
+        <div class="bg-bg-primary border border-border-color rounded-[20px] p-[48px_36px] flex flex-col relative transition-all duration-300 hover:-translate-y-2 hover:shadow-card-shadow pricing-card" id="price-enterprise">
+          <h3 class="text-[1.25rem] font-bold mb-3 plan-name">Enterprise Plan</h3>
+          <p class="text-[0.9rem] text-text-muted mb-8 plan-desc">For large hospitals, banks, and government institutions.</p>
+          <div class="mb-8 flex items-baseline gap-1 plan-price-box">
+            <span class="text-[1.5rem] font-bold plan-currency">$</span>
+            <span class="text-[3.5rem] font-[800] font-heading leading-none plan-price">129</span>
+            <span class="text-[0.9rem] text-text-muted plan-period">/month</span>
           </div>
-          <ul class="plan-features-list">
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Unlimited Branches & Locations</li>
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Unlimited Active Counters</li>
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Custom Branding & Domain API</li>
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Dedicated 24/7 Account Manager</li>
-            <li class="plan-feature-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Custom SLA and On-Prem Option</li>
+          <ul class="flex flex-col gap-4 mb-10 flex-1 plan-features-list">
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Unlimited Branches & Locations</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Unlimited Active Counters</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Custom Branding & Domain API</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Dedicated 24/7 Account Manager</li>
+            <li class="flex items-center gap-3 text-[0.95rem] plan-feature-item"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px] text-accent shrink-0" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Custom SLA and On-Prem Option</li>
           </ul>
-          <button class="btn btn-secondary btn-demo" id="pricing-btn-enterprise">Contact Sales</button>
+          <button class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px] w-full btn-demo" id="pricing-btn-enterprise">Contact Sales</button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ SECTION -->
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Common Inquiries</span>
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Quick answers to help you understand our setup, security standards, and support protocols.</p>
+  <section class="py-[100px] px-0 relative" id="faq">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
+      <div class="text-center max-w-[700px] mx-auto mb-[60px] reveal">
+        <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase mb-3">Common Inquiries</span>
+        <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25] mb-4">Frequently Asked Questions</h2>
+        <p class="text-text-secondary text-[1.125rem]">Quick answers to help you understand our setup, security standards, and support protocols.</p>
       </div>
 
-      <div class="faq-container reveal">
+      <div class="max-w-[800px] mx-auto reveal faq-container">
         <!-- FAQ 1 -->
-        <div class="faq-item" id="faq-setup">
-          <div class="faq-header">
-            <span class="faq-question">How simple is the initial setup?</span>
-            <div class="faq-icon-box"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
+        <div class="border-b border-border-color py-6 [&:first-child]:border-t [&:first-child]:border-border-color faq-item" id="faq-setup">
+          <div class="flex items-center justify-between cursor-pointer select-none faq-header">
+            <span class="text-[1.2rem] font-[600] faq-question">How simple is the initial setup?</span>
+            <div class="w-7 h-7 rounded-full bg-bg-tertiary flex items-center justify-center text-text-secondary transition-all duration-200 faq-icon-box"><svg viewBox="0 0 24 24" class="w-3.5 h-3.5 fill-none stroke-current stroke-[2.5] transition-transform duration-300"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
           </div>
-          <div class="faq-answer">
+          <div class="max-h-0 overflow-hidden transition-[max-height,margin] duration-300 ease-out text-text-secondary text-[1rem] faq-answer">
             <p>Setting up is exceptionally straightforward. You can initialize your digital branches in our portal in under 15 minutes, download and print your custom QR codes, and have customers joining lines immediately. No technical expertise or physical terminal changes are required.</p>
           </div>
         </div>
 
         <!-- FAQ 2 -->
-        <div class="faq-item" id="faq-scale">
-          <div class="faq-header">
-            <span class="faq-question">Can the system scale to support hundreds of counters?</span>
-            <div class="faq-icon-box"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
+        <div class="border-b border-border-color py-6 [&:first-child]:border-t [&:first-child]:border-border-color faq-item" id="faq-scale">
+          <div class="flex items-center justify-between cursor-pointer select-none faq-header">
+            <span class="text-[1.2rem] font-[600] faq-question">Can the system scale to support hundreds of counters?</span>
+            <div class="w-7 h-7 rounded-full bg-bg-tertiary flex items-center justify-center text-text-secondary transition-all duration-200 faq-icon-box"><svg viewBox="0 0 24 24" class="w-3.5 h-3.5 fill-none stroke-current stroke-[2.5] transition-transform duration-300"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
           </div>
-          <div class="faq-answer">
+          <div class="max-h-0 overflow-hidden transition-[max-height,margin] duration-300 ease-out text-text-secondary text-[1rem] faq-answer">
             <p>Yes, absolutely. Our system is built on resilient, high-capacity cloud architecture. We actively support large university complexes, hospital clinics, and banking branches with hundreds of agents and thousands of daily tokens without any performance degradation.</p>
           </div>
         </div>
 
         <!-- FAQ 3 -->
-        <div class="faq-item" id="faq-integrations">
-          <div class="faq-header">
-            <span class="faq-question">Does this integrate with custom CRM and scheduling systems?</span>
-            <div class="faq-icon-box"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
+        <div class="border-b border-border-color py-6 [&:first-child]:border-t [&:first-child]:border-border-color faq-item" id="faq-integrations">
+          <div class="flex items-center justify-between cursor-pointer select-none faq-header">
+            <span class="text-[1.2rem] font-[600] faq-question">Does this integrate with custom CRM and scheduling systems?</span>
+            <div class="w-7 h-7 rounded-full bg-bg-tertiary flex items-center justify-center text-text-secondary transition-all duration-200 faq-icon-box"><svg viewBox="0 0 24 24" class="w-3.5 h-3.5 fill-none stroke-current stroke-[2.5] transition-transform duration-300"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
           </div>
-          <div class="faq-answer">
+          <div class="max-h-0 overflow-hidden transition-[max-height,margin] duration-300 ease-out text-text-secondary text-[1rem] faq-answer">
             <p>Our Enterprise Plan offers access to comprehensive REST APIs and Webhook pipelines. This lets your engineering team sync real-time queue states and customer feedback directly with CRM software like Salesforce, HubSpot, or internal patient portals.</p>
           </div>
         </div>
 
         <!-- FAQ 4 -->
-        <div class="faq-item" id="faq-security">
-          <div class="faq-header">
-            <span class="faq-question">What data security measures do you employ?</span>
-            <div class="faq-icon-box"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
+        <div class="border-b border-border-color py-6 [&:first-child]:border-t [&:first-child]:border-border-color faq-item" id="faq-security">
+          <div class="flex items-center justify-between cursor-pointer select-none faq-header">
+            <span class="text-[1.2rem] font-[600] faq-question">What data security measures do you employ?</span>
+            <div class="w-7 h-7 rounded-full bg-bg-tertiary flex items-center justify-center text-text-secondary transition-all duration-200 faq-icon-box"><svg viewBox="0 0 24 24" class="w-3.5 h-3.5 fill-none stroke-current stroke-[2.5] transition-transform duration-300"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></div>
           </div>
-          <div class="faq-answer">
+          <div class="max-h-0 overflow-hidden transition-[max-height,margin] duration-300 ease-out text-text-secondary text-[1rem] faq-answer">
             <p>Data security is our top priority. We use HTTPS TLS 1.3 encryption for all data transiting our network, and AES-256 databases. We are fully GDPR and HIPAA compliant, ensuring that any patient queue entries and customer data logs are completely private and masked.</p>
           </div>
         </div>
@@ -648,160 +608,156 @@
     </div>
   </section>
 
-
-
-   <section class="section" id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Get In Touch</span>
-        <h2 class="section-title">We'd love to help you build smooth queues</h2>
-        <p class="section-subtitle">Reach out to our customer experience experts for a custom consultation or pricing quote.</p>
+  <!-- CONTACT SECTION -->
+  <section class="py-[100px] px-0 relative" id="contact">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
+      <div class="text-center max-w-[700px] mx-auto mb-[60px] reveal">
+        <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase mb-3">Get In Touch</span>
+        <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25] mb-4">We'd love to help you build smooth queues</h2>
+        <p class="text-text-secondary text-[1.125rem]">Reach out to our customer experience experts for a custom consultation or pricing quote.</p>
       </div>
 
-      <div class="grid grid-2 contact-grid reveal">
+      <div class="grid grid-cols-[1.1fr_1.9fr] gap-8 max-[1024px]:grid-cols-1 reveal contact-grid">
         <!-- Contact Information Panel -->
-        <div class="contact-info-panel" id="contact-info">
+        <div class="bg-secondary text-white rounded-[20px] p-12 py-[48px] px-[40px] flex flex-col justify-between relative overflow-hidden after:content-[''] after:absolute after:bottom-[-50px] after:right-[-50px] after:w-[200px] after:h-[200px] after:bg-primary-glow after:opacity-50 after:rounded-full after:blur-[50px] contact-info-panel" id="contact-info">
           <div>
-            <h3>Contact Information</h3>
-            <p>Have questions about plans or custom branch needs? Fill out our form or connect directly.</p>
+            <h3 class="text-white text-[1.75rem] font-bold mb-3">Contact Information</h3>
+            <p class="text-[0.95rem] text-[rgba(255,255,255,0.7)] mb-10">Have questions about plans or custom branch needs? Fill out our form or connect directly.</p>
             
-            <div class="contact-details">
+            <div class="flex flex-col gap-6 mb-12 contact-details">
               <!-- Detail 1 -->
-              <div class="contact-detail-row">
-                <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+              <div class="flex items-center gap-4 contact-detail-row">
+                <div class="w-11 h-11 rounded-lg bg-[rgba(255,255,255,0.1)] flex items-center justify-center text-primary shrink-0 contact-detail-icon"><svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current stroke-2"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
                 <div class="contact-detail-text">
-                  <h4>Email Us</h4>
-                  <p>av6821246@gmail.com</p>
+                  <h4 class="text-white text-[0.85rem] font-[500] uppercase tracking-[0.05em]">Email Us</h4>
+                  <p class="text-white text-[1rem] m-0">av6821246@gmail.com</p>
                 </div>
               </div>
 
               <!-- Detail 2 -->
-              <div class="contact-detail-row">
-                <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+              <div class="flex items-center gap-4 contact-detail-row">
+                <div class="w-11 h-11 rounded-lg bg-[rgba(255,255,255,0.1)] flex items-center justify-center text-primary shrink-0 contact-detail-icon"><svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current stroke-2"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
                 <div class="contact-detail-text">
-                  <h4>Call Us</h4>
-                  <p>7052501218</p>
+                  <h4 class="text-white text-[0.85rem] font-[500] uppercase tracking-[0.05em]">Call Us</h4>
+                  <p class="text-white text-[1rem] m-0">7052501218</p>
                 </div>
               </div>
 
               <!-- Detail 3 -->
-              <div class="contact-detail-row">
-                <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+              <div class="flex items-center gap-4 contact-detail-row">
+                <div class="w-11 h-11 rounded-lg bg-[rgba(255,255,255,0.1)] flex items-center justify-center text-primary shrink-0 contact-detail-icon"><svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current stroke-2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
                 <div class="contact-detail-text">
-                  <h4>Our HeadQuarters</h4>
-                  <p>Kanpur Nagar,Uttar Pradesh</p>
+                  <h4 class="text-white text-[0.85rem] font-[500] uppercase tracking-[0.05em]">Our HeadQuarters</h4>
+                  <p class="text-white text-[1rem] m-0">Kanpur Nagar,Uttar Pradesh</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="contact-socials">
-            <a href="#" class="contact-social-btn" aria-label="Smart Queue LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="contact-social-btn" aria-label="Smart Queue GitHub"><i class="fab fa-github"></i></a>
+          <div class="flex gap-4 contact-socials">
+            <a href="#" class="w-10 h-10 rounded-lg bg-[rgba(255,255,255,0.1)] flex items-center justify-center text-white transition-all duration-200 hover:bg-primary hover:-translate-y-0.5 contact-social-btn" aria-label="Smart Queue LinkedIn"><i class="fab fa-linkedin-in text-white"></i></a>
+            <a href="#" class="w-10 h-10 rounded-lg bg-[rgba(255,255,255,0.1)] flex items-center justify-center text-white transition-all duration-200 hover:bg-primary hover:-translate-y-0.5 contact-social-btn" aria-label="Smart Queue GitHub"><i class="fab fa-github text-white"></i></a>
           </div>
         </div>
 
         <!-- Contact Form Card -->
-        <div class="contact-form-card" id="contact-form-card">
+        <div class="bg-bg-primary border border-border-color rounded-[20px] p-12 shadow-card-shadow contact-form-card" id="contact-form-card">
           <form id="contact-form" method="POST" action="/contact">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="form-name">Full Name</label>
-                <input type="text" name="fullname" id="form-name" class="form-input" placeholder="Rohan Verma">
+            <div class="grid grid-cols-2 gap-6 mb-6 max-[768px]:grid-cols-1 form-row">
+              <div class="mb-6 form-group">
+                <label class="block text-[0.85rem] font-[600] mb-2 form-label" for="form-name">Full Name</label>
+                <input type="text" name="fullname" id="form-name" class="w-full p-[14px_18px] bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-xl transition-all duration-300 outline-none focus:border-primary focus:shadow-[0_0_0_4px_rgba(59,130,246,0.15)] form-input" placeholder="Rohan Verma">
               </div>
-              <div class="form-group">
-                <label class="form-label" for="form-email">Email Address</label>
-                <input type="email" name="email" id="form-email" class="form-input" placeholder="rohan@company.com">
+              <div class="mb-6 form-group">
+                <label class="block text-[0.85rem] font-[600] mb-2 form-label" for="form-email">Email Address</label>
+                <input type="email" name="email" id="form-email" class="w-full p-[14px_18px] bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-xl transition-all duration-300 outline-none focus:border-primary focus:shadow-[0_0_0_4px_rgba(59,130,246,0.15)] form-input" placeholder="rohan@company.com">
               </div>
             </div>
             
-           <div class="form-group">
-    <label class="form-label" for="form-subject">
-        Subject
-    </label>
+            <div class="mb-6 form-group">
+              <label class="block text-[0.85rem] font-[600] mb-2 form-label" for="form-subject">
+                Subject
+              </label>
 
-    <input
-        type="text"
-        id="form-subject"
-        name="subject"
-        class="form-input"
-        placeholder="Enter subject"
-        required
-    >
-</div>
-
-            <div class="form-group">
-              <label class="form-label" for="form-message">Message</label>
-              <textarea id="form-message" name="message" class="form-textarea" placeholder="Tell us about your branch wait times and operations..."></textarea>
+              <input
+                type="text"
+                id="form-subject"
+                name="subject"
+                class="w-full p-[14px_18px] bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-xl transition-all duration-300 outline-none focus:border-primary focus:shadow-[0_0_0_4px_rgba(59,130,246,0.15)] form-input"
+                placeholder="Enter subject"
+                required
+              >
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            <div class="mb-6 form-group">
+              <label class="block text-[0.85rem] font-[600] mb-2 form-label" for="form-message">Message</label>
+              <textarea id="form-message" name="message" class="w-full p-[14px_18px] bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-xl transition-all duration-300 outline-none focus:border-primary focus:shadow-[0_0_0_4px_rgba(59,130,246,0.15)] form-textarea resize-vertical min-h-[120px]" placeholder="Tell us about your branch wait times and operations..."></textarea>
+            </div>
+
+            <button type="submit" class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px]" style="width: 100%;">Send Message</button>
           </form>
-        </div>
-      </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="container grid footer-grid">
+  <footer class="bg-secondary text-[#F8FAFC] py-20 pb-10 border-t border-[rgba(255,255,255,0.05)] [[data-theme='dark']_&]:bg-[#05070A]">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px] grid grid-cols-[1.5fr_1fr_1fr_1.5fr] gap-8 mb-[60px] max-[1024px]:grid-cols-2 max-[1024px]:gap-12 max-[580px]:grid-cols-1 footer-grid">
       <div class="footer-brand" id="footer-about">
-        <a href="#" class="logo" style="color: #FFFFFF;">
-          <svg viewBox="0 0 24 24">
+        <a href="#" class="logo flex items-center gap-2 font-heading text-[1.35rem] font-[800]" style="color: #FFFFFF;">
+          <svg viewBox="0 0 24 24" class="fill-primary w-8 h-8">
             <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z" />
           </svg>
           SmartQueue
         </a>
-        <p>Digitizing queues, optimizing lobbies, and increasing staff efficiency since 2021.</p>
-        <p style="font-size: 0.8rem; color: #64748B;">© 2026 Smart Queue Inc. All rights reserved.</p>
-        <p style="font-size: 0.8rem; color: #64748B;">© 2026 Arpit Verma. All rights reserved.</p>
-        <p style="font-size: 0.8rem; color: #64748B;">© 2026 Rohan Verma. All rights reserved.</p>
+        <p class="text-[#94A3B8] text-[0.95rem] mt-4 mb-6">Digitizing queues, optimizing lobbies, and increasing staff efficiency since 2021.</p>
+        <p class="text-[0.8rem] color-[#64748B] text-slate-500">© 2026 Smart Queue Inc. All rights reserved.</p>
+        <p class="text-[0.8rem] color-[#64748B] text-slate-500">© 2026 Arpit Verma. All rights reserved.</p>
+        <p class="text-[0.8rem] color-[#64748B] text-slate-500">© 2026 Rohan Verma. All rights reserved.</p>
       </div>
 
       <div class="footer-links-col">
-        <h4 class="footer-title">Product</h4>
-        <ul class="footer-links">
-          <li><a href="#features" class="footer-link">Features</a></li>
-          <li><a href="#demo" class="footer-link">Live Demo</a></li>
-          <li><a href="#pricing" class="footer-link">Pricing Plans</a></li>
-          <li><a href="#faq" class="footer-link">FAQ Guide</a></li>
+        <h4 class="text-white text-[1rem] font-[600] uppercase tracking-[0.05em] mb-6 footer-title">Product</h4>
+        <ul class="flex flex-col gap-3 footer-links">
+          <li><a href="#features" class="text-[#94A3B8] text-[0.95rem] hover:text-primary transition-colors footer-link">Features</a></li>
+          <li><a href="#demo" class="text-[#94A3B8] text-[0.95rem] hover:text-primary transition-colors footer-link">Live Demo</a></li>
+          <li><a href="#pricing" class="text-[#94A3B8] text-[0.95rem] hover:text-primary transition-colors footer-link">Pricing Plans</a></li>
+          <li><a href="#faq" class="text-[#94A3B8] text-[0.95rem] hover:text-primary transition-colors footer-link">FAQ Guide</a></li>
         </ul>
       </div>
 
       <div class="footer-links-col">
-        <h4 class="footer-title">Company</h4>
-        <ul class="footer-links">
-          <li><a href="#" class="footer-link">About Us</a></li>
-          <li><a href="#" class="footer-link">Careers</a></li>
-          <li><a href="#" class="footer-link">Privacy Policy</a></li>
-          <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+        <h4 class="text-white text-[1rem] font-[600] uppercase tracking-[0.05em] mb-6 footer-title">Company</h4>
+        <ul class="flex flex-col gap-3 footer-links">
+          <li><a href="#" class="text-[#94A3B8] text-[0.95rem] hover:text-primary transition-colors footer-link">About Us</a></li>
+          <li><a href="#" class="text-[#94A3B8] text-[0.95rem] hover:text-primary transition-colors footer-link">Careers</a></li>
+          <li><a href="#" class="text-[#94A3B8] text-[0.95rem] hover:text-primary transition-colors footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="text-[#94A3B8] text-[0.95rem] hover:text-primary transition-colors footer-link">Terms & Conditions</a></li>
         </ul>
       </div>
 
       <div class="footer-newsletter" id="footer-newsletter">
-        <h4 class="footer-title">Subscribe to Newsletter</h4>
-        <p>Receive queue strategy tips, case studies, and feature updates directly in your inbox.</p>
-        <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!'); this.reset();">
-          <input type="email" class="newsletter-input" placeholder="av6821246@gmail.com" required aria-label="Newsletter email address">
-          <button type="submit" class="btn btn-primary">Subscribe</button>
+        <h4 class="text-white text-[1rem] font-[600] uppercase tracking-[0.05em] mb-6 footer-title">Subscribe to Newsletter</h4>
+        <p class="text-[#94A3B8] text-[0.95rem] mb-4">Receive queue strategy tips, case studies, and feature updates directly in your inbox.</p>
+        <form class="flex gap-2 newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!'); this.reset();">
+          <input type="email" class="flex-1 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] p-[12px_16px] rounded-lg text-white text-[0.9rem] placeholder-[#64748B] focus:border-primary focus:bg-[rgba(255,255,255,0.08)] outline-none newsletter-input" placeholder="av6821246@gmail.com" required aria-label="Newsletter email address">
+          <button type="submit" class="btn inline-flex items-center justify-center px-6 py-2.5 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px]">Subscribe</button>
         </form>
       </div>
     </div>
 
-    <div class="container footer-bottom">
+    <div class="container mx-auto px-3 pb-[15px] max-w-[1280px] border-t border-[rgba(255,255,255,0.05)] pt-10 flex justify-between items-center text-[#64748B] text-[0.9rem] max-[580px]:flex-col max-[580px]:gap-6 max-[580px]:text-center footer-bottom">
       <p>Designed for academic, startup, and enterprise project presentations.</p>
-      <div class="footer-social-links">
-        <a href="https://www.linkedin.com/in/arpit-verma-687b3b332" class="footer-social-link" aria-label="Smart Queue LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/Arpit1825/Queue-Management" class="footer-social-link" aria-label="Smart Queue GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://github.com/Rohanv29/Queue-Management" class="footer-social-link" aria-label="Smart Queue GitHub"><i class="fab fa-github"></i></a>
+      <div class="flex gap-5 footer-social-links">
+        <a href="https://www.linkedin.com/in/arpit-verma-687b3b332" class="text-[#94A3B8] hover:text-primary transition-colors footer-social-link" aria-label="Smart Queue LinkedIn"><i class="fab fa-linkedin-in text-[#94A3B8] hover:text-primary"></i></a>
+        <a href="https://github.com/Arpit1825/Queue-Management" class="text-[#94A3B8] hover:text-primary transition-colors footer-social-link" aria-label="Smart Queue GitHub"><i class="fab fa-github text-[#94A3B8] hover:text-primary"></i></a>
+        <a href="https://github.com/Rohanv29/Queue-Management" class="text-[#94A3B8] hover:text-primary transition-colors footer-social-link" aria-label="Smart Queue GitHub"><i class="fab fa-github text-[#94A3B8] hover:text-primary"></i></a>
       </div>
     </div>
   </footer>
 
-
-   <!-- JavaScript controller -->
+  <!-- JavaScript controller -->
   <script src="/js/index.js"></script>
 </body>
 </html>
