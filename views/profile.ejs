@@ -1,199 +1,865 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Profile | Smart Queue</title>
-<script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/css/index.css">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <title>Profile | SmartQueue</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     >
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sqbg: "#070d18",
+                        sqsidebar: "#0a1220",
+                        sqtopbar: "#09111e",
+                        sqpanel: "#0d1726",
+                        sqpanel2: "#101c2d",
+                        sqborder: "#1c293c",
+                        sqblue: "#3b82f6"
+                    }
+                }
+            }
+        };
+    </script>
 </head>
 
-<body class="p-8 bg-bg-primary text-text-primary min-h-screen transition-colors duration-300">
 
-    <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-glass-bg backdrop-blur-[12px] border-b border-glass-border shadow-glass-shadow z-[1000] flex items-center transition-all duration-300 [&.scrolled]:h-[70px]">
-        <div class="container mx-auto px-3 pb-3.75 max-w-[1280px] flex items-center justify-between w-full">
+<body class="min-h-screen bg-sqbg text-slate-100">
 
-            <a href="/dashboard" class="flex items-center gap-2 font-heading text-[1.35rem] font-[800] text-text-primary" id="nav-logo">
-                <svg viewBox="0 0 24 24" class="fill-primary w-8 h-8">
-                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"/>
-                </svg>
-                SmartQueue
-            </a>
 
-            <nav class="nav-menu flex items-center gap-8 max-[768px]:fixed max-[768px]:top-[var(--header-height)] max-[768px]:left-[-100%] max-[768px]:w-full max-[768px]:h-[calc(100vh-var(--header-height))] max-[768px]:bg-bg-primary max-[768px]:flex-col max-[768px]:p-12 max-[768px]:gap-8 max-[768px]:items-start max-[768px]:transition-[left] max-[768px]:duration-300 max-[768px]:border-t max-[768px]:border-border-color [&.open]:left-0" id="nav-menu">
+    <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+<!-- SIDEBAR -->
+<aside
+    class="
+        fixed left-0 top-0 bottom-0 z-[100]
+        w-[250px]
+        bg-[#0a1220]
+        border-r border-[#1c293c]
+        px-[18px] py-[25px]
+        hidden min-[751px]:block
+    "
+>
 
-                <a href="/dashboard" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full active">
-                    Dashboard
-                </a>
+    <!-- BRAND -->
+    <a
+        href="/dashboard"
+        class="
+            flex items-center gap-[10px]
+            px-[10px]
+            mb-[45px]
+            no-underline
+            text-white
+        "
+    >
+        <svg
+            viewBox="0 0 24 24"
+            class="w-[34px] h-[34px] text-[#3b82f6]"
+            fill="currentColor"
+        >
+            <path
+                d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"
+            />
+        </svg>
 
-                <a href="/queue-management" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
-                    Queue
-                </a>
-
-                <a href="/analytics" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
-                    Analytics
-                </a>
-
-                <a href="/profile" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
-                    Profile
-                </a>
-
-            </nav>
-
-            <div class="nav-actions flex items-center gap-4 max-[768px]:hidden">
-
-                <button class="theme-toggle-btn bg-bg-tertiary border border-border-color w-[42px] h-[42px] rounded-full cursor-pointer flex items-center justify-center text-text-secondary transition-all duration-200 hover:bg-border-color hover:text-text-primary" id="theme-toggle">
-                    <svg class="sun-icon w-5 h-5 fill-current block [[data-theme='dark']_&]:hidden" viewBox="0 0 24 24">
-                        <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18Z"/>
-                    </svg>
-
-                    <svg class="moon-icon w-5 h-5 fill-current hidden [[data-theme='dark']_&]:block" viewBox="0 0 24 24">
-                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
-                    </svg>
-                </button>
-
-                <span class="mr-3 font-[600]">
-                    Welcome, <%= user.fullname %>
-                </span>
-
-                <a href="/logout" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px]">
-                    Logout
-                </a>
-
-            </div>
-
-            <div class="mobile-toggle hidden max-[768px]:block max-[768px]:ml-auto max-[768px]:mr-6 cursor-pointer text-[1.5rem] text-text-primary" id="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-
+        <div class="text-[21px] font-extrabold">
+            Smart<span class="text-[#3b82f6]">Queue</span>
         </div>
-    </header>
+    </a>
 
-    <section class="py-[100px] px-0 relative">
 
-        <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
+    <!-- NAV TITLE -->
+    <div
+        class="
+            text-[#64748b]
+            text-[11px]
+            uppercase
+            tracking-[1px]
+            px-[12px]
+            mb-[12px]
+        "
+    >
+        Main Menu
+    </div>
 
-            <div class="mt-4 mb-8">
 
-                <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase">
+    <!-- NAVIGATION -->
+    <nav class="flex flex-col gap-[7px]">
+
+        <!-- DASHBOARD -->
+        <a
+            href="/dashboard"
+            class="
+                flex items-center gap-[13px]
+                text-[#94a3b8]
+                no-underline
+                px-[14px] py-[13px]
+                rounded-[10px]
+                text-[14px]
+                transition
+                hover:text-white
+                hover:bg-blue-500/10
+            "
+        >
+            <i class="fa-solid fa-house w-[20px] text-center"></i>
+            Dashboard
+        </a>
+
+
+        <!-- QUEUE -->
+        <a
+            href="/queue-management"
+            class="
+                flex items-center gap-[13px]
+                text-[#94a3b8]
+                no-underline
+                px-[14px] py-[13px]
+                rounded-[10px]
+                text-[14px]
+                transition
+                hover:text-white
+                hover:bg-blue-500/10
+            "
+        >
+            <i class="fa-solid fa-layer-group w-[20px] text-center"></i>
+            Queue
+        </a>
+
+
+        <!-- ANALYTICS -->
+        <a
+            href="/analytics"
+            class="
+                flex items-center gap-[13px]
+                text-[#94a3b8]
+                no-underline
+                px-[14px] py-[13px]
+                rounded-[10px]
+                text-[14px]
+                transition
+                hover:text-white
+                hover:bg-blue-500/10
+            "
+        >
+            <i class="fa-solid fa-chart-line w-[20px] text-center"></i>
+            Analytics
+        </a>
+
+
+        <!-- PROFILE - ACTIVE -->
+        <a
+            href="/profile"
+            class="
+                flex items-center gap-[13px]
+                text-white
+                no-underline
+                px-[14px] py-[13px]
+                rounded-[10px]
+                text-[14px]
+                border-l-[3px] border-[#3b82f6]
+                bg-gradient-to-r
+                from-blue-500/25
+                to-blue-500/5
+            "
+        >
+            <i class="fa-solid fa-user w-[20px] text-center"></i>
+            Profile
+        </a>
+
+    </nav>
+
+
+    <!-- SIDEBAR BOTTOM -->
+    <div
+        class="
+            absolute
+            bottom-[25px]
+            left-[18px]
+            right-[18px]
+        "
+    >
+
+        <!-- SUPPORT -->
+        <div
+            class="
+                bg-[#101b2c]
+                border border-[#24334a]
+                rounded-[14px]
+                p-[18px]
+                mb-[15px]
+            "
+        >
+            <h4 class="m-0 mb-[5px] text-[13px]">
+                <i class="fa-solid fa-headset"></i>
+                &nbsp;
+                Need Help?
+            </h4>
+
+            <p class="m-0 text-[#71829d] text-[11px]">
+                Contact SmartQueue support
+            </p>
+        </div>
+
+
+        <!-- LOGOUT -->
+        <a
+            href="/logout"
+            class="
+                flex items-center gap-[10px]
+                text-[#94a3b8]
+                no-underline
+                p-[12px]
+                text-[14px]
+                hover:text-white
+            "
+        >
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+    <!-- =========================================================
+         MAIN CONTENT
+    ========================================================== -->
+
+    <main class="ml-[250px] min-h-screen">
+
+
+        <!-- =====================================================
+             TOPBAR
+        ====================================================== -->
+
+        <header
+            class="sticky top-0 z-40
+                   flex h-[75px] items-center
+                   justify-between
+                   border-b border-sqborder
+                   bg-sqtopbar px-[35px]"
+        >
+
+            <!-- LEFT -->
+
+            <div>
+
+                <div class="text-xs text-slate-500">
+                    SmartQueue
+                </div>
+
+                <div class="mt-0.5 text-sm font-medium text-slate-300">
+                    Account Settings
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="flex items-center gap-5">
+
+
+                <!-- SYSTEM STATUS -->
+
+                <div
+                    class="hidden items-center gap-2 rounded-lg
+                           border border-emerald-500/10
+                           bg-emerald-500/5 px-3 py-2 sm:flex"
+                >
+
+                    <span
+                        class="h-2 w-2 animate-pulse
+                               rounded-full bg-emerald-400"
+                    ></span>
+
+                    <span
+                        class="text-xs font-medium
+                               text-emerald-400"
+                    >
+                        System Live
+                    </span>
+
+                </div>
+
+
+                <!-- USER -->
+
+                <div
+                    class="flex items-center gap-3
+                           border-l border-sqborder pl-4"
+                >
+
+                    <div
+                        class="flex h-10 w-10 items-center
+                               justify-center rounded-full
+                               border border-blue-500/20
+                               bg-blue-500/10
+                               font-bold text-blue-400"
+                    >
+                        <%= user.fullname.charAt(0).toUpperCase() %>
+                    </div>
+
+                    <div class="hidden sm:block">
+
+                        <div
+                            class="text-sm font-semibold
+                                   text-slate-200"
+                        >
+                            <%= user.fullname %>
+                        </div>
+
+                        <div class="text-xs text-slate-500">
+                            Admin
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             PAGE CONTENT
+        ====================================================== -->
+
+        <section
+            class="mx-auto max-w-[1500px] p-[35px]"
+        >
+
+
+            <!-- PAGE HEADING -->
+
+            <div class="mb-8">
+
+                <div
+                    class="inline-flex items-center gap-2
+                           rounded-full border border-blue-500/20
+                           bg-blue-500/10
+                           px-3 py-1.5
+                           text-xs font-semibold uppercase
+                           tracking-wider text-blue-400"
+                >
+
+                    <i class="fa-solid fa-user"></i>
+
                     Profile
-                </span>
 
-                <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25]">
+                </div>
+
+
+                <h1
+                    class="mt-4 text-3xl font-bold text-white
+                           md:text-4xl"
+                >
                     User Profile
-                </h2>
+                </h1>
 
-                <p class="text-text-muted mt-4 mb-4 text-[1.1rem]">
+
+                <p class="mt-2 text-slate-500">
                     Manage your account information.
                 </p>
 
             </div>
-           
-             <!-- <div class="bg-yellow-400 h-[150px] w-[150px] rounded-full overflow-hidden mb-5">
-                    <img src="/counter.png" alt="Counter" class="w-full h-full object-cover">
-                </div> -->
 
-            <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col gap-2">
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-[slideInLeft_0.3s_ease-out]">
 
-                    <span>
-                        Full Name
-                    </span>
 
-                    <span>
-                        <%= user.fullname %>
-                    </span>
+            <!-- =================================================
+                 PROFILE + ACCOUNT DETAILS
+            ================================================== -->
+
+            <div
+                class="mb-7 grid grid-cols-1 gap-6
+                       xl:grid-cols-[1fr_1.8fr]"
+            >
+
+
+                <!-- PROFILE CARD -->
+
+                <div
+                    class="rounded-2xl border border-sqborder
+                           bg-sqpanel p-7"
+                >
+
+                    <div
+                        class="flex flex-col items-center
+                               text-center"
+                    >
+
+                        <!-- AVATAR -->
+
+                        <div
+                            class="mb-5 flex h-24 w-24 items-center
+                                   justify-center rounded-full
+                                   border border-blue-500/20
+                                   bg-blue-500/10
+                                   text-4xl font-bold
+                                   text-blue-400"
+                        >
+                            <%= user.fullname.charAt(0).toUpperCase() %>
+                        </div>
+
+
+                        <!-- NAME -->
+
+                        <h2
+                            class="text-xl font-bold text-white"
+                        >
+                            <%= user.fullname %>
+                        </h2>
+
+
+                        <!-- ROLE -->
+
+                        <div
+                            class="mt-3 inline-flex items-center
+                                   gap-2 rounded-full
+                                   bg-blue-500/10 px-3 py-1
+                                   text-xs font-semibold
+                                   text-blue-400"
+                        >
+
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                            Administrator
+
+                        </div>
+
+
+                        <p class="mt-5 text-xs text-slate-500">
+                            SmartQueue Account
+                        </p>
+
+                    </div>
 
                 </div>
 
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-[slideInLeft_0.3s_ease-out]">
 
-                    <span>
-                        Email
-                    </span>
 
-                    <span>
-                        <%= user.email %>
-                    </span>
+                <!-- ACCOUNT INFORMATION -->
+
+                <div
+                    class="rounded-2xl border border-sqborder
+                           bg-sqpanel p-6"
+                >
+
+                    <div
+                        class="mb-4 flex items-center
+                               justify-between
+                               border-b border-sqborder
+                               pb-4"
+                    >
+
+                        <div>
+
+                            <h3 class="font-semibold text-white">
+                                Account Information
+                            </h3>
+
+                            <p class="mt-1 text-xs text-slate-500">
+                                Your registered account details
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="flex h-9 w-9 items-center
+                                   justify-center rounded-lg
+                                   bg-blue-500/10"
+                        >
+
+                            <i
+                                class="fa-solid fa-id-card
+                                       text-sm text-blue-400"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FULL NAME -->
+
+                    <div
+                        class="mb-3 flex flex-col gap-2
+                               rounded-xl border border-sqborder
+                               bg-sqpanel2 px-4 py-4
+                               sm:flex-row sm:items-center
+                               sm:justify-between"
+                    >
+
+                        <div class="flex items-center gap-3">
+
+                            <div
+                                class="flex h-9 w-9 items-center
+                                       justify-center rounded-lg
+                                       bg-blue-500/10"
+                            >
+
+                                <i
+                                    class="fa-solid fa-user
+                                           text-xs text-blue-400"
+                                ></i>
+
+                            </div>
+
+                            <span class="text-sm text-slate-500">
+                                Full Name
+                            </span>
+
+                        </div>
+
+                        <span
+                            class="text-sm font-semibold
+                                   text-slate-200 sm:text-right"
+                        >
+                            <%= user.fullname %>
+                        </span>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div
+                        class="mb-3 flex flex-col gap-2
+                               rounded-xl border border-sqborder
+                               bg-sqpanel2 px-4 py-4
+                               sm:flex-row sm:items-center
+                               sm:justify-between"
+                    >
+
+                        <div class="flex items-center gap-3">
+
+                            <div
+                                class="flex h-9 w-9 items-center
+                                       justify-center rounded-lg
+                                       bg-purple-500/10"
+                            >
+
+                                <i
+                                    class="fa-solid fa-envelope
+                                           text-xs text-purple-400"
+                                ></i>
+
+                            </div>
+
+                            <span class="text-sm text-slate-500">
+                                Email
+                            </span>
+
+                        </div>
+
+                        <span
+                            class="break-all text-sm font-semibold
+                                   text-slate-200 sm:text-right"
+                        >
+                            <%= user.email %>
+                        </span>
+
+                    </div>
+
+
+                    <!-- USER ID -->
+
+                    <div
+                        class="flex flex-col gap-2
+                               rounded-xl border border-sqborder
+                               bg-sqpanel2 px-4 py-4
+                               sm:flex-row sm:items-center
+                               sm:justify-between"
+                    >
+
+                        <div class="flex items-center gap-3">
+
+                            <div
+                                class="flex h-9 w-9 items-center
+                                       justify-center rounded-lg
+                                       bg-amber-500/10"
+                            >
+
+                                <i
+                                    class="fa-solid fa-fingerprint
+                                           text-xs text-amber-400"
+                                ></i>
+
+                            </div>
+
+                            <span class="text-sm text-slate-500">
+                                User ID
+                            </span>
+
+                        </div>
+
+                        <span
+                            class="break-all font-mono text-xs
+                                   text-slate-300 sm:text-right"
+                        >
+                            <%= user._id %>
+                        </span>
+
+                    </div>
 
                 </div>
 
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-[slideInLeft_0.3s_ease-out]">
+            </div>
 
-                    <span>
-                        User ID
-                    </span>
 
-                    <span>
-                        <%= user._id %>
-                    </span>
+
+            <!-- =================================================
+                 ACCOUNT ACTIVITY
+            ================================================== -->
+
+            <div>
+
+                <div class="mb-4">
+
+                    <h3
+                        class="text-lg font-semibold text-white"
+                    >
+                        Account Activity
+                    </h3>
+
+                    <p class="mt-1 text-xs text-slate-500">
+                        Current queue activity associated with your account
+                    </p>
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div
+                    class="grid grid-cols-1 gap-5
+                           sm:grid-cols-2 xl:grid-cols-4"
+                >
+
+
+                    <!-- COMPLETED -->
+
+                    <div
+                        class="rounded-2xl border border-sqborder
+                               bg-sqpanel p-5
+                               transition-all duration-200
+                               hover:border-blue-500/30"
+                    >
+
+                        <div
+                            class="flex items-start justify-between"
+                        >
+
+                            <div>
+
+                                <p class="text-sm text-slate-500">
+                                    Completed
+                                </p>
+
+                                <h2
+                                    class="mt-3 text-3xl
+                                           font-bold text-white"
+                                >
+                                    <%= totalCompleted %>
+                                </h2>
+
+                            </div>
+
+
+                            <div
+                                class="flex h-11 w-11 items-center
+                                       justify-center rounded-xl
+                                       bg-emerald-500/10"
+                            >
+
+                                <i
+                                    class="fa-solid fa-circle-check
+                                           text-emerald-400"
+                                ></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- WAITING -->
+
+                    <div
+                        class="rounded-2xl border border-sqborder
+                               bg-sqpanel p-5
+                               transition-all duration-200
+                               hover:border-blue-500/30"
+                    >
+
+                        <div
+                            class="flex items-start justify-between"
+                        >
+
+                            <div>
+
+                                <p class="text-sm text-slate-500">
+                                    Waiting
+                                </p>
+
+                                <h2
+                                    class="mt-3 text-3xl
+                                           font-bold text-white"
+                                >
+                                    <%= totalWaiting %>
+                                </h2>
+
+                            </div>
+
+
+                            <div
+                                class="flex h-11 w-11 items-center
+                                       justify-center rounded-xl
+                                       bg-amber-500/10"
+                            >
+
+                                <i
+                                    class="fa-solid fa-users
+                                           text-amber-400"
+                                ></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SERVING -->
+
+                    <div
+                        class="rounded-2xl border border-sqborder
+                               bg-sqpanel p-5
+                               transition-all duration-200
+                               hover:border-blue-500/30"
+                    >
+
+                        <div
+                            class="flex items-start justify-between"
+                        >
+
+                            <div>
+
+                                <p class="text-sm text-slate-500">
+                                    Serving
+                                </p>
+
+                                <h2
+                                    class="mt-3 text-3xl
+                                           font-bold text-white"
+                                >
+                                    <%= totalServing %>
+                                </h2>
+
+                            </div>
+
+
+                            <div
+                                class="flex h-11 w-11 items-center
+                                       justify-center rounded-xl
+                                       bg-blue-500/10"
+                            >
+
+                                <i
+                                    class="fa-solid fa-user-clock
+                                           text-blue-400"
+                                ></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TOTAL -->
+
+                    <div
+                        class="rounded-2xl border border-sqborder
+                               bg-sqpanel p-5
+                               transition-all duration-200
+                               hover:border-blue-500/30"
+                    >
+
+                        <div
+                            class="flex items-start justify-between"
+                        >
+
+                            <div>
+
+                                <p class="text-sm text-slate-500">
+                                    Total Tokens
+                                </p>
+
+                                <h2
+                                    class="mt-3 text-3xl
+                                           font-bold text-white"
+                                >
+                                    <%= totalTokens %>
+                                </h2>
+
+                            </div>
+
+
+                            <div
+                                class="flex h-11 w-11 items-center
+                                       justify-center rounded-xl
+                                       bg-purple-500/10"
+                            >
+
+                                <i
+                                    class="fa-solid fa-ticket
+                                           text-purple-400"
+                                ></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+    </main>
 
-    <div class="grid grid-cols-4 gap-6 mb-8 max-w-[1280px] mx-auto px-3">
 
-        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
-
-            <div class="text-xs font-[500] text-text-muted mb-1">
-                Completed
-            </div>
-
-            <div class="text-[1.75rem] font-bold text-text-primary">
-                <%= totalCompleted %>
-            </div>
-
-        </div>
-
-        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
-
-            <div class="text-xs font-[500] text-text-muted mb-1">
-                Waiting
-            </div>
-
-            <div class="text-[1.75rem] font-bold text-text-primary">
-                <%= totalWaiting %>
-            </div>
-
-        </div>
-
-        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
-
-            <div class="text-xs font-[500] text-text-muted mb-1">
-                Serving
-            </div>
-
-            <div class="text-[1.75rem] font-bold text-text-primary">
-                <%= totalServing %>
-            </div>
-
-        </div>
-
-        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
-
-            <div class="text-xs font-[500] text-text-muted mb-1">
-                Total Tokens
-            </div>
-
-            <div class="text-[1.75rem] font-bold text-text-primary">
-                <%= totalTokens %>
-            </div>
-
-        </div>
-
-    </div>
+    <!-- EXISTING COMMON JS -->
 
     <script src="/js/index.js"></script>
 
 </body>
+
 </html>

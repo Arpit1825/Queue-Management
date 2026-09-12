@@ -45,13 +45,39 @@
         <a href="/#contact" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">Contact</a>
 
         <div class="mobile-auth hidden max-[768px]:flex max-[768px]:flex-col max-[768px]:gap-4 max-[768px]:w-full max-[768px]:mt-4">
-            <a href="/login" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px] w-full text-center">
-                Log In
-            </a>
+            <% if (user) { %>
 
-            <a href="/signup" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px] w-full text-center">
-                Sign Up
-            </a>
+    <a
+        href="/dashboard"
+        class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] bg-primary text-white"
+    >
+        Dashboard
+    </a>
+
+    <a
+        href="/logout"
+        class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] bg-bg-tertiary text-text-primary border border-border-color"
+    >
+        Logout
+    </a>
+
+<% } else { %>
+
+    <a
+        href="/login"
+        class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] bg-bg-tertiary text-text-primary border border-border-color"
+    >
+        Log In
+    </a>
+
+    <a
+        href="/signup"
+        class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] bg-primary text-white"
+    >
+        Sign Up
+    </a>
+
+<% } %>
         </div>
       </nav>
 

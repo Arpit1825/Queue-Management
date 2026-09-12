@@ -1,242 +1,714 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Dashboard | Smart Queue Management</title>
 
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
+    <title>Analytics | SmartQueue</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     >
-</head>
-
-<body class="p-8 bg-bg-primary text-text-primary min-h-screen transition-colors duration-300">
-
-    <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-glass-bg backdrop-blur-[12px] border-b border-glass-border shadow-glass-shadow z-[1000] flex items-center transition-all duration-300 [&.scrolled]:h-[70px]">
-        <div class="container mx-auto px-3 pb-3.75 max-w-[1280px] flex items-center justify-between w-full">
-
-            <a href="/dashboard" class="flex items-center gap-2 font-heading text-[1.35rem] font-[800] text-text-primary" id="nav-logo">
-                <svg viewBox="0 0 24 24" class="fill-primary w-8 h-8">
-                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"/>
-                </svg>
-                SmartQueue
-            </a>
-
-            <nav class="nav-menu flex items-center gap-8 max-[768px]:fixed max-[768px]:top-[var(--header-height)] max-[768px]:left-[-100%] max-[768px]:w-full max-[768px]:h-[calc(100vh-var(--header-height))] max-[768px]:bg-bg-primary max-[768px]:flex-col max-[768px]:p-12 max-[768px]:gap-8 max-[768px]:items-start max-[768px]:transition-[left] max-[768px]:duration-300 max-[768px]:border-t max-[768px]:border-border-color [&.open]:left-0" id="nav-menu">
-
-                <a href="/dashboard" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
-                    Dashboard
-                </a>
-
-                <a href="/queue-management" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
-                    Queue
-                </a>
-
-                <a href="/analytics" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full active">
-                    Analytics
-                </a>
-
-                <a href="/profile" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
-                    Profile
-                </a>
-
-            </nav>
-
-            <div class="nav-actions flex items-center gap-4 max-[768px]:hidden">
-
-                <button class="theme-toggle-btn bg-bg-tertiary border border-border-color w-[42px] h-[42px] rounded-full cursor-pointer flex items-center justify-center text-text-secondary transition-all duration-200 hover:bg-border-color hover:text-text-primary" id="theme-toggle">
-                    <svg class="sun-icon w-5 h-5 fill-current block [[data-theme='dark']_&]:hidden" viewBox="0 0 24 24">
-                        <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18Z"/>
-                    </svg>
-
-                    <svg class="moon-icon w-5 h-5 fill-current hidden [[data-theme='dark']_&]:block" viewBox="0 0 24 24">
-                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
-                    </svg>
-                </button>
-
-                <a href="/logout" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px]">
-                    Logout
-                </a>
-
-            </div>
-
-            <div class="mobile-toggle hidden max-[768px]:block max-[768px]:ml-auto max-[768px]:mr-6 cursor-pointer text-[1.5rem] text-text-primary" id="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-
-        </div>
-    </header>
-
-    <div class="mt-20 mb-8 max-w-[1280px] mx-auto">
-
-        <span class="inline-block mt-16 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase">
-            Analytics
-        </span>
-
-        <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25]">
-            Queue Analytics Dashboard
-        </h2>
-
-        <p class="text-text-muted mt-4 mb-4 text-[1.1rem]">
-            Monitor queue performance and service metrics.
-        </p>
-
-    </div>
-
-    <div class="grid grid-cols-4 gap-6 mb-8 max-w-[1280px] mx-auto max-[1024px]:grid-cols-2 max-[580px]:grid-cols-1">
-
-        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
-            <div class="text-xs font-[500] text-text-muted mb-1">
-                Completed
-            </div>
-
-            <div
-                class="text-[1.75rem] font-bold text-text-primary"
-                id="completedCount"
-            >
-                0
-            </div>
-        </div>
-
-        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
-            <div class="text-xs font-[500] text-text-muted mb-1">
-                Waiting
-            </div>
-
-            <div
-                class="text-[1.75rem] font-bold text-text-primary"
-                id="waitingCount"
-            >
-                0
-            </div>
-        </div>
-
-        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
-            <div class="text-xs font-[500] text-text-muted mb-1">
-                Serving
-            </div>
-
-            <div
-                class="text-[1.75rem] font-bold text-text-primary"
-                id="servingCount"
-            >
-                0
-            </div>
-        </div>
-
-        <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px]">
-            <div class="text-xs font-[500] text-text-muted mb-1">
-                Total Tokens
-            </div>
-
-            <div
-                class="text-[1.75rem] font-bold text-text-primary"
-                id="totalCount"
-            >
-                0
-            </div>
-        </div>
-
-    </div>
-
-    <div class="grid grid-cols-[2fr_1fr] max-w-[1280px] mx-auto gap-8 items-start mb-8 max-[1024px]:grid-cols-1">
-
-        <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col">
-
-            <div class="text-[0.95rem] font-bold mb-4 border-b border-border-color pb-2 flex justify-between items-center">
-                Recent Completed Tokens
-                <span class="text-xs text-text-muted font-normal">
-                    Last 10 Services
-                </span>
-            </div>
-
-            <div id="recentCompleted" class="flex flex-col gap-2">
-                <!-- Injected dynamically by JS -->
-            </div>
-
-        </div>
-
-        <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col">
-
-            <div class="text-[0.95rem] font-bold mb-4 border-b border-border-color pb-2 flex justify-between items-center">
-                Service Distribution
-                <span class="text-xs text-text-muted font-normal">
-                    Category Breakdown
-                </span>
-            </div>
-
-            <div id="serviceStats" class="flex flex-col gap-2">
-                <!-- Injected dynamically by JS -->
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="bg-bg-primary border border-border-color rounded-xl p-5 transition-transform duration-200 hover:-translate-y-[2px] max-w-[1280px] mx-auto">
-        <div class="text-xs font-[500] text-text-muted mb-1">
-            Avg Service Time
-        </div>
-
-        <div
-            class="text-[1.75rem] font-bold text-text-primary"
-            id="avgServiceTime"
-        >
-            0m
-        </div>
-    </div>
 
     <script>
-    async function loadAnalytics(){
-        const res = await fetch("/queue/analytics");
-        const data = await res.json();
-
-        document.getElementById("completedCount").textContent = data.totalCompleted;
-        document.getElementById("waitingCount").textContent = data.totalWaiting;
-        document.getElementById("servingCount").textContent = data.totalServing;
-        document.getElementById("totalCount").textContent = data.totalCompleted + data.totalWaiting + data.totalServing;
-
-        document.getElementById("serviceStats").innerHTML = data.serviceStats.map(service=>{
-            return `
-                <div class="flex justify-between border-b border-border-color py-2">
-                    <span>${service._id}</span>
-                    <span>${service.count}</span>
-                </div>
-            `;
-        }).join('');
-
-        document.getElementById("avgServiceTime").textContent = `${data.avgServiceTime}m`;
-        
-        document.getElementById("recentCompleted").innerHTML = data.recentCompleted.map(token => {
-            return `
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-slide-in-left">
-                    <span>
-                        Token ${token.tokenNumber}
-                    </span>
-                    <span>
-                        Counter ${token.counterId}
-                    </span>
-                </div>
-            `;
-        }).join('');
-    }
-
-    loadAnalytics();
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sqbg: "#070d18",
+                        sqsidebar: "#0a1220",
+                        sqpanel: "#0d1726",
+                        sqpanel2: "#101c2d",
+                        sqborder: "#1c293c",
+                        sqblue: "#3b82f6"
+                    }
+                }
+            }
+        };
     </script>
+</head>
+
+<body class="min-h-screen bg-sqbg text-slate-100">
+
+    <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+    <aside
+        class="fixed left-0 top-0 bottom-0 z-50 hidden w-[250px] border-r border-[#1c293c] bg-[#0a1220] px-[18px] py-[25px] lg:block"
+    >
+
+        <!-- BRAND -->
+        <a
+            href="/dashboard"
+            class="mb-[45px] flex items-center gap-[10px] px-[10px] no-underline"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                class="h-[34px] w-[34px] text-[#3b82f6]"
+                fill="currentColor"
+            >
+                <path
+                    d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"
+                />
+            </svg>
+            <div class="text-[21px] font-extrabold text-white">
+                Smart<span class="text-[#3b82f6]">Queue</span>
+            </div>
+        </a>
+
+        <!-- NAV TITLE -->
+        <div
+            class="mb-3 px-3 text-[11px] uppercase tracking-[1px] text-slate-500"
+        >
+            Main Menu
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="flex flex-col gap-[7px]">
+
+            <!-- DASHBOARD -->
+            <a
+                href="/dashboard"
+                class="group flex items-center gap-[13px] rounded-[10px] border-l-[3px] border-transparent px-[14px] py-[13px] text-[14px] text-slate-400 no-underline transition hover:bg-blue-500/10 hover:text-white"
+            >
+                <i class="fa-solid fa-house w-5 text-center"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <!-- QUEUE -->
+            <a
+                href="/queue-management"
+                class="group flex items-center gap-[13px] rounded-[10px] border-l-[3px] border-transparent px-[14px] py-[13px] text-[14px] text-slate-400 no-underline transition hover:bg-blue-500/10 hover:text-white"
+            >
+                <i class="fa-solid fa-layer-group w-5 text-center"></i>
+                <span>Queue</span>
+            </a>
+
+            <!-- ANALYTICS ACTIVE -->
+            <a
+                href="/analytics"
+                class="group flex items-center gap-[13px] rounded-[10px] border-l-[3px] border-[#3b82f6] bg-gradient-to-r from-blue-500/25 to-blue-500/5 px-[14px] py-[13px] text-[14px] text-white no-underline transition"
+            >
+                <i class="fa-solid fa-chart-line w-5 text-center"></i>
+                <span>Analytics</span>
+            </a>
+
+            <!-- PROFILE -->
+            <a
+                href="/profile"
+                class="group flex items-center gap-[13px] rounded-[10px] border-l-[3px] border-transparent px-[14px] py-[13px] text-[14px] text-slate-400 no-underline transition hover:bg-blue-500/10 hover:text-white"
+            >
+                <i class="fa-solid fa-user w-5 text-center"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+
+        <!-- SIDEBAR BOTTOM -->
+        <div class="absolute bottom-[25px] left-[18px] right-[18px]">
+
+            <!-- SUPPORT -->
+            <div
+                class="mb-[15px] rounded-[14px] border border-[#24334a] bg-[#101b2c] p-[18px]"
+            >
+                <h4 class="mb-[5px] text-[13px] font-semibold text-white">
+                    <i class="fa-solid fa-headset mr-1"></i>
+                    Need Help?
+                </h4>
+                <p class="m-0 text-[11px] text-[#71829d]">
+                    Contact SmartQueue support
+                </p>
+            </div>
+
+            <!-- LOGOUT -->
+            <a
+                href="/logout"
+                class="flex items-center gap-[10px] px-3 py-3 text-[14px] text-slate-400 no-underline transition hover:text-white"
+            >
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main class="ml-[250px] min-h-screen">
+
+
+        <!-- =====================================================
+             TOPBAR
+        ====================================================== -->
+
+        <header
+            class="sticky top-0 z-40 flex h-[75px] items-center justify-between border-b border-sqborder bg-sqsidebar px-8"
+        >
+
+            <!-- LEFT -->
+
+            <div>
+
+                <div class="text-xs text-slate-500">
+                    SmartQueue
+                </div>
+
+                <div class="mt-0.5 text-sm font-semibold text-slate-200">
+                    Analytics Overview
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             PAGE CONTENT
+        ====================================================== -->
+
+        <section class="mx-auto max-w-[1500px] p-[35px]">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="mb-8">
+
+                <div
+                    class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-400"
+                >
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Analytics
+
+                </div>
+
+
+                <h1
+                    class="mt-4 text-3xl font-bold tracking-tight text-white md:text-4xl"
+                >
+                    Queue Analytics
+                </h1>
+
+
+                <p class="mt-2 text-sm text-slate-500">
+                    Monitor queue performance and service metrics.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 KPI CARDS
+            ================================================== -->
+
+            <div
+                class="mb-7 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4"
+            >
+
+
+                <!-- COMPLETED -->
+
+                <div
+                    class="rounded-2xl border border-sqborder bg-sqpanel p-5 transition-all duration-200 hover:border-blue-500/30"
+                >
+
+                    <div class="flex items-start justify-between">
+
+                        <div>
+
+                            <p class="text-sm text-slate-500">
+                                Completed
+                            </p>
+
+                            <h2
+                                id="completedCount"
+                                class="mt-3 text-3xl font-bold text-white"
+                            >
+                                0
+                            </h2>
+
+                            <p class="mt-2 text-xs text-emerald-400">
+                                Successfully served
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/10"
+                        >
+
+                            <i
+                                class="fa-solid fa-circle-check text-emerald-400"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WAITING -->
+
+                <div
+                    class="rounded-2xl border border-sqborder bg-sqpanel p-5 transition-all duration-200 hover:border-blue-500/30"
+                >
+
+                    <div class="flex items-start justify-between">
+
+                        <div>
+
+                            <p class="text-sm text-slate-500">
+                                Waiting
+                            </p>
+
+                            <h2
+                                id="waitingCount"
+                                class="mt-3 text-3xl font-bold text-white"
+                            >
+                                0
+                            </h2>
+
+                            <p class="mt-2 text-xs text-amber-400">
+                                Customers in queue
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-500/10"
+                        >
+
+                            <i
+                                class="fa-solid fa-users text-amber-400"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVING -->
+
+                <div
+                    class="rounded-2xl border border-sqborder bg-sqpanel p-5 transition-all duration-200 hover:border-blue-500/30"
+                >
+
+                    <div class="flex items-start justify-between">
+
+                        <div>
+
+                            <p class="text-sm text-slate-500">
+                                Serving
+                            </p>
+
+                            <h2
+                                id="servingCount"
+                                class="mt-3 text-3xl font-bold text-white"
+                            >
+                                0
+                            </h2>
+
+                            <p class="mt-2 text-xs text-blue-400">
+                                Currently being served
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500/10"
+                        >
+
+                            <i
+                                class="fa-solid fa-user-clock text-blue-400"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TOTAL -->
+
+                <div
+                    class="rounded-2xl border border-sqborder bg-sqpanel p-5 transition-all duration-200 hover:border-blue-500/30"
+                >
+
+                    <div class="flex items-start justify-between">
+
+                        <div>
+
+                            <p class="text-sm text-slate-500">
+                                Total Tokens
+                            </p>
+
+                            <h2
+                                id="totalCount"
+                                class="mt-3 text-3xl font-bold text-white"
+                            >
+                                0
+                            </h2>
+
+                            <p class="mt-2 text-xs text-purple-400">
+                                Overall activity
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="flex h-11 w-11 items-center justify-center rounded-xl bg-purple-500/10"
+                        >
+
+                            <i
+                                class="fa-solid fa-ticket text-purple-400"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MAIN ANALYTICS GRID
+            ================================================== -->
+
+            <div
+                class="mb-6 grid grid-cols-1 gap-6 xl:grid-cols-[1.7fr_1fr]"
+            >
+
+
+                <!-- RECENT COMPLETED -->
+
+                <div
+                    class="rounded-2xl border border-sqborder bg-sqpanel p-6"
+                >
+
+                    <div
+                        class="mb-4 flex items-center justify-between border-b border-sqborder pb-4"
+                    >
+
+                        <div>
+
+                            <h3 class="text-sm font-semibold text-white">
+                                Recent Completed Tokens
+                            </h3>
+
+                            <p class="mt-1 text-xs text-slate-500">
+                                Latest successfully completed services
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-500/10"
+                        >
+
+                            <i
+                                class="fa-solid fa-clock-rotate-left text-sm text-blue-400"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="recentCompleted"
+                        class="flex flex-col gap-2"
+                    >
+                        <!-- Injected dynamically -->
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICE DISTRIBUTION -->
+
+                <div
+                    class="rounded-2xl border border-sqborder bg-sqpanel p-6"
+                >
+
+                    <div
+                        class="mb-4 flex items-center justify-between border-b border-sqborder pb-4"
+                    >
+
+                        <div>
+
+                            <h3 class="text-sm font-semibold text-white">
+                                Service Distribution
+                            </h3>
+
+                            <p class="mt-1 text-xs text-slate-500">
+                                Category breakdown
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="flex h-9 w-9 items-center justify-center rounded-lg bg-purple-500/10"
+                        >
+
+                            <i
+                                class="fa-solid fa-chart-pie text-sm text-purple-400"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="serviceStats"
+                        class="flex flex-col gap-2"
+                    >
+                        <!-- Injected dynamically -->
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 AVERAGE SERVICE TIME
+            ================================================== -->
+
+            <div
+                class="rounded-2xl border border-sqborder bg-sqpanel p-6"
+            >
+
+                <div class="flex items-center justify-between">
+
+                    <div>
+
+                        <p class="text-sm text-slate-500">
+                            Average Service Time
+                        </p>
+
+                        <h2
+                            id="avgServiceTime"
+                            class="mt-2 text-3xl font-bold text-white"
+                        >
+                            0m
+                        </h2>
+
+                        <p class="mt-2 text-xs text-slate-500">
+                            Average time required to complete a service
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10"
+                    >
+
+                        <i
+                            class="fa-solid fa-stopwatch text-blue-400"
+                        ></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         ANALYTICS LOGIC
+         ORIGINAL LOGIC — DO NOT CHANGE
+    ========================================================== -->
+
+    <script>
+
+        async function loadAnalytics(){
+
+            const res = await fetch("/queue/analytics");
+
+            const data = await res.json();
+
+
+            /* KPI */
+
+            document.getElementById("completedCount").textContent =
+                data.totalCompleted;
+
+            document.getElementById("waitingCount").textContent =
+                data.totalWaiting;
+
+            document.getElementById("servingCount").textContent =
+                data.totalServing;
+
+            document.getElementById("totalCount").textContent =
+                data.totalCompleted +
+                data.totalWaiting +
+                data.totalServing;
+
+
+            /* SERVICE DISTRIBUTION */
+
+            document.getElementById("serviceStats").innerHTML =
+                data.serviceStats.map(service => {
+
+                    return `
+
+                        <div
+                            class="flex items-center justify-between rounded-xl border border-sqborder bg-sqpanel2 px-4 py-3 transition-all duration-200 hover:border-blue-500/20"
+                        >
+
+                            <div class="flex items-center gap-3">
+
+                                <div
+                                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10"
+                                >
+
+                                    <i
+                                        class="fa-solid fa-layer-group text-xs text-blue-400"
+                                    ></i>
+
+                                </div>
+
+                                <span class="text-sm text-slate-300">
+                                    ${service._id}
+                                </span>
+
+                            </div>
+
+
+                            <span
+                                class="text-sm font-semibold text-white"
+                            >
+                                ${service.count}
+                            </span>
+
+                        </div>
+
+                    `;
+
+                }).join("");
+
+
+            /* AVG SERVICE TIME */
+
+            document.getElementById("avgServiceTime").textContent =
+                `${data.avgServiceTime}m`;
+
+
+            /* RECENT COMPLETED */
+
+            document.getElementById("recentCompleted").innerHTML =
+                data.recentCompleted.map(token => {
+
+                    return `
+
+                        <div
+                            class="flex items-center justify-between rounded-xl border border-sqborder bg-sqpanel2 px-4 py-3 transition-all duration-200 hover:border-blue-500/20"
+                        >
+
+                            <div class="flex items-center gap-3">
+
+                                <div
+                                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/10"
+                                >
+
+                                    <i
+                                        class="fa-solid fa-check text-xs text-emerald-400"
+                                    ></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <div
+                                        class="text-sm font-semibold text-slate-200"
+                                    >
+                                        Token ${token.tokenNumber}
+                                    </div>
+
+                                    <div
+                                        class="mt-0.5 text-xs text-slate-500"
+                                    >
+                                        Service completed
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="rounded-lg bg-blue-500/10 px-3 py-1.5 text-xs text-blue-400"
+                            >
+                                Counter ${token.counterId}
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }).join("");
+
+        }
+
+
+        /* Initial Load */
+
+        loadAnalytics();
+
+    </script>
+
+
+    <!-- SOCKET.IO -->
+
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
-    const socket = io();
-    socket.on("queueUpdated",()=>{
-        loadAnalytics();
-    });
+
+        const socket = io();
+
+        socket.on("queueUpdated", () => {
+
+            loadAnalytics();
+
+        });
+
     </script>
+
+
+    <!-- Existing common JS -->
 
     <script src="/js/index.js"></script>
 
 </body>
+
 </html>

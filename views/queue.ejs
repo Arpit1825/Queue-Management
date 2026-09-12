@@ -1,252 +1,1146 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard | Smart Queue Management</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="/css/index.css">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Queue | SmartQueue</title>
+
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="/favicon.svg"
+    >
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     >
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        page: "#070d18",
+                        sidebar: "#0a1220",
+                        card: "#0c1626",
+                        panel: "#0b1524",
+                        item: "#111c2e",
+                        border: "#1e2d43",
+                        muted: "#71829d",
+                        primary: "#3b82f6"
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body class="p-8 bg-bg-primary text-text-primary min-h-screen transition-colors duration-300">
 
-    <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-glass-bg backdrop-blur-[12px] border-b border-glass-border shadow-glass-shadow z-[1000] flex items-center transition-all duration-300 [&.scrolled]:h-[70px]">
-        <div class="container mx-auto px-3 pb-3.75 max-w-[1280px] flex items-center justify-between w-full">
+<body class="m-0 bg-[#070d18] text-slate-50 font-sans">
 
-            <a href="/dashboard" class="flex items-center gap-2 font-heading text-[1.35rem] font-[800] text-text-primary" id="nav-logo">
-                <svg viewBox="0 0 24 24" class="fill-primary w-8 h-8">
-                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"/>
+    <div class="min-h-screen flex">
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside
+            class="
+                fixed left-0 top-0 bottom-0 z-[100]
+                w-[250px]
+                bg-[#0a1220]
+                border-r border-[#1c293c]
+                px-[18px] py-[25px]
+                hidden min-[751px]:block
+            "
+        >
+
+            <!-- BRAND -->
+
+            <a
+                href="/dashboard"
+                class="
+                    flex items-center gap-[10px]
+                    px-[10px]
+                    mb-[45px]
+                    no-underline
+                    text-white
+                "
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    class="w-[34px] h-[34px] text-[#3b82f6]"
+                    fill="currentColor"
+                >
+                    <path
+                        d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"
+                    />
                 </svg>
-                SmartQueue
+
+                <div class="text-[21px] font-extrabold">
+                    Smart<span class="text-[#3b82f6]">Queue</span>
+                </div>
+
             </a>
 
-            <nav class="nav-menu flex items-center gap-8 max-[768px]:fixed max-[768px]:top-[var(--header-height)] max-[768px]:left-[-100%] max-[768px]:w-full max-[768px]:h-[calc(100vh-var(--header-height))] max-[768px]:bg-bg-primary max-[768px]:flex-col max-[768px]:p-12 max-[768px]:gap-8 max-[768px]:items-start max-[768px]:transition-[left] max-[768px]:duration-300 max-[768px]:border-t max-[768px]:border-border-color [&.open]:left-0" id="nav-menu">
 
-                <a href="/dashboard" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+            <!-- NAV TITLE -->
+
+            <div
+                class="
+                    text-[#64748b]
+                    text-[11px]
+                    uppercase
+                    tracking-[1px]
+                    px-[12px]
+                    mb-[12px]
+                "
+            >
+                Main Menu
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="flex flex-col gap-[7px]">
+
+                <a
+                    href="/dashboard"
+                    class="
+                        flex items-center gap-[13px]
+                        text-[#94a3b8]
+                        no-underline
+                        px-[14px] py-[13px]
+                        rounded-[10px]
+                        text-[14px]
+                        transition
+                        hover:text-white
+                        hover:bg-blue-500/10
+                    "
+                >
+                    <i class="fa-solid fa-house w-[20px] text-center"></i>
                     Dashboard
                 </a>
 
-                <a href="/queue-management" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full active">
+
+                <!-- ACTIVE -->
+
+                <a
+                    href="/queue-management"
+                    class="
+                        flex items-center gap-[13px]
+                        text-white
+                        no-underline
+                        px-[14px] py-[13px]
+                        rounded-[10px]
+                        text-[14px]
+                        border-l-[3px] border-[#3b82f6]
+                        bg-gradient-to-r
+                        from-blue-500/25
+                        to-blue-500/5
+                    "
+                >
+                    <i class="fa-solid fa-layer-group w-[20px] text-center"></i>
                     Queue
                 </a>
 
-                <a href="/analytics" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+
+                <a
+                    href="/analytics"
+                    class="
+                        flex items-center gap-[13px]
+                        text-[#94a3b8]
+                        no-underline
+                        px-[14px] py-[13px]
+                        rounded-[10px]
+                        text-[14px]
+                        transition
+                        hover:text-white
+                        hover:bg-blue-500/10
+                    "
+                >
+                    <i class="fa-solid fa-chart-line w-[20px] text-center"></i>
                     Analytics
                 </a>
 
-                <a href="/profile" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">
+
+                <a
+                    href="/profile"
+                    class="
+                        flex items-center gap-[13px]
+                        text-[#94a3b8]
+                        no-underline
+                        px-[14px] py-[13px]
+                        rounded-[10px]
+                        text-[14px]
+                        transition
+                        hover:text-white
+                        hover:bg-blue-500/10
+                    "
+                >
+                    <i class="fa-solid fa-user w-[20px] text-center"></i>
                     Profile
                 </a>
 
             </nav>
 
-            <div class="nav-actions flex items-center gap-4 max-[768px]:hidden">
 
-                <button class="theme-toggle-btn bg-bg-tertiary border border-border-color w-[42px] h-[42px] rounded-full cursor-pointer flex items-center justify-center text-text-secondary transition-all duration-200 hover:bg-border-color hover:text-text-primary" id="theme-toggle">
-                    <svg class="sun-icon w-5 h-5 fill-current block [[data-theme='dark']_&]:hidden" viewBox="0 0 24 24">
-                        <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18Z"/>
-                    </svg>
+            <!-- SIDEBAR BOTTOM -->
 
-                    <svg class="moon-icon w-5 h-5 fill-current hidden [[data-theme='dark']_&]:block" viewBox="0 0 24 24">
-                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
-                    </svg>
-                </button>
+            <div
+                class="
+                    absolute
+                    bottom-[25px]
+                    left-[18px]
+                    right-[18px]
+                "
+            >
 
-                <a href="/logout" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px]">
+                <!-- SUPPORT -->
+
+                <div
+                    class="
+                        bg-[#101b2c]
+                        border border-[#24334a]
+                        rounded-[14px]
+                        p-[18px]
+                        mb-[15px]
+                    "
+                >
+
+                    <h4 class="m-0 mb-[5px] text-[13px]">
+                        <i class="fa-solid fa-headset"></i>
+                        &nbsp;
+                        Need Help?
+                    </h4>
+
+                    <p class="m-0 text-[#71829d] text-[11px]">
+                        Contact SmartQueue support
+                    </p>
+
+                </div>
+
+
+                <!-- LOGOUT -->
+
+                <a
+                    href="/logout"
+                    class="
+                        flex items-center gap-[10px]
+                        text-[#94a3b8]
+                        no-underline
+                        p-[12px]
+                        text-[14px]
+                        hover:text-white
+                    "
+                >
+                    <i class="fa-solid fa-right-from-bracket"></i>
                     Logout
                 </a>
 
             </div>
 
-            <div class="mobile-toggle hidden max-[768px]:block max-[768px]:ml-auto max-[768px]:mr-6 cursor-pointer text-[1.5rem] text-text-primary" id="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+        </aside>
 
-        </div>
-    </header>
 
-    <section class="py-[100px] px-0 relative">
-        <div class="container mx-auto px-3 pb-[15px] max-w-[1280px]">
 
-            <div class="mt-4 mb-8">
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
 
-                <span class="inline-block mt-4 px-4 py-2 rounded-full bg-[rgba(59,130,246,0.15)] text-[#3b82f6] font-[600] tracking-[1px] text-xs uppercase">
-                    Queue
-                </span>
+        <main
+            class="
+                min-h-screen
+                w-full
+                min-[751px]:ml-[250px]
+            "
+        >
 
-                <h2 class="font-heading text-5xl text-text-primary mt-4 font-[700] leading-[1.25]">
-                    Queue Management
-                </h2>
+            <!-- =================================================
+                 TOPBAR
+            ================================================== -->
 
-                <p class="text-text-muted mt-4 mb-4 text-[1.1rem]">
-                    Generate, serve and manage customer tokens.
-                </p>
+            <header
+                class="
+                    h-[75px]
+                    border-b border-[#1c293c]
+                    flex items-center justify-between
+                    px-[35px]
+                    bg-[#070d18]/90
+                    backdrop-blur-[15px]
+                    sticky top-0 z-50
+                "
+            >
 
-            </div>
-
-            <div class="grid grid-cols-[2fr_1fr] gap-8 items-start mb-8 max-[1024px]:grid-cols-1">
-
-                <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col">
-
-                    <div class="text-[0.95rem] font-bold mb-4 border-b border-border-color pb-2 flex justify-between items-center">
-                        Waiting Queue
-                        <span class="text-xs text-text-muted font-normal">
-                            Live Queue
-                        </span>
-                    </div>
-
-                    <div id="queueList" class="flex flex-col gap-2">
-                        <!-- Injected dynamically by JS -->
-                    </div>
-
-                </div>
-
-                <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col">
-
-                    <div class="text-[0.95rem] font-bold mb-4 border-b border-border-color pb-2 flex justify-between items-center">
-                        Active Counters
-                        <span class="text-xs text-text-muted font-normal">
-                            Status
-                        </span>
-                    </div>
-
-                    <div id="counterList" class="flex flex-col gap-2">
-                        <!-- Injected dynamically by JS -->
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="bg-bg-primary border border-border-color rounded-xl p-5 flex flex-col mt-8">
-
-                <div class="text-[0.95rem] font-bold mb-4 border-b border-border-color pb-2 flex justify-between items-center">
-                    Token Search
-                    <span class="text-xs text-text-muted font-normal">
-                        Track Queue Status
-                    </span>
-                </div>
-
-                <div class="flex gap-4 mt-4 max-[580px]:flex-col">
-
-                    <input
-                        type="number"
-                        id="tokenSearch"
-                        placeholder="Enter Token Number"
-                        class="w-full p-3 rounded-lg border border-border-color bg-bg-secondary text-text-primary text-sm focus:border-primary outline-none transition-colors duration-200"
-                    >
-
-                    <button
-                        id="searchBtn"
-                        class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px] shrink-0"
-                    >
-                        Search
-                    </button>
-
-                </div>
+                <!-- SEARCH -->
 
                 <div
-                    id="searchResult"
-                    class="mt-4"
+                    class="
+                        w-[510px]
+                        h-[43px]
+                        border border-[#263750]
+                        rounded-[9px]
+                        bg-[#0d1727]
+                        hidden sm:flex
+                        items-center
+                        px-[15px]
+                        gap-[10px]
+                    "
                 >
-                    <!-- Search results container -->
+
+                    <i class="fa-solid fa-magnifying-glass text-[#64748b]"></i>
+
+                    <input
+                        type="text"
+                        placeholder="Search tokens, services..."
+                        class="
+                            border-0
+                            outline-none
+                            bg-transparent
+                            text-white
+                            w-full
+                            text-[13px]
+                            placeholder:text-[#64748b]
+                        "
+                    >
+
                 </div>
 
-            </div>
+                
 
-        </div>
-    </section>
+            </header>
+
+
+
+            <!-- =================================================
+                 PAGE
+            ================================================== -->
+
+            <section
+                class="
+                    px-[15px] py-[22px]
+                    sm:px-[25px] sm:py-[30px]
+                    lg:px-[35px] lg:py-[35px]
+                    max-w-[1500px]
+                    mx-auto
+                "
+            >
+
+                <!-- PAGE HEADING -->
+
+                <div class="mb-[30px]">
+
+                    <span
+                        class="
+                            inline-flex items-center gap-[7px]
+                            bg-blue-500/10
+                            border border-blue-500/20
+                            text-[#3b82f6]
+                            px-[13px] py-[7px]
+                            rounded-full
+                            text-[10px]
+                            font-bold
+                            tracking-[1px]
+                            uppercase
+                        "
+                    >
+                        <i class="fa-solid fa-layer-group"></i>
+                        Queue
+                    </span>
+
+
+                    <h1
+                        class="
+                            mt-[15px]
+                            mb-[7px]
+                            text-[28px]
+                            sm:text-[34px]
+                            font-bold
+                            tracking-[-1px]
+                        "
+                    >
+                        Queue Management
+                    </h1>
+
+
+                    <p class="m-0 text-[#71829d] text-[14px]">
+                        Generate, serve and manage customer tokens.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SUMMARY CARDS
+                ================================================== -->
+
+                <div
+                    class="
+                        grid
+                        grid-cols-1
+                        md:grid-cols-3
+                        gap-[18px]
+                        mb-[22px]
+                    "
+                >
+
+                    <!-- WAITING -->
+
+                    <div
+                        class="
+                            bg-[#0c1626]
+                            border border-[#203047]
+                            rounded-[13px]
+                            p-[20px]
+                            flex items-center justify-between
+                        "
+                    >
+
+                        <div>
+
+                            <span
+                                class="
+                                    block
+                                    text-[#71829d]
+                                    text-[11px]
+                                    mb-[8px]
+                                "
+                            >
+                                Customers Waiting
+                            </span>
+
+                            <strong
+                                id="queue-count"
+                                class="text-[25px]"
+                            >
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div
+                            class="
+                                w-[43px] h-[43px]
+                                rounded-[11px]
+                                bg-blue-500/10
+                                text-[#3b82f6]
+                                flex items-center justify-center
+                            "
+                        >
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- COUNTERS -->
+
+                    <div
+                        class="
+                            bg-[#0c1626]
+                            border border-[#203047]
+                            rounded-[13px]
+                            p-[20px]
+                            flex items-center justify-between
+                        "
+                    >
+
+                        <div>
+
+                            <span
+                                class="
+                                    block
+                                    text-[#71829d]
+                                    text-[11px]
+                                    mb-[8px]
+                                "
+                            >
+                                Active Counters
+                            </span>
+
+                            <strong
+                                id="counter-count"
+                                class="text-[25px]"
+                            >
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div
+                            class="
+                                w-[43px] h-[43px]
+                                rounded-[11px]
+                                bg-blue-500/10
+                                text-[#3b82f6]
+                                flex items-center justify-center
+                            "
+                        >
+                            <i class="fa-solid fa-desktop"></i>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div
+                        class="
+                            bg-[#0c1626]
+                            border border-[#203047]
+                            rounded-[13px]
+                            p-[20px]
+                            flex items-center justify-between
+                        "
+                    >
+
+                        <div>
+
+                            <span
+                                class="
+                                    block
+                                    text-[#71829d]
+                                    text-[11px]
+                                    mb-[8px]
+                                "
+                            >
+                                Queue Status
+                            </span>
+
+                            <strong class="text-[19px]">
+                                Operational
+                            </strong>
+
+                        </div>
+
+
+                        <div
+                            class="
+                                w-[43px] h-[43px]
+                                rounded-[11px]
+                                bg-blue-500/10
+                                text-[#3b82f6]
+                                flex items-center justify-center
+                            "
+                        >
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     QUEUE + COUNTERS
+                ================================================== -->
+
+                <div
+                    class="
+                        grid
+                        grid-cols-1
+                        lg:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)]
+                        gap-[20px]
+                        items-start
+                    "
+                >
+
+                    <!-- WAITING QUEUE -->
+
+                    <div
+                        class="
+                            bg-[#0b1524]
+                            border border-[#1e2d43]
+                            rounded-[14px]
+                            p-[22px]
+                        "
+                    >
+
+                        <div
+                            class="
+                                flex items-center justify-between
+                                pb-[16px]
+                                mb-[15px]
+                                border-b border-[#1e2d43]
+                            "
+                        >
+
+                            <div
+                                class="
+                                    flex items-center gap-[9px]
+                                    text-[14px]
+                                    font-bold
+                                "
+                            >
+                                <i class="fa-solid fa-users text-[#3b82f6]"></i>
+                                Waiting Queue
+                            </div>
+
+
+                            <div
+                                class="
+                                    flex items-center gap-[6px]
+                                    text-[#34d399]
+                                    text-[10px]
+                                "
+                            >
+
+                                <span
+                                    class="
+                                        w-[7px] h-[7px]
+                                        rounded-full
+                                        bg-[#34d399]
+                                        shadow-[0_0_0_4px_rgba(52,211,153,.08)]
+                                    "
+                                ></span>
+
+                                Live Queue
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- IMPORTANT ID -->
+
+                        <div
+                            id="queueList"
+                            class="flex flex-col gap-[9px]"
+                        >
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ACTIVE COUNTERS -->
+
+                    <div
+                        class="
+                            bg-[#0b1524]
+                            border border-[#1e2d43]
+                            rounded-[14px]
+                            p-[22px]
+                        "
+                    >
+
+                        <div
+                            class="
+                                flex items-center justify-between
+                                pb-[16px]
+                                mb-[15px]
+                                border-b border-[#1e2d43]
+                            "
+                        >
+
+                            <div
+                                class="
+                                    flex items-center gap-[9px]
+                                    text-[14px]
+                                    font-bold
+                                "
+                            >
+                                <i class="fa-solid fa-desktop text-[#3b82f6]"></i>
+                                Active Counters
+                            </div>
+
+                            <span class="text-[#64748b] text-[10px]">
+                                Status
+                            </span>
+
+                        </div>
+
+
+                        <!-- IMPORTANT ID -->
+
+                        <div
+                            id="counterList"
+                            class="flex flex-col gap-[10px]"
+                        >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     TOKEN SEARCH
+                ================================================== -->
+
+                <div
+                    class="
+                        bg-[#0b1524]
+                        border border-[#1e2d43]
+                        rounded-[14px]
+                        p-[22px]
+                        mt-[20px]
+                    "
+                >
+
+                    <div
+                        class="
+                            flex items-center justify-between
+                            pb-[16px]
+                            mb-[15px]
+                            border-b border-[#1e2d43]
+                        "
+                    >
+
+                        <div
+                            class="
+                                flex items-center gap-[9px]
+                                text-[14px]
+                                font-bold
+                            "
+                        >
+                            <i class="fa-solid fa-magnifying-glass text-[#3b82f6]"></i>
+                            Token Search
+                        </div>
+
+                        <span class="text-[#64748b] text-[10px]">
+                            Track Queue Status
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="
+                            flex flex-col
+                            sm:flex-row
+                            gap-[12px]
+                        "
+                    >
+
+                        <!-- IMPORTANT ID -->
+
+                        <input
+                            type="number"
+                            id="tokenSearch"
+                            placeholder="Enter Token Number"
+                            class="
+                                flex-1
+                                h-[45px]
+                                px-[14px]
+                                rounded-[8px]
+                                border border-[#263750]
+                                bg-[#111c2e]
+                                text-white
+                                outline-none
+                                text-[12px]
+                                focus:border-[#3b82f6]
+                                focus:ring-4
+                                focus:ring-blue-500/10
+                                placeholder:text-[#64748b]
+                            "
+                        >
+
+
+                        <!-- IMPORTANT ID -->
+
+                        <button
+                            id="searchBtn"
+                            class="
+                                h-[45px]
+                                px-[24px]
+                                border-0
+                                rounded-[8px]
+                                bg-[#3b82f6]
+                                text-white
+                                font-bold
+                                text-[12px]
+                                cursor-pointer
+                                transition
+                                hover:bg-blue-600
+                                hover:-translate-y-[1px]
+                            "
+                        >
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            &nbsp;
+                            Search
+                        </button>
+
+                    </div>
+
+
+                    <!-- IMPORTANT ID -->
+
+                    <div id="searchResult" class="mt-[15px]">
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         EXISTING QUEUE LOGIC
+         DO NOT CHANGE
+    ========================================================== -->
 
     <script>
-    async function loadQueuePage(){
-        const res = await fetch("/queue/dashboard");
-        const data = await res.json();
 
-        document.getElementById("queueList").innerHTML = data.waiting.map(token => {
-            return `
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-slide-in-left">
-                    <span>
-                        Token ${token.tokenNumber}
-                    </span>
-                    <span>
-                        ${token.serviceType}
-                    </span>
-                </div>
-            `;
-        }).join('');
+        async function loadQueuePage(){
 
-        document.getElementById("counterList").innerHTML = data.serving.map(token => {
-            return `
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-slide-in-left">
-                    <span>
-                        Counter ${token.counterId}
-                    </span>
-                    <span>
-                        Token ${token.tokenNumber}
-                    </span>
-                </div>
-            `;
-        }).join('');
-    }
+            const res =
+                await fetch("/queue/dashboard");
 
-    document.getElementById("searchBtn").addEventListener("click", async () => {
-        const tokenNumber = document.getElementById("tokenSearch").value;
-        const res = await fetch(`/queue/token/${tokenNumber}`);
-        const data = await res.json();
+            const data =
+                await res.json();
 
-        if(!data){
-            document.getElementById("searchResult").innerHTML = `
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-slide-in-left">
-                    Token not found
-                </div>
-            `;
-            return;
+
+            document.getElementById("queueList").innerHTML =
+                data.waiting.map(token => {
+
+                    return `
+
+                        <div
+                            class="
+                                bg-[#111c2e]
+                                border border-[#1d2b40]
+                                rounded-[9px]
+                                px-[15px] py-[14px]
+                                flex items-center justify-between
+                                transition
+                                hover:border-[#315078]
+                                hover:-translate-y-[1px]
+                            "
+                        >
+
+                            <div>
+
+                                <strong class="block text-[13px]">
+                                    Token ${token.tokenNumber}
+                                </strong>
+
+                                <span
+                                    class="
+                                        block
+                                        text-[#64748b]
+                                        text-[10px]
+                                        mt-[4px]
+                                    "
+                                >
+                                    Customer waiting for service
+                                </span>
+
+                            </div>
+
+
+                            <span
+                                class="
+                                    text-[#93c5fd]
+                                    bg-blue-500/10
+                                    rounded-full
+                                    px-[10px] py-[5px]
+                                    text-[10px]
+                                "
+                            >
+                                ${token.serviceType}
+                            </span>
+
+                        </div>
+
+                    `;
+
+                }).join('');
+
+
+
+            document.getElementById("counterList").innerHTML =
+                data.serving.map(token => {
+
+                    return `
+
+                        <div
+                            class="
+                                bg-[#111c2e]
+                                border border-[#1d2b40]
+                                rounded-[9px]
+                                p-[14px]
+                                flex items-center justify-between
+                            "
+                        >
+
+                            <div>
+
+                                <div
+                                    class="
+                                        text-[12px]
+                                        font-bold
+                                    "
+                                >
+                                    Counter ${token.counterId}
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    text-[#3b82f6]
+                                    text-[12px]
+                                    font-bold
+                                "
+                            >
+                                Token ${token.tokenNumber}
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }).join('');
+
+
+
+            /* Update visual summary */
+
+            const queueCount =
+                document.getElementById("queue-count");
+
+            const counterCount =
+                document.getElementById("counter-count");
+
+
+            if(queueCount){
+
+                queueCount.textContent =
+                    data.waiting.length;
+
+            }
+
+
+            if(counterCount){
+
+                counterCount.textContent =
+                    data.serving.length;
+
+            }
+
         }
 
-        document.getElementById("searchResult").innerHTML = `
-            <div class="mt-[10px] flex flex-col gap-2">
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-slide-in-left">
-                    <span>Status</span>
-                    <span>${data.status}</span>
-                </div>
 
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-slide-in-left">
-                    <span>Service</span>
-                    <span>${data.serviceType}</span>
-                </div>
 
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-slide-in-left">
-                    <span>Position</span>
-                    <span>${data.position || "-"}</span>
-                </div>
+        /* =========================================================
+           TOKEN SEARCH
+        ========================================================= */
 
-                <div class="flex items-center justify-between py-[0.65rem] px-[0.85rem] rounded-lg border border-border-color bg-bg-secondary animate-slide-in-left">
-                    <span>Counter</span>
-                    <span>${data.counterId || "Not provided"}</span>
-                </div>
-            </div>
-        `;
-    });
+        document
+            .getElementById("searchBtn")
+            .addEventListener("click", async () => {
 
-    loadQueuePage();
+
+                const tokenNumber =
+                    document
+                        .getElementById("tokenSearch")
+                        .value;
+
+
+                const res =
+                    await fetch(
+                        `/queue/token/${tokenNumber}`
+                    );
+
+
+                const data =
+                    await res.json();
+
+
+
+                if(!data){
+
+                    document
+                        .getElementById("searchResult")
+                        .innerHTML = `
+
+                            <div
+                                class="
+                                    bg-[#111c2e]
+                                    border border-[#263750]
+                                    rounded-[10px]
+                                    p-[15px]
+                                    text-[#94a3b8]
+                                    text-[13px]
+                                "
+                            >
+                                Token not found
+                            </div>
+
+                        `;
+
+                    return;
+
+                }
+
+
+
+                document
+                    .getElementById("searchResult")
+                    .innerHTML = `
+
+                        <div
+                            class="
+                                bg-[#111c2e]
+                                border border-[#263750]
+                                rounded-[10px]
+                                p-[15px]
+                            "
+                        >
+
+                            <div
+                                class="
+                                    bg-[#111c2e]
+                                    border border-[#1d2b40]
+                                    rounded-[9px]
+                                    px-[15px] py-[14px]
+                                    flex items-center justify-between
+                                "
+                            >
+
+                                <span class="text-[#94a3b8] text-[12px]">
+                                    Status
+                                </span>
+
+                                <strong class="text-[12px]">
+                                    ${data.status}
+                                </strong>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    bg-[#111c2e]
+                                    border border-[#1d2b40]
+                                    rounded-[9px]
+                                    px-[15px] py-[14px]
+                                    flex items-center justify-between
+                                    mt-[8px]
+                                "
+                            >
+
+                                <span class="text-[#94a3b8] text-[12px]">
+                                    Service
+                                </span>
+
+                                <strong class="text-[12px]">
+                                    ${data.serviceType}
+                                </strong>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    bg-[#111c2e]
+                                    border border-[#1d2b40]
+                                    rounded-[9px]
+                                    px-[15px] py-[14px]
+                                    flex items-center justify-between
+                                    mt-[8px]
+                                "
+                            >
+
+                                <span class="text-[#94a3b8] text-[12px]">
+                                    Position
+                                </span>
+
+                                <strong class="text-[12px]">
+                                    ${data.position || "-"}
+                                </strong>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    bg-[#111c2e]
+                                    border border-[#1d2b40]
+                                    rounded-[9px]
+                                    px-[15px] py-[14px]
+                                    flex items-center justify-between
+                                    mt-[8px]
+                                "
+                            >
+
+                                <span class="text-[#94a3b8] text-[12px]">
+                                    Counter
+                                </span>
+
+                                <strong class="text-[12px]">
+                                    ${data.counterId || "Not provided"}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+            });
+
+
+
+        /* Initial load */
+
+        loadQueuePage();
+
     </script>
+
+
+
+    <!-- =========================================================
+         SOCKET.IO
+    ========================================================== -->
+
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
-    const socket = io();
-    socket.on("queueUpdated", () => {
-        console.log("Queue Updated");
-        loadQueuePage();
-    });
+
+        const socket = io();
+
+        socket.on("queueUpdated", () => {
+
+            console.log("Queue Updated");
+
+            loadQueuePage();
+
+        });
+
     </script>
+
+
+
+    <!-- EXISTING COMMON JS -->
 
     <script src="/js/index.js"></script>
 
 </body>
+
 </html>

@@ -1,126 +1,530 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+
+<html lang="en" data-theme="dark">
+
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Login | SmartQueue</title>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link rel="stylesheet" href="/css/index.css">
+
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="/favicon.svg"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-bg-primary text-text-primary min-h-screen transition-colors duration-300">
-
-    <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-glass-bg backdrop-blur-[12px] border-b border-glass-border shadow-glass-shadow z-[1000] flex items-center transition-all duration-300 [&.scrolled]:h-[70px]">
-        <div class="container mx-auto px-3 pb-3.75 max-w-[1280px] flex items-center justify-between w-full">
-            <a href="/" class="flex items-center gap-2 font-heading text-[1.35rem] font-[800] text-text-primary" id="nav-logo" aria-label="Smart Queue Homepage">
-                <svg viewBox="0 0 24 24" class="fill-primary w-8 h-8">
-                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z" />
-                </svg>
-                SmartQueue
-            </a>
-            
-            <nav class="nav-menu flex items-center gap-8 max-[768px]:fixed max-[768px]:top-[var(--header-height)] max-[768px]:left-[-100%] max-[768px]:w-full max-[768px]:h-[calc(100vh-var(--header-height))] max-[768px]:bg-bg-primary max-[768px]:flex-col max-[768px]:p-12 max-[768px]:gap-8 max-[768px]:items-start max-[768px]:transition-[left] max-[768px]:duration-300 max-[768px]:border-t max-[768px]:border-border-color [&.open]:left-0" id="nav-menu">
-                <a href="/" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">Home</a>
-                <a href="/#features" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">Features</a>
-                <a href="/#how-it-works" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">How It Works</a>
-                <a href="/demo" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">Live Demo</a>
-                <a href="/#pricing" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">Pricing</a>
-                <a href="/#faq" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">FAQ</a>
-                <a href="/#contact" class="nav-link font-[500] text-text-secondary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] after:duration-200 hover:text-primary hover:after:w-full [&.active]:text-primary [&.active]:after:w-full">Contact</a>
-
-                <div class="mobile-auth hidden max-[768px]:flex max-[768px]:flex-col max-[768px]:gap-4 max-[768px]:w-full max-[768px]:mt-4">
-                    <a href="/login" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px] w-full text-center">
-                        Log In
-                    </a>
-                    <a href="/signup" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px] w-full text-center">
-                        Sign Up
-                    </a>
-                </div>
-            </nav>
-
-            <div class="nav-actions flex items-center gap-4 max-[768px]:hidden">
-                <button class="theme-toggle-btn bg-bg-tertiary border border-border-color w-[42px] h-[42px] rounded-full cursor-pointer flex items-center justify-center text-text-secondary transition-all duration-200 hover:bg-border-color hover:text-text-primary" id="theme-toggle" aria-label="Toggle dark mode">
-                    <svg class="sun-icon w-5 h-5 fill-current block [[data-theme='dark']_&]:hidden" viewBox="0 0 24 24">
-                        <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" />
-                    </svg>
-                    <svg class="moon-icon w-5 h-5 fill-current hidden [[data-theme='dark']_&]:block" viewBox="0 0 24 24">
-                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
-                    </svg>
-                </button>
-
-                <a href="/login" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-bg-tertiary text-text-primary border border-border-color hover:bg-border-color hover:-translate-y-[1px]">
-                    Log In
-                </a>
-                <a href="/signup" class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px]">
-                    Sign Up
-                </a>
-            </div>
-
-            <div class="mobile-toggle hidden max-[768px]:block max-[768px]:ml-auto max-[768px]:mr-6 cursor-pointer text-[1.5rem] text-text-primary" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-controls="nav-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
-
-    <div class="relative min-h-[calc(100vh-80px)] flex justify-center items-center overflow-hidden pt-20">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(99,102,241,0.18),transparent_40%)]"></div>
-
-        <div class="relative z-10 w-full max-w-[480px] p-10 bg-[rgba(15,23,42,0.8)] backdrop-blur-[20px] border border-[rgba(255,255,255,0.08)] shadow-[0_20px_50px_rgba(0,0,0,0.4)] rounded-[24px]">
-
-            <h3 class="font-heading text-[1.75rem] font-bold text-white text-center mb-[5px]">Welcome <span class="text-red-yellow"> Back !</span></h3>
-            <% if(error){ %>
-            <div id="toast-error" class="bg-[#ef4444] text-white px-[18px] py-[12px] rounded-[10px] mb-[15px] font-[600] animate-[slideDown_0.3s_ease]">
-                <%= error %>
-            </div>
-            <% } %>
-            <form action="/login" method="POST">
-
-                <div class="mb-6">
-                    <label class="block text-[0.85rem] font-[600] text-white mb-[2px] mt-[15px]">Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        class="w-full px-[18px] py-[14px] bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-[12px] text-white transition-all duration-300 outline-none focus:border-[#3B82F6] focus:shadow-[0_0_0_4px_rgba(59,130,246,0.15)]"
-                        required
-                    >
-                </div>
-
-                <div class="mb-6">
-                    <label class="block text-[0.85rem] font-[600] text-white mb-2">Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        class="w-full px-[18px] py-[14px] bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-[12px] text-white transition-all duration-300 outline-none focus:border-[#3B82F6] focus:shadow-[0_0_0_4px_rgba(59,130,246,0.15)]"
-                        required
-                    >
-                </div>
-
-                <button
-                    class="btn inline-flex items-center justify-center px-6 py-2 rounded-lg font-[600] cursor-pointer transition-all duration-200 gap-2 bg-primary text-white hover:bg-primary-hover hover:shadow-primary-glow hover:-translate-y-[1px] w-full"
-                    type="submit"
-                >
-                    Login
-                </button>
-
-            </form>
-
-            <a href="/signup" class="text-[#3B82F6] hover:underline block text-center mt-6 text-sm font-[600]">
-                Create Account
-            </a>
-
-        </div>
-
-    </div>
 
     <script>
-    const toast = document.getElementById("toast-error");
-    if(toast){
-        setTimeout(()=>{
-            toast.style.display = "none";
-        },3000);
-    }
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        page: "#070d18",
+                        panel: "#0b1524",
+                        item: "#111c2e",
+                        border: "#1e2d43",
+                        muted: "#71829d",
+                        primary: "#3b82f6"
+
+                    }
+
+                }
+
+            }
+
+        }
+
     </script>
+
+</head>
+
+
+<body class="min-h-screen bg-[#070d18] text-white antialiased">
+
+
+    <!-- Header -->
+
+    <header
+        class="fixed left-0 right-0 top-0 z-50 h-[72px]
+        border-b border-[#1c293c]
+        bg-[#0a1220]/95
+        backdrop-blur-xl"
+    >
+
+        <div
+            class="mx-auto flex h-full max-w-[1500px]
+            items-center justify-between px-5 sm:px-8"
+        >
+
+
+            <!-- Logo -->
+
+            <a
+                href="/"
+                class="flex items-center gap-[10px] no-underline"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    class="h-[34px] w-[34px] text-[#3b82f6]"
+                    fill="currentColor"
+                >
+
+                    <path
+                        d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"
+                    />
+
+                </svg>
+
+
+                <div
+                    class="text-[21px] font-extrabold text-white"
+                >
+
+                    Smart<span class="text-[#3b82f6]">Queue</span>
+
+                </div>
+
+            </a>
+
+
+            <!-- Signup -->
+
+            <a
+                href="/signup"
+                class="rounded-[10px]
+                border border-[#24334a]
+                bg-[#101b2c]
+                px-5 py-2.5
+                text-sm font-semibold
+                text-slate-200
+                transition
+                hover:border-[#3b82f6]/50
+                hover:bg-[#15233a]"
+            >
+
+                <span
+                    class="text-white hover:text-[#3b82f6]"
+                >
+                    Sign Up
+                </span>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- Login Area -->
+
+    <main
+        class="relative flex min-h-screen
+        items-center justify-center
+        overflow-hidden
+        px-5 pb-10 pt-[110px]"
+    >
+
+
+        <!-- Background Glow -->
+
+        <div
+            class="pointer-events-none absolute inset-0"
+        >
+
+            <div
+                class="absolute left-[8%] top-[12%]
+                h-[420px] w-[420px]
+                rounded-full
+                bg-blue-500/[0.08]
+                blur-[120px]"
+            >
+            </div>
+
+
+            <div
+                class="absolute bottom-[5%] right-[8%]
+                h-[380px] w-[380px]
+                rounded-full
+                bg-indigo-500/[0.07]
+                blur-[120px]"
+            >
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="relative z-10 w-full max-w-[460px]"
+        >
+
+
+            <!-- Login Card -->
+
+            <div
+                class="rounded-[18px]
+                border border-[#1e2d43]
+                bg-[#0b1524]
+                p-7
+                shadow-[0_25px_70px_rgba(0,0,0,0.35)]
+                sm:p-9"
+            >
+
+
+                <!-- Heading -->
+
+                <div
+                    class="mb-8 text-center"
+                >
+
+                    <div
+                        class="mx-auto mb-5
+                        flex h-14 w-14
+                        items-center justify-center
+                        rounded-[14px]
+                        border border-blue-500/20
+                        bg-blue-500/10"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            class="h-7 w-7 text-[#3b82f6]"
+                            fill="currentColor"
+                        >
+
+                            <path
+                                d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V12.4L15.5,15.1L16.25,13.8L12.5,11.6V6H11Z"
+                            />
+
+                        </svg>
+
+                    </div>
+
+
+                    <h1
+                        class="text-[28px]
+                        font-bold
+                        tracking-tight
+                        text-white"
+                    >
+
+                        Welcome
+                        <span class="text-[#3b82f6]">
+                            Back
+                        </span>
+
+                    </h1>
+
+
+                    <p
+                        class="mt-2
+                        text-sm
+                        text-[#71829d]"
+                    >
+
+                        Login to your SmartQueue account
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Error -->
+
+                <% if(error){ %>
+
+                    <div
+                        id="toast-error"
+                        class="mb-5
+                        rounded-[10px]
+                        border border-red-500/20
+                        bg-red-500/10
+                        px-4 py-3
+                        text-sm
+                        font-semibold
+                        text-red-400"
+                    >
+
+                        <i
+                            class="fa-solid fa-circle-exclamation mr-2"
+                        ></i>
+
+                        <%= error %>
+
+                    </div>
+
+                <% } %>
+
+
+
+                <!-- Login Form -->
+
+                <form
+                    action="/login"
+                    method="POST"
+                >
+
+
+                    <!-- Email -->
+
+                    <div class="mb-5">
+
+                        <label
+                            class="mb-2 block
+                            text-sm
+                            font-semibold
+                            text-slate-200"
+                        >
+
+                            Email
+
+                        </label>
+
+
+                        <div class="relative">
+
+                            <i
+                                class="fa-solid fa-envelope
+                                absolute left-4 top-1/2
+                                -translate-y-1/2
+                                text-sm
+                                text-[#71829d]"
+                            >
+                            </i>
+
+
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                required
+                                class="w-full
+                                rounded-[10px]
+                                border border-[#1e2d43]
+                                bg-[#111c2e]
+                                py-[13px]
+                                pl-11 pr-4
+                                text-sm
+                                text-white
+                                outline-none
+                                transition
+                                placeholder:text-[#71829d]
+                                focus:border-[#3b82f6]
+                                focus:ring-4
+                                focus:ring-blue-500/10"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Password -->
+
+                    <div class="mb-6">
+
+                        <label
+                            class="mb-2 block
+                            text-sm
+                            font-semibold
+                            text-slate-200"
+                        >
+
+                            Password
+
+                        </label>
+
+
+                        <div class="relative">
+
+                            <i
+                                class="fa-solid fa-lock
+                                absolute left-4 top-1/2
+                                -translate-y-1/2
+                                text-sm
+                                text-[#71829d]"
+                            >
+                            </i>
+
+
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                                class="w-full
+                                rounded-[10px]
+                                border border-[#1e2d43]
+                                bg-[#111c2e]
+                                py-[13px]
+                                pl-11 pr-4
+                                text-sm
+                                text-white
+                                outline-none
+                                transition
+                                placeholder:text-[#71829d]
+                                focus:border-[#3b82f6]
+                                focus:ring-4
+                                focus:ring-blue-500/10"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Login Button -->
+
+                    <button
+                        type="submit"
+                        class="flex w-full
+                        items-center justify-center
+                        gap-2
+                        rounded-[10px]
+                        bg-[#3b82f6]
+                        px-6 py-[13px]
+                        text-sm
+                        font-bold
+                        text-white
+                        transition
+                        hover:bg-blue-600
+                        hover:shadow-[0_8px_25px_rgba(59,130,246,0.22)]"
+                    >
+
+                        <i
+                            class="fa-solid fa-right-to-bracket text-xs"
+                        ></i>
+
+                        Login
+
+                    </button>
+
+                </form>
+
+
+
+                <!-- Divider -->
+
+                <div
+                    class="my-6 flex items-center gap-3"
+                >
+
+                    <div
+                        class="h-px flex-1 bg-[#1e2d43]"
+                    ></div>
+
+
+                    <span
+                        class="text-xs text-[#71829d]"
+                    >
+                        OR
+                    </span>
+
+
+                    <div
+                        class="h-px flex-1 bg-[#1e2d43]"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- Signup Link -->
+
+                <p
+                    class="text-center
+                    text-sm
+                    text-[#71829d]"
+                >
+
+                    Don't have an account?
+
+                    <a
+                        href="/signup"
+                        class="font-semibold
+                        text-[#3b82f6]
+                        transition
+                        hover:text-blue-400
+                        hover:underline"
+                    >
+
+                        Sign Up
+
+                    </a>
+
+                </p>
+
+            </div>
+
+
+
+            <!-- Footer -->
+
+            <p
+                class="mt-5
+                text-center
+                text-xs
+                text-[#4f607a]"
+            >
+
+                SmartQueue Management System
+
+            </p>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- Error Auto Hide -->
+
+    <script>
+
+        const toast =
+            document.getElementById("toast-error");
+
+        if (toast) {
+
+            setTimeout(() => {
+
+                toast.style.display = "none";
+
+            }, 3000);
+
+        }
+
+    </script>
+
+
     <script src="/js/index.js"></script>
+
 </body>
+
 </html>
